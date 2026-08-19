@@ -1,0 +1,49 @@
+{
+  "_README": "LEGACY MIRROR of the gateway routing index (the primary copy lives in the gateway_routing table in ~/.hermes/state.db). Maps messaging session keys (agent:main:<platform>:...) to active session IDs. This is NOT the session list. ALL sessions (CLI, TUI, and gateway) live in ~/.hermes/state.db and are shown by `hermes sessions list` and `/sessions`. Disable this file with `gateway.write_sessions_json: false` in config.yaml.",
+  "agent:main:telegram:dm:7025776524": {
+    "session_key": "agent:main:telegram:dm:7025776524",
+    "session_id": "20260817_171504_bd49efa7",
+    "created_at": "2026-08-17T17:15:04.587444",
+    "updated_at": "2026-08-17T17:15:13.300428",
+    "display_name": "\ud835\udc79\ud835\udc6c\ud835\udc81\ud835\udc68 | \ud835\udfee\ud835\udfec:\ud835\udfee\ud835\udff4",
+    "platform": "telegram",
+    "chat_type": "dm",
+    "metadata": {},
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "total_tokens": 0,
+    "last_prompt_tokens": 0,
+    "estimated_cost_usd": 0.0,
+    "cost_status": "unknown",
+    "expiry_finalized": false,
+    "suspended": false,
+    "resume_pending": false,
+    "resume_reason": null,
+    "last_resume_marked_at": null,
+    "active_turn_token": null,
+    "active_turn_started_at": null,
+    "is_fresh_reset": true,
+    "was_auto_reset": false,
+    "auto_reset_reason": null,
+    "reset_had_activity": false,
+    "prev_session_id": null,
+    "model_override": {
+      "model": "Google",
+      "provider": "openai-api",
+      "base_url": "https://9router-production-df048.up.railway.app/v1"
+    },
+    "origin": {
+      "platform": "telegram",
+      "chat_id": "7025776524",
+      "chat_name": "\ud835\udc79\ud835\udc6c\ud835\udc81\ud835\udc68 | \ud835\udfee\ud835\udfec:\ud835\udfee\ud835\udff4",
+      "chat_type": "dm",
+      "user_id": "7025776524",
+      "user_name": "\ud835\udc79\ud835\udc6c\ud835\udc81\ud835\udc68 | \ud835\udfee\ud835\udfec:\ud835\udfee\ud835\udff4",
+      "thread_id": null,
+      "chat_topic": null,
+      "message_id": "2665"
+    }
+  }
+}
