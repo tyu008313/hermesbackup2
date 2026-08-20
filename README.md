@@ -1,29 +1,34 @@
-# 🤖 Hermes Agent Professional Backup
+# 🤖 مرکز فرماندهی و مدیریت هوش مصنوعی Hermes
 
-![Status](https://img.shields.io/badge/Status-Secured-success?style=for-the-badge&logo=github)
-![Last Backup](https://img.shields.io/badge/Last_Backup-Dynamic-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
+![Structure](https://img.shields.io/badge/Architecture-SOP_Standard-blue?style=for-the-badge)
 
-Welcome to the central command and history of my **Hermes Agent**. This repository serves as a structured, automated vault for all my AI-driven workflows, memories, and projects.
+خوش آمدید! این مخزن (Repository)، مرکز اصلی مدیریت تمامی مهارت‌ها، حافظه، تاریخچه گفتگوها و پروژه‌های کاری **Hermes Agent** است. این ساختار بر پایه اصول **استاندارد عملیاتی (SOP)** طراحی شده تا دسترسی و مدیریت فایل‌ها در بالاترین سطح از نظم و کارایی قرار داشته باشد.
 
 ---
 
-## 📂 Repository Structure
+## 📂 ساختار درختی مخزن (Organizational Tree)
 
-| Folder | Description | Content |
+| پوشه اصلی | توضیحات | محتوا |
 | :--- | :--- | :--- |
-| **🧠 01_Knowledge** | The Brain | Persistent memories and custom skills. |
-| **💬 02_Conversations** | The History | Full session transcripts and chat logs. |
-| **🛠️ 03_Tools** | The Engine | Custom scripts and core configurations. |
-| **🏗️ 04_Workspace** | The Lab | Active projects, HTML files, and documents. |
-| **📊 05_Stats** | The Log | System info and backup metadata. |
+| **`01_CORE_ASSETS`** | هسته مرکزی هوش | مهارت‌ها (Skills) و حافظه ماندگار (Memories) |
+| **`02_OPERATIONS`** | عملیات جاری | تاریخچه جلسات (Sessions) و وظایف (Tasks) |
+| **`03_INFRASTRUCTURE`** | زیرساخت | تنظیمات سیستمی (Configs) و اسکریپت‌ها |
+| **`04_PROJECTS_LAB`** | آزمایشگاه پروژه‌ها | پروژه‌های فعال (Active) و آرشیو شده |
+| **`05_SYSTEM_INTELLIGENCE`** | هوش سیستمی | گزارش‌های سلامت و مستندات فنی |
 
 ---
 
-## 🚀 How to Backup
-Simply type `BACKUP` in our chat, and I will:
-1. Categorize all new data.
-2. Sync everything with this repository.
-3. Keep your progress safe and sound!
+## 🛠️ دستورالعمل‌های عملیاتی
+
+برای تعامل با این سیستم، از دستورات زیر در محیط چت استفاده کنید:
+
+*   **`BACKUP`**: اجرای همگام‌سازی خودکار و طبقه‌بندی هوشمند تمامی داده‌ها در ساختار فوق.
 
 ---
-*Created with ❤️ by Hermes Agent for 𝑹𝑬𝒁𝑨*
+
+## 🛡️ وضعیت امنیتی
+تمامی داده‌های این مخزن به‌صورت رمزنگاری شده و با رعایت پروتکل‌های دسترسی مدیریت می‌شوند. این مخزن تضمین می‌کند که هیچ دانشی از دست نرود و تمامی تجربیات کاری شما برای همیشه حفظ و قابل بازیابی باشد.
+
+*طراحی شده با دقت برای 𝑹𝑬𝒁𝑨*
+*مدیریت شده توسط Hermes Agent*
