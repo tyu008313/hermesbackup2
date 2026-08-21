@@ -5,3 +5,5 @@ User communicates in Persian (Farsi).
 When user explicitly states 'build all of them quickly' or similar, prioritize rapid, comprehensive execution and minimize phased approaches for complex tasks.
 §
 User prefers "fast, comprehensive execution" and "minimal phased approaches" when working on complex tasks.
+§
+User expects continuous progress on tasks, without interruptions, excuses, or being brushed off. Prioritizes immediate and direct action.
