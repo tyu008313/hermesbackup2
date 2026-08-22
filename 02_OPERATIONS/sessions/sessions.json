@@ -2,9 +2,9 @@
   "_README": "LEGACY MIRROR of the gateway routing index (the primary copy lives in the gateway_routing table in ~/.hermes/state.db). Maps messaging session keys (agent:main:<platform>:...) to active session IDs. This is NOT the session list. ALL sessions (CLI, TUI, and gateway) live in ~/.hermes/state.db and are shown by `hermes sessions list` and `/sessions`. Disable this file with `gateway.write_sessions_json: false` in config.yaml.",
   "agent:main:telegram:dm:7025776524": {
     "session_key": "agent:main:telegram:dm:7025776524",
-    "session_id": "20260821_094840_82c5a315",
-    "created_at": "2026-08-21T09:48:40.572501",
-    "updated_at": "2026-08-21T10:02:26.118445",
+    "session_id": "20260821_200047_63596baa",
+    "created_at": "2026-08-21T20:00:47.042856",
+    "updated_at": "2026-08-21T20:01:14.285317",
     "display_name": "\ud835\udc79\ud835\udc6c\ud835\udc81\ud835\udc68 | \ud835\udfee\ud835\udfee:\ud835\udfec\ud835\udff0",
     "platform": "telegram",
     "chat_type": "dm",
@@ -24,13 +24,13 @@
     "last_resume_marked_at": null,
     "active_turn_token": null,
     "active_turn_started_at": null,
-    "is_fresh_reset": false,
+    "is_fresh_reset": true,
     "was_auto_reset": false,
     "auto_reset_reason": null,
     "reset_had_activity": false,
     "prev_session_id": null,
     "model_override": {
-      "model": "Google",
+      "model": "X-muse",
       "provider": "openai-api",
       "base_url": "https://9router-production-df048.up.railway.app/v1"
     },
