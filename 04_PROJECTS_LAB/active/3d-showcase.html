@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نمایش سه‌بعدی خفن</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap');
+        :root {
+            --color-primary: #2563EB;
+            --color-on-primary: #FFFFFF;
+            --color-accent: #EA580C;
+            --color-background: #F8FAFC;
+            --color-foreground: #1E293B;
+            --font-main: 'Vazirmatn', sans-serif;
+        }
+        body { margin: 0; font-family: var(--font-main); background: var(--color-background); color: var(--color-foreground); overflow: hidden; }
+        canvas { display: block; width: 100vw; height: 100vh; }
+        .ui { position: absolute; top: 20px; right: 20px; z-index: 10; background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { margin: 0; font-size: 2rem; color: var(--color-primary); }
+    </style>
+</head>
+<body>
+    <div class="ui">
+        <h1>نمایش سه‌بعدی خفن</h1>
+        <p>به دنیای تعاملی ما خوش اومدی!</p>
+        <button style="background: var(--color-accent); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">بزن بریم!</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        
+        const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+        const material = new THREE.MeshBasicMaterial({ color: 0x2563EB, wireframe: true });
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
+        
+        camera.position.z = 5;
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            torusKnot.rotation.x += 0.01;
+            torusKnot.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>
