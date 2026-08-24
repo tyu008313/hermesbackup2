@@ -148,7 +148,7 @@ def main(argv: list[str] | None = None) -> int:
                    help="Exit non-zero on any non-pass condition (including warnings)")
     args = p.parse_args(argv)
 
-    api_key = ****REDACTED****(args.api_key)
+    api_key = resolve_api_key(args.api_key)
     headers = {"X-API-Key": api_key} if api_key else {}
 
     cli = comfy_cli_status()

@@ -48,3 +48,16 @@
 | 2026-08-24 12:27:09 UTC | `terminal` | {"output": "total 12\ndrwxr-xr-x 2 root root 4096 Aug 24 12:27 .\ndrwx------ 19 root root 4096 Aug 24 12:27 ..\n-rwxr-xr |
 | 2026-08-24 12:27:16 UTC | `cronjob` | {"success": true, "job_id": "dd6bd38d99d4", "name": "Hermes Brain Backup — 12h mirror sync", "skill": null, "skills": [] |
 | 2026-08-24 12:27:40 UTC | `write_file` | {"bytes_written": 141, "dirs_created": true, "verified": true, "lint": {"status": "skipped", "message": "No linter for . |
+| 2026-08-24 12:28:12 UTC | `terminal` | {"output": "=== IDEMPOTENCY TEST: run again right after a push (should be NO-OP) ===\n[2026-08-24 12:28:10] [5/5] pushin |
+| 2026-08-24 12:35:23 UTC | `terminal` | {"output": "", "exit_code": -1, "error": "BLOCKED: Command timed out without user response. The user has NOT consented t |
+| 2026-08-24 12:35:57 UTC | `memory` | {"error": "Unknown action 'None'. Use: add, replace, remove", "success": false} |
+| 2026-08-24 12:36:08 UTC | `memory` | {"error": "content is required for 'replace' action.", "success": false} |
+| 2026-08-24 12:36:42 UTC | `memory` | {"success": true, "done": true, "target": "memory", "usage": "76% — 1,690/2,200 chars", "entry_count": 4, "message": "En |
+| 2026-08-24 12:36:51 UTC | `todo` | {"todos": [{"id": "design", "content": "طراحی و نوشتن اسکریپت‌های بک‌آپ (exporter + dashboard + orchestrator)", "status" |
+| 2026-08-24 13:11:31 UTC | `write_file` | {"bytes_written": 784, "dirs_created": true, "verified": true, "lint": {"status": "skipped", "message": "No linter for . |
+| 2026-08-24 13:11:50 UTC | `skill_manage` | {"success": false, "error": "Description is 142 chars — new skills must fit the 60-char system-prompt budget (one senten |
+| 2026-08-24 13:12:04 UTC | `skill_manage` | {"success": false, "error": "Description is 142 chars — new skills must fit the 60-char system-prompt budget (one senten |
+| 2026-08-24 13:12:32 UTC | `skill_manage` | {"success": true, "message": "Skill 'backup-trigger' created.", "path": "software-development/backup-trigger", "skill_md |
+| 2026-08-24 13:12:39 UTC | `terminal` | {"output": "=== LAST UPDATE ===\n2026-08-24 12:28 UTC — 5f430e6\n\n=== RECENT BACKUPS (newest first) ===\n2026-08-24 12: |
+| 2026-08-24 13:13:19 UTC | `patch` | {"success": true, "diff": "--- a//data/workspace/backup_scripts/export_assets.py\n+++ b//data/workspace/backup_scripts/e |
+| 2026-08-24 13:13:32 UTC | `patch` | {"success": true, "diff": "--- a//data/workspace/backup_scripts/export_assets.py\n+++ b//data/workspace/backup_scripts/e |

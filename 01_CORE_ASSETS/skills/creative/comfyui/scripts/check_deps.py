@@ -401,7 +401,7 @@ def main(argv: list[str] | None = None) -> int:
         new_netloc = f"{parsed.hostname}:{args.port}"
         host = urlunparse(parsed._replace(netloc=new_netloc))
 
-    api_key = ****REDACTED****(args.api_key)
+    api_key = resolve_api_key(args.api_key)
 
     wf_path = Path(args.workflow).expanduser()
     if not wf_path.exists():

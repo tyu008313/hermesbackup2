@@ -125,7 +125,7 @@ def main(argv: list[str] | None = None) -> int:
                    help="Show currently running/pending jobs instead")
     args = p.parse_args(argv)
 
-    api_key = ****REDACTED****(args.api_key)
+    api_key = resolve_api_key(args.api_key)
     headers = {"X-API-Key": api_key} if api_key else {}
     is_cloud = is_cloud_host(args.host)
 

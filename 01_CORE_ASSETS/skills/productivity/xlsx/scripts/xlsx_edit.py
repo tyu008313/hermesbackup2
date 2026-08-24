@@ -238,7 +238,7 @@ def main(argv=None):
                 for cell in row:
                     cell.protection = Protection(locked=False)
         if args.protect:
-            ws.protection.password = ****REDACTED****
+            ws.protection.password = args.protect
         ws.protection.sheet = True
         changes.append(f"protect {ws.title}"
                        + (f" (unlocked {len(args.unlock)} ranges)"

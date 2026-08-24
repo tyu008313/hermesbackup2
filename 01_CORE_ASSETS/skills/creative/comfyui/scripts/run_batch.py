@@ -167,7 +167,7 @@ def main(argv: list[str] | None = None) -> int:
     runs = expand_sweep(sweep, base_args, args.count, args.randomize_seed)
     log(f"Planned {len(runs)} run(s)")
 
-    api_key = ****REDACTED****(args.api_key)
+    api_key = resolve_api_key(args.api_key)
     runner = ComfyRunner(host=args.host, api_key=api_key, partner_key=args.partner_key)
 
     ok, info = runner.check_server()
