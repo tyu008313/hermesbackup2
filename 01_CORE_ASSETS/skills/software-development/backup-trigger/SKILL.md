@@ -35,3 +35,4 @@ bash /data/workspace/backup_scripts/list_backups.sh
 - اسکریپت قفل تک‌نمونه دارد؛ اگر همزمان با کرون ۱۲ ساعته بخورد SKIP می‌شود — عادی است
 - کرون خودکار: job `dd6bd38d99d4` هر ۱۲ ساعت (no_agent) — این اسکیل فقط برای اجرای دستی فوری است
 - ریپو: github.com/tyu008313/hermesbackup2 — داشبورد: https://tyu008313.github.io/hermesbackup2/brain.html
+- نسخه‌ی داخل ریپوی اسکریپت‌ها (`03_INFRASTRUCTURE/scripts/`) توکن‌شان scrub شده — آن نسخه را برای اجرا استفاده نکن؛ فقط نسخه‌ی `/data/workspace/backup_scripts/` معتبر است

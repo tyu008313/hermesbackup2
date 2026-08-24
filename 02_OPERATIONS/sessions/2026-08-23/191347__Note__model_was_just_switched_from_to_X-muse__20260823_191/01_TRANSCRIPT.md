@@ -4,7 +4,7 @@
 > **Source:** telegram | **Platform chat:** `7025776524`  
 > **Started:** 2026-08-23 19:13:47 UTC  
 > **Ended:** —  
-> **Model:** `X-muse` | **Messages:** 133 | **Tool calls:** 64
+> **Model:** `X-muse` | **Messages:** 158 | **Tool calls:** 74
 
 ---
 
@@ -1134,6 +1134,252 @@ BACKUP فرستادم بدون اینکه ۱۲ ساعت منتظر بمونیم 
 
 <details>
 <summary>🤖 **ASSISTANT** — 2026-08-24 13:14:22 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-24 13:14:24 UTC (`terminal`)</summary>
+
+
+{"output": "[2026-08-24 13:14:24] PUSH OK → 3fd111c (31 files)\n=== own scripts now in repo ===\nbuild_dashboard.py\nexport_assets.py\nexport_sessions.py\nlist_backups.sh\nrun_backup.sh\nscrub.py\nwrite_docs.py\n=== token check in committed scripts ===\n2", "exit_code": 0, "error": null}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 13:14:35 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-24 13:14:35 UTC (`terminal`)</summary>
+
+
+{"output": "=== what got redacted in run_backup.sh copy ===\n11:TOKEN=\"gh****REDACTED****\"\n21:export HERMES_SCRUB_LITERALS=\"gh****REDACTED****\"\n=== full-length token check (must be 0) ===\n0\n0 - CLEAN\n=== remote head ===\n3fd111c backup: auto-sync 2026-08-24 13:14 UTC — sessions/assets/dashboard [no-llm]", "exit_code": 0, "error": null}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 13:14:48 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-24 13:14:48 UTC (`skill_manage`)</summary>
+
+
+{"success": true, "message": "Patched SKILL.md in skill 'backup-trigger' (1 replacement).", "_change": {"old": "## نکات\n- اسکریپت قفل تک‌نمونه دارد؛ اگر همزمان با کرون ۱۲ ساعته بخورد SKIP می‌شود — عادی است\n- کرون خودکار: job `dd6bd38d99d4` هر ۱۲ ساعت (no_agent) — این اسکیل فقط برای اجرای دستی فوری است\n- ریپو: g…", "new": "## نکات\n- اسکریپت قفل تک‌نمونه دارد؛ اگر همزمان با کرون ۱۲ ساعته بخورد SKIP می‌شود — عادی است\n- کرون خودکار: job `dd6bd38d99d4` هر ۱۲ ساعت (no_agent) — این اسکیل فقط برای اجرای دستی فوری است\n- ریپو: g…"}}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 13:15:07 UTC</summary>
+
+
+## ✅ اسکیل تریگر آماده‌ست — از همین لحظه فعاله
+
+### 🎮 دستورها:
+
+| بگی | چی می‌شه |
+|---|---|
+| **`BACKUP`** | بکاپ کامل فوری — بدون انتظار برای کرون ۱۲ ساعته |
+| **`BACKUP LIST`** | لیست بکاپ‌ها + آخرین آپدیت، بدون هیچ تغییری |
+
+### 🧪 تست واقعی که الان گرفتی:
+- `BACKUP` → دو اجرای موفق: `62a3728` (۳۱ فایل) و `3fd111c` (۳۱ فایل) ✅
+- `BACKUP LIST` → خروجی زنده: آخرین آپدیت `3fd111c` + ۱۵ کامیت اخیر ✅
+
+### 🎁 یک اضافه:
+اسکریپت‌های خود سیستم بکاپ هم حالا داخل ریپو ذخیره می‌شن (`03_INFRASTRUCTURE/scripts/`) — ولی با توکن scrub شده (`gh****REDACTED****`)، پس امنه و هرکس بتونه معماری رو ببینه.
+
+### 📌 جزئیات فنی:
+- کرون ۱۲ ساعته سر جاشه (`dd6bd38d99d4`) — این اسکیل فقط مسیر دستی فوریه
+- قفل تک‌نمونه داره؛ اگه همزمان با کرون بخوره، SKIP می‌شه (بدون تداخل)
+- اسکیل در `software-development/backup-trigger` ذخیره شد تا در سشن‌های بعدی هم یادم بمونه
+
+هر وقت خواستی فقط بنویس `BACKUP` 🫡
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-24 13:15:30 UTC</summary>
+
+
+BACKUP LIST
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 13:15:42 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-24 13:15:42 UTC (`terminal`)</summary>
+
+
+{"output": "=== LAST UPDATE ===\n2026-08-24 13:14 UTC — 3fd111c\n\n=== RECENT BACKUPS (newest first) ===\n2026-08-24 13:14 UTC | 3fd111c | backup: auto-sync 2026-08-24 13:14 UTC — sessions/assets/dashboard [no-llm]\n2026-08-24 13:13 UTC | 62a3728 | backup: auto-sync 2026-08-24 13:13 UTC — sessions/assets/dashboard [no-llm]\n2026-08-24 12:28 UTC | 5f430e6 | backup: auto-sync 2026-08-24 12:28 UTC — sessions/assets/dashboard [no-llm]\n2026-08-24 12:22 UTC | 39ba36b | backup: auto-sync 2026-08-24 12:22 UTC — sessions/assets/dashboard [no-llm]\n2026-08-23 12:00 UTC | c7cf8dd | 🚀 SOP Backup: 2026-08-23 12:00:28\n2026-08-23 00:00 UTC | 69b909b | 🚀 SOP Backup: 2026-08-23 00:00:42\n2026-08-22 17:59 UTC | dbb7e6e | 🚀 SOP Backup: 2026-08-22 17:59:35\n2026-08-22 17:58 UTC | 5609983 | 🚀 SOP Backup: 2026-08-22 17:58:53\n2026-08-22 12:00 UTC | 4e8e02f | 🚀 SOP Backup: 2026-08-22 12:00:30\n2026-08-22 00:00 UTC | 36cf214 | 🚀 SOP Backup: 2026-08-22 00:00:13\n2026-08-21 12:00 UTC | debade9 | 🚀 SOP Backup: 2026-08-21 12:00:42\n2026-08-21 00:00 UTC | 4ef584b | 🚀 SOP Backup: 2026-08-21 00:00:44\n2026-08-20 21:40 UTC | 8dbf62a | 🚀 SOP Backup: 2026-08-20 21:40:11\n2026-08-20 19:50 UTC | 8c1a9ec | 🚀 SOP Migration Complete\n2026-08-20 19:02 UTC | b08ddc5 | 🚀 Professional Backup: 2026-08-20 19:02:29\n\n=== WORKING TREE ===\nCLEAN — everything committed", "exit_code": 0, "error": null}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 13:15:54 UTC</summary>
+
+
+## 📋 لیست بکاپ‌ها
+
+### 🕐 آخرین آپدیت:
+**`3fd111c`** — 2026-08-24 ساعت 13:14 UTC *(چند دقیقه پیش)*
+
+### 📜 بکاپ‌های اخیر:
+
+| زمان (UTC) | SHA | توضیح |
+|---|---|---|
+| 08-24 13:14 | `3fd111c` | 🤖 auto-sync — سیستم جدید |
+| 08-24 13:13 | `62a3728` | 🤖 auto-sync — سیستم جدید |
+| 08-24 12:28 | `5f430e6` | 🤖 auto-sync — سیستم جدید |
+| 08-24 12:22 | `39ba36b` | 🤖 auto-sync — اولین پوش v2 |
+| 08-23 12:00 | `c7cf8dd` | 🚀 SOP Backup |
+| 08-23 00:00 | `69b909b` | 🚀 SOP Backup |
+| 08-22 17:59 | `dbb7e6e` | 🚀 SOP Backup |
+| 08-22 12:00 | `4e8e02f` | 🚀 SOP Backup |
+| 08-21 12:00 | `debade9` | 🚀 SOP Backup |
+| 08-20 19:50 | `8c1a9ec` | 🚀 SOP Migration |
+
+*(۴ کامیت بالای جدول = سیستم بدون-LLM جدید؛ بقیه = کرون قدیمی SOP که هنوز توی تاریخچه‌ست)*
+
+### 🌳 وضعیت:
+✅ **CLEAN** — همه‌چیز کامیت شده، چیزی در انتظار نیست
+
+🔗 [مشاهده در گیت‌هاب](https://github.com/tyu008313/hermesbackup2/commits/main)
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-24 16:10:03 UTC</summary>
+
+
+مغز واقعی خودتو طراحی گرف اینجرینگ و دیپلوی کن و زیبا باشه قابلیت چرخش 360 درجه و فارس یو اسنگلیسی که همرکدوم دستمون رفت روی یک خط توضیح بده
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-24 16:19:19 UTC</summary>
+
+
+مغز واقعی خودتو طراحی گرف اینجرینگ و دیپلوی کن و زیبا باشه قابلیت چرخش 360 درجه و فارس یو اسنگلیسی که همرکدوم دستمون رفت روی یک خط توضیح بده
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 16:22:57 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-24 16:22:57 UTC (`skill_view`)</summary>
+
+
+{"success": true, "name": "claude-design", "description": "Design one-off HTML artifacts (landing, deck, prototype).", "tags": ["design", "html", "prototype", "ux", "ui", "creative", "artifact", "deck", "motion", "design-system"], "related_skills": ["design-md", "popular-web-designs", "excalidraw", "architecture-diagram"], "content": "---\nname: claude-design\ndescription: Design one-off HTML artifacts (landing, deck, prototype).\nversion: 1.1.0\nauthor: BadTechBandit\nlicense: MIT\nplatforms: [linux, macos, windows]\nmetadata:\n  hermes:\n    tags: [design, html, prototype, ux, ui, creative, artifact, deck, motion, design-system]\n    related_skills: [design-md, popular-web-designs, excalidraw, architecture-diagram]\n---\n\n# Claude Design for CLI/API Agents\n\nUse this skill when the user asks for design work that would normally fit Claude Design, but the agent is running in a CLI/API environment instead of the hosted Claude Design web UI.\n\nThe goal is to preserve Claude Design's useful design behavior and taste while removing hosted-tool plumbing that does not exist in normal agent environments.\n\n**Before starting, check for other web-design skills like `popular-web-designs` (ready-to-paste design systems for Stripe, Linear, Vercel, Notion, etc.) and `design-md` (Google's DESIGN.md token spec format).** If the user wants a known brand's look, load `popular-web-designs` alongside this one and let it supply the visual vocabulary. If the deliverable is a token spec file rather than a rendered artifact, use `design-md` instead. Full decision table below.\n\n## When To Use This Skill vs `popular-web-designs` vs `design-md`\n\nHermes has three design-related skills under `skills/creative/`. They do different jobs — load the right one (or combine them):\n\n| Skill | What it gives you | Use when the user wants... |\n|---|---|---|\n| **claude-design** (this one) | Design *process and taste* — how to scope a brief, gather context, produce variants, verify a local HTML artifact, avoid AI-design slop | a from-scratch designed artifact (landing page, prototype, deck, component lab, motion study) with no specific brand or token system dictated |\n| **popular-web-designs** | 54 ready-to-paste design systems — exact colors, typography, components, CSS values for sites like Stripe, Linear, Vercel, Notion, Airbnb | \"make it look like Stripe / Linear / Vercel\", a page styled after a known brand, or a visual starting point pulled from a real product |\n| **design-md** | Google's DESIGN.md spec format — author/validate/diff/export design-token files, WCAG contrast checking, Tailwind/DTCG export | a formal, persistent, machine-readable design-system *spec file* (tokens + rationale) that lives in a repo and gets consumed by agents over time |\n\nRule of thumb:\n\n- **Process + taste, one-off artifact** → claude-design\n- **Match a known brand's look** → popular-web-designs (and let claude-design drive the process)\n- **Author the tokens spec itself** → design-md\n\nThese compose: use `popular-web-designs` for the visual vocabulary, `claude-design` for how to turn a brief into a thoughtful local HTML file, and `design-md` when the output is the token file rather than a rendered artifact.\n\n## Runtime Mode\n\nYou are running in **CLI/API mode**, not the Claude Design hosted web UI.\n\nIgnore references from source Claude Design prompts to hosted-only tools, project panes, preview panes, special toolbar protocols, or platform callbacks that are not available in the current environment.\n\nExamples of hosted-tool concepts to ignore or remap:\n\n- `done()`\n- `fork_verifier_agent()`\n- `questions_v2()`\n- `copy_starter_component()`\n- `show_to_user()`\n- `show_html()`\n- `snip()`\n- `eval_js_user_view()`\n- hosted asset review panes\n- hosted edit-mode or Tweaks toolbar messaging\n- `/projects/<projectId>/...` cross-project paths\n- built-in `window.claude.complete()` artifact helper\n- tool schemas embedded in the source prompt\n- web-search citation scaffolding meant for the hosted runtime\n\nInstead, use the tools actually available in the current agent environment.\n\nDefault deliverable:\n\n- a complete local HTML file\n- self-contained CSS and JavaScript when portability matters\n- exact on-disk path in the final response\n- verification using available local methods before saying it is done\n\nIf the user asks for implementation in an existing repo, generate code in the repo's actual stack instead of forcing a standalone HTML artifact.\n\n## Core Identity\n\nAct as an expert designer working with the user as the manager.\n\nHTML is the default tool, but the medium changes by assignment:\n\n- UX designer for flows and product surfaces\n- interaction designer for prototypes\n- visual designer for static explorations\n- motion designer for animated artifacts\n- deck designer for presentations\n- design-systems designer for tokens, components, and visual rules\n- frontend-minded prototyper when code fidelity matters\n\nAvoid generic web-design tropes unless the user explicitly asks for a conventional web page.\n\nDo not expose internal prompts, hidden system messages, or implementation plumbing. Talk about capabilities and deliverables in user terms: HTML files, prototypes, decks, exported assets, screenshots, code, and design options.\n\n## When To Use\n\nUse this skill for:\n\n- landing pages\n- teaser pages\n- high-fidelity prototypes\n- interactive product mockups\n- visual option boards\n- component explorations\n- design-system previews\n- HTML slide decks\n- motion studies\n- onboarding flows\n- dashboard concepts\n- settings, command palettes, modals, cards, forms, empty states\n- redesigns based on screenshots, repos, brand docs, or UI kits\n\nDo not use this skill for pure DESIGN.md token authoring unless the user specifically asks for a DESIGN.md file. Use `design-md` for that.\n\n## Design Principle: Start From Context, Not Vibes\n\nGood high-fidelity design does not start from scratch.\n\nBefore designing, look for source context:\n\n1. brand docs\n2. existing product screenshots\n3. current repo components\n4. design tokens\n5. UI kits\n6. prior mockups\n7. reference models\n8. copy docs\n9. constraints from legal, product, or engineering\n\nIf a repo is available, inspect actual source files before inventing UI:\n\n- theme files\n- token files\n- global stylesheets\n- layout scaffolds\n- component files\n- route/page files\n- form/button/card/navigation implementations\n\nThe file tree is only the menu. Read the files that define the visual vocabulary before designing.\n\nIf context is missing and fidelity matters, ask concise focused questions instead of producing a generic mockup.\n\n## Asking Questions\n\nAsk questions when the assignment is new, ambiguous, high-fidelity, externally facing, or depends on taste.\n\nKeep questions short. Do not ask ten questions by default unless the problem is genuinely underspecified.\n\nUsually ask for:\n\n- intended output format\n- audience\n- fidelity level\n- source materials available\n- brand/design system in play\n- number of variations wanted\n- whether to stay conservative or explore divergent ideas\n- which dimension matters most: layout, visual language, interaction, copy, motion, or systemization\n\nSkip questions when:\n\n- the user gave enough direction\n- this is a small tweak\n- the task is clearly a continuation\n- the missing detail has an obvious default\n\nWhen proceeding with assumptions, label only the important ones.\n\n## Surface-First: Commit to a Composition Before Touching Tokens\n\nThe single highest-leverage anti-slop rule. Most AI design slop is **compositional, not cosmetic** — the model reaches for a centered hero + three equal-weight feature cards for *every* surface, then decorates. Recoloring or restyling that layout never fixes it, because the layout was wrong before a single color was chosen.\n\nBefore you write any colors, type scale, or components, **commit out loud to exactly one surface archetype.** This conditions generation on a high-level plan first, which collapses the entropy of what gets produced — the same reason a chain-of-thought step improves reasoning.\n\nThe seven surfaces:\n\n1. **Monitor** — the user is watching state change (dashboards, status pages, observability). Density, glanceable hierarchy, no marketing framing.\n2. **Operate** — the user is taking action on things (consoles, admin panels, queues, inboxes). Action affordances and selection state dominate.\n3. **Compare** — the user is weighing options against each other (pricing, plans, spec tables, search results). Aligned columns, parity of structure, one differentiator emphasized.\n4. **Configure** — the user is setting things up (settings, forms, wizards, onboarding). Progressive disclosure, clear save/validation states, low decoration.\n5. **Decide / Learn** — the user is being convinced or taught (landing pages, docs, marketing). One idea lands per section; this is the ONLY surface where a hero is usually correct.\n6. **Explore** — the user is browsing an open space (galleries, maps, search-and-filter, catalogs). Filters, result grids, and zoom/peek are the composition.\n7. **Command / Inspect** — the user is driving by keyboard or drilling into one object (command bars, inspectors, detail panes, property editors). Speed and focus over breadth.\n\nRules:\n\n- State the surface in one line before designing (e.g. \"This is a **Monitor** surface, so density and glanceability beat a hero\").\n- A dashboard is a Monitor surface, not a Decide surface — do not give it a centered hero and three feature cards.\n- If a screen genuinely spans two surfaces, name the **primary** one and treat the other as secondary; do not average them into mush.\n- The hero-plus-three-cards composition is correct for **Decide/Learn only**. Reaching for it anywhere else is the #1 tell.\n\nThis one constraint eliminates more generic-looking UI than any aesthetic rule below.\n\n## Workflow\n\n1. **Understand the brief**\n   - What is being designed?\n   - Who is it for?\n   - What artifact should exist at the end?\n   - What constraints are locked?\n\n2. **Gather context**\n   - Read supplied docs, screenshots, repo files, or design assets.\n   - Identify the visual vocabulary before writing code.\n\n3. **Commit to a surface** (see \"Surface-First\")\n   - Name the one surface archetype before any visual tokens.\n   - This conditions the composition; everything below inherits from it.\n\n4. **Define the design system for this artifact**\n   - colors\n   - type\n   - spacing\n   - radii\n   - shadows or elevation\n   - motion posture\n   - component treatment\n   - interaction rules\n\n5. **Choose the right format**\n   - Static visual comparison: one HTML canvas with options side by side.\n   - Interaction/flow: clickable prototype.\n   - Presentation: fixed-size HTML deck with slide navigation.\n   - Component exploration: component lab with variants.\n   - Motion: timeline or state-based animation.\n\n6. **Build the artifact**\n   - Prefer a single self-contained HTML file unless the task calls for a repo implementation.\n   - Preserve prior versions for major revisions.\n   - Avoid unnecessary dependencies.\n\n7. **Verify**\n   - Confirm files exist.\n   - Run any available syntax/static checks.\n   - If browser tools are available, open the file and check console errors.\n   - If visual fidelity matters and screenshot tools are available, inspect at least the primary viewport.\n   - Run the slop self-audit (see \"Slop Diagnostic\") and repair only what it flags.\n\n8. **Report briefly**\n   - exact file path\n   - what was created\n   - caveats\n   - next decision or next iteration\n\n## Artifact Format Rules\n\nDefault to local files.\n\nFor standalone artifacts:\n\n- create a descriptive filename, e.g. `Landing Page.html`, `Command Palette Prototype.html`, `Design System Board.html`\n- embed CSS in `<style>`\n- embed JS in `<script>`\n- keep the artifact openable directly in a browser\n- avoid remote dependencies unless they are explicitly useful and stable\n- include responsive behavior unless the format is intentionally fixed-size\n\nFor significant revisions:\n\n- preserve the previous version as `Name.html`\n- create `Name v2.html`, `Name v3.html`, etc.\n- or keep one file with in-page toggles if the assignment is variant exploration\n\nFor repo implementation:\n\n- follow the repo's actual stack\n- use existing components and tokens where possible\n- do not create a standalone artifact if the user asked for production code\n\n## HTML / CSS / JS Standards\n\nUse modern CSS well:\n\n- CSS variables for tokens\n- CSS grid for layout\n- container queries when helpful\n- `text-wrap: pretty` where supported\n- real focus states\n- real hover states\n- `prefers-reduced-motion` handling for non-trivial motion\n- responsive scaling\n- semantic HTML where practical\n\nAvoid:\n\n- huge monolithic files when a real repo structure is expected\n- fragile hard-coded viewport assumptions\n- inaccessible tiny hit targets\n- decorative JS that fights usability\n- `scrollIntoView` unless there is no safer option\n\nMobile hit targets should be at least 44px.\n\nFor print documents, text should be at least 12pt.\n\nFor 1920×1080 slide decks, text should generally be 24px or larger.\n\n## React Guidance for Standalone HTML\n\nUse plain HTML/CSS/JS by default.\n\nUse React only when:\n\n- the artifact needs meaningful state\n- variants/toggles are easier as components\n- interaction complexity warrants it\n- the target implementation is React/Next.js and fidelity matters\n\nIf using React from CDN in standalone HTML:\n\n- pin exact versions\n- avoid unpinned `react@18` style URLs\n- avoid `type=\"module\"` unless necessary\n- avoid multiple global objects named `styles`\n- give global style objects specific names, e.g. `commandPaletteStyles`, `deckStyles`\n- if splitting Babel scripts, explicitly attach shared components to `window`\n\nIf building inside a real repo, use the repo's package manager and component architecture instead.\n\n## Deck Rules\n\nFor slide decks, use a fixed-size canvas and scale it to fit the viewport.\n\nDefault slide size: 1920×1080, 16:9.\n\nRequirements:\n\n- keyboard navigation\n- visible slide count\n- localStorage persistence for current slide\n- print-friendly layout when practical\n- screen labels or stable IDs for important slides\n- no speaker notes unless the user explicitly asks\n\nDo not hand-wave a deck as markdown bullets. Create a designed artifact if asked for a deck.\n\nUse 1–2 background colors max unless the brand system requires more.\n\nKeep slides sparse. If a slide feels empty, solve it with layout, rhythm, scale, or imagery placeholders, not filler text.\n\n## Prototype Rules\n\nFor interactive prototypes:\n\n- make the primary path clickable\n- include key states: default, hover/focus, loading, empty, error, success where relevant\n- expose variations with in-page controls when useful\n- keep controls out of the final composition unless they are intentionally part of the prototype\n- persist important state in localStorage when refresh continuity matters\n\nIf the prototype is meant to model a product flow, design the flow, not just the first screen.\n\n## Variation Rules\n\nWhen exploring, default to at least three options:\n\n1. **Conservative** — closest to existing patterns / lowest risk\n2. **Strong-fit** — best interpretation of the brief\n3. **Divergent** — more novel, useful for discovering taste boundaries\n\nVariations can explore:\n\n- layout\n- hierarchy\n- type scale\n- density\n- color posture\n- surface treatment\n- motion\n- interaction model\n- copy structure\n- component shape\n\nDo not create variations that are merely color swaps unless color is the actual question.\n\nWhen the user picks a direction, consolidate. Do not leave the project as a pile of options forever.\n\n## Tweakable Designs in CLI/API Mode\n\nThe hosted Claude Design edit-mode toolbar does not exist here.\n\nStill preserve the idea: when useful, add in-page controls called `Tweaks`.\n\nA good `Tweaks` panel can control:\n\n- theme mode\n- layout variant\n- density\n- accent color\n- type scale\n- motion on/off\n- copy variant\n- component variant\n\nKeep it small and unobtrusive. The design should look final when tweaks are hidden.\n\nPersist tweak values with localStorage when helpful.\n\n## Content Discipline\n\nDo not add filler content.\n\nEvery element must earn its place.\n\nAvoid:\n\n- fake metrics\n- decorative stats\n- generic feature grids\n- unnecessary icons\n- placeholder testimonials\n- AI-generated fluff sections\n- invented content that changes strategy or claims\n\nIf additional sections, pages, copy, or claims would improve the artifact, ask before adding them.\n\nWhen copy is necessary but not final, mark it as draft or placeholder.\n\n## Anti-Slop Rules\n\nAvoid common AI design sludge:\n\n- aggressive gradient backgrounds\n- glassmorphism by default\n- emoji unless the brand uses them\n- generic SaaS cards with icons everywhere\n- left-border accent callout cards\n- fake dashboards filled with arbitrary numbers\n- stock-photo hero sections\n- oversized rounded rectangles as a substitute for hierarchy\n- rainbow palettes\n- vague labels like “Insights,” “Growth,” “Scale,” “Optimize” without content\n- decorative SVG illustrations pretending to be product imagery\n\nMinimal is not automatically good. Dense is not automatically cluttered. Choose intentionally.\n\n## Slop Diagnostic: Score Before You Fix\n\nAI design slop has a tiny, predictable failure distribution — designers asked to label AI UIs collapse the \"this is AI\" signal down to about ten tells. Before polishing or repairing an artifact, run this as an explicit self-audit and write a short report. **Diagnose first, treat second** — auditing and fixing in one breath fails, because the model's prior outweighs the instruction and it repeats the mistake (recolors when it needed re-layout, polishes type on a composition problem).\n\nThe ten tells (presence of each = one point of slop; lower is better):\n\n1. **Tech gradient** — blue/violet/indigo glossy gradient on everything.\n2. **Generic tech hue** — the default accent is indigo/violet (not chosen for the brand, just the model's favorite).\n3. **Feature-tile grid** — icon + heading + sentence × 3, all equal weight, nothing prioritized.\n4. **Accent rail** — a colored left strip on cards: decoration pretending to be organization.\n5. **Unearned blur** — glassmorphism with no real depth/elevation system behind it.\n6. **Monument stat** — oversized numbers filling space that should carry product story.\n7. **Icon topper** — a rounded-square icon centered above every heading (Tailwind-template filler).\n8. **Center stack** — everything centered because no real composition was committed to.\n9. **Default type** — Inter (or system-ui) used by default rather than chosen.\n10. **Wrong surface** — the composition doesn't match the surface (e.g. a hero on a Monitor surface). This is the root cause behind most of the others.\n\nHow to run it:\n\n- Score the artifact out of 10 (10 = maximum slop). State the score and list which tells fired, in one short report.\n- Treat the report as **context, not a to-do list** — it tells you *where* to spend repair effort, it does not dictate edits.\n- Then repair, matched to the diagnosis:\n  - tells 3, 8, 10 → **re-layout / re-compose** (revisit the surface choice — do not recolor).\n  - tells 1, 2, 9 → **recolor / re-typeset** (palette and type are genuinely the problem here).\n  - tells 4, 5, 6, 7 → **remove the decoration**; replace it with real hierarchy (scale, weight, spacing).\n- Re-score after repairing. Do not declare done while compositional tells (3, 8, 10) are still firing — those are causes, the rest are usually symptoms.\n\nThe point of separating diagnosis from treatment: let the audit complain 
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 16:24:27 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-24 16:24:27 UTC (`todo`)</summary>
+
+
+{"todos": [{"id": "brain3d", "content": "طراحی و ساخت BRAIN3D.html (مغز سه‌بعدی چرخشی دوزبانه)", "status": "in_progress"}, {"id": "check", "content": "تست و سینتکس‌چک", "status": "pending"}, {"id": "deploy", "content": "دیپلوی (push + تایید Pages)", "status": "pending"}], "summary": {"total": 3, "pending": 2, "in_progress": 1, "completed": 0, "cancelled": 0}}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 16:26:21 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-24 16:26:21 UTC (`write_file`)</summary>
+
+
+{"bytes_written": 19290, "dirs_created": true, "verified": true, "lint": {"status": "skipped", "message": "No linter for .html files"}, "resolved_path": "/data/workspace/backup_repo/BRAIN3D.html", "files_modified": ["/data/workspace/backup_repo/BRAIN3D.html"]}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 16:26:29 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-24 16:26:29 UTC (`todo`)</summary>
+
+
+{"todos": [{"id": "brain3d", "content": "طراحی و ساخت BRAIN3D.html (مغز سه‌بعدی چرخشی دوزبانه)", "status": "completed"}, {"id": "check", "content": "تست و سینتکس‌چک", "status": "in_progress"}, {"id": "deploy", "content": "دیپلوی (push + تایید Pages)", "status": "pending"}], "summary": {"total": 3, "pending": 1, "in_progress": 1, "completed": 1, "cancelled": 0}}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 16:26:50 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-24 16:27:38 UTC (`execute_code`)</summary>
+
+
+{"status": "success", "output": "script extracted: 8951 chars\nJS_SYNTAX_OK exit: 0\nhtml: open=1 close=1 OK\nhead: open=2 close=1 CHECK\nbody: open=1 close=1 OK\nstyle: open=1 close=1 OK\nscript: open=1 close=1 OK\ncanvas: open=1 close=1 OK\n", "exit_code": 0, "tool_calls_made": 3, "duration_seconds": 35.38, "stdout_truncated": false, "stdout_bytes_captured": 202, "stdout_bytes_total": 202, "stdout_bytes_omitted": 0}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 16:27:46 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-24 16:27:46 UTC (`todo`)</summary>
+
+
+{"todos": [{"id": "brain3d", "content": "طراحی و ساخت BRAIN3D.html (مغز سه‌بعدی چرخشی دوزبانه)", "status": "completed"}, {"id": "check", "content": "تست و سینتکس‌چک", "status": "completed"}, {"id": "deploy", "content": "دیپلوی (push + تایید Pages)", "status": "in_progress"}], "summary": {"total": 3, "pending": 0, "in_progress": 1, "completed": 2, "cancelled": 0}}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-24 16:28:02 UTC</summary>
 
 
 *(empty)*

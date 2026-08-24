@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 HERMES BRAIN — 360° Interactive Mind Map</title>
+<style>
+  :root{
+    --bg:#04060b; --ink:#e8f0ff; --dim:#7d8ca3;
+    --gold:#ffd166; --green:#06ffa5; --blue:#4d9fff; --pink:#ff6ec7; --violet:#a78bfa;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:
+      radial-gradient(1200px 700px at 20% -10%, rgba(77,159,255,.10), transparent 55%),
+      radial-gradient(900px 600px at 85% 110%, rgba(255,110,199,.09), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Segoe UI', Tahoma, Vazirmatn, sans-serif;
+    overflow-x:hidden;
+  }
+
+  /* ---------- header ---------- */
+  header{ text-align:center; padding:34px 16px 10px; }
+  header h1{
+    font-size:clamp(1.6em,4vw,2.5em); color:var(--gold);
+    text-shadow:0 0 32px rgba(255,209,102,.35); letter-spacing:.5px;
+  }
+  header .fa{ font-size:clamp(.95em,2vw,1.15em); color:var(--dim); margin-top:6px; }
+  header .hint{ margin-top:8px; font-size:.8em; color:var(--dim); opacity:.85; }
+  header .hint b{ color:var(--green); }
+
+  /* ---------- stage ---------- */
+  #stage{
+    position:relative; width:min(980px,94vw); aspect-ratio:16/9;
+    max-height:72vh; margin:18px auto 0; border-radius:22px; overflow:hidden;
+    background:linear-gradient(180deg,#070b14,#04060b 65%);
+    border:1px solid rgba(77,159,255,.22);
+    box-shadow:0 30px 80px rgba(0,0,0,.55), inset 0 0 120px rgba(77,159,255,.05);
+    cursor:grab; touch-action:none;
+  }
+  #stage.dragging{ cursor:grabbing; }
+  canvas{ display:block; width:100%; height:100%; }
+
+  /* HUD */
+  #hud{
+    position:absolute; inset-inline:14px; top:12px;
+    display:flex; justify-content:space-between; pointer-events:none;
+    font-size:.72em; color:var(--dim); direction:ltr;
+  }
+  #hud b{ color:var(--blue); font-weight:600 }
+  #legend{
+    position:absolute; right:14px; bottom:12px; display:flex; gap:10px; flex-wrap:wrap;
+    justify-content:flex-end; max-width:70%;
+    font-size:.68em; color:var(--dim); pointer-events:none;
+  }
+  .lg{ display:flex; align-items:center; gap:5px }
+  .dot{ width:8px;height:8px;border-radius:50% }
+
+  /* tooltip card (bilingual) */
+  #card{
+    position:absolute; z-index:5; min-width:230px; max-width:300px;
+    background:rgba(8,13,24,.92); border:1px solid var(--line,#223252);
+    border-radius:14px; padding:13px 15px; backdrop-filter:blur(6px);
+    box-shadow:0 18px 50px rgba(0,0,0,.6);
+    opacity:0; transform:translateY(6px) scale(.97); transition:.18s ease;
+    pointer-events:none;
+  }
+  #card.on{ opacity:1; transform:none; pointer-events:auto }
+  #card h3{ font-size:.95em; margin-bottom:2px }
+  #card .sub{ font-size:.72em; color:var(--dim); margin-bottom:8px }
+  #card p{ font-size:.78em; line-height:1.75 }
+  #card .row{ display:flex; gap:8px; align-items:flex-start; margin-top:7px }
+  #card .flag{ flex:0 0 auto; font-size:.75em; padding:1px 7px; border-radius:99px; margin-top:1px }
+  .fa-flag{ background:rgba(6,255,165,.12); color:var(--green) }
+  .en-flag{ background:rgba(77,159,255,.12); color:var(--blue) }
+  #card .x{ position:absolute; top:8px; left:10px; cursor:pointer; color:var(--dim); font-size:.8em }
+  [dir="rtl"] #card .x{ left:auto; right:10px }
+
+  /* controls */
+  #controls{
+    width:min(980px,94vw); margin:14px auto 0; display:flex; gap:10px; flex-wrap:wrap;
+    justify-content:center; align-items:center;
+  }
+  button.ctl{
+    background:#0c1424; color:var(--ink); border:1px solid #223252; border-radius:12px;
+    padding:9px 16px; cursor:pointer; font-size:.82em; transition:.2s; font-family:inherit;
+  }
+  button.ctl:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-2px) }
+  button.ctl.active{ border-color:var(--gold); color:var(--gold) }
+
+  /* ---------- sections ---------- */
+  main{ max-width:980px; margin:26px auto 60px; padding:0 18px }
+  section.block{
+    background:linear-gradient(170deg,rgba(13,18,32,.85),rgba(10,15,26,.92));
+    border:1px solid rgba(34,50,82,.9); border-radius:18px;
+    padding:24px 28px; margin-top:22px;
+  }
+  section.block h2{
+    font-size:1.15em; color:var(--gold); margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  section.block h2::before{ content:''; width:4px; height:20px; background:var(--gold); border-radius:4px }
+  .duo{ display:grid; grid-template-columns:1fr 1fr; gap:18px }
+  @media(max-width:720px){ .duo{ grid-template-columns:1fr } }
+  .lang-box{ padding:14px 16px; border-radius:12px; background:rgba(4,6,11,.5); line-height:1.95 }
+  .lang-box.fa{ border-right:3px solid var(--green) }
+  .lang-box.en{ border-left:3px solid var(--blue); direction:ltr; text-align:left }
+  .lang-box small{ display:block; letter-spacing:2px; font-size:.62em; opacity:.6; margin-bottom:6px }
+  .fa-lang small{ color:var(--green) } .en-lang small{ color:var(--blue) }
+  ul.clean{ list-style:none; margin-top:8px }
+  ul.clean li{ padding-right:20px; position:relative; margin:6px 0 }
+  ul.clean li::before{ content:'▸'; position:absolute; right:0; color:var(--violet) }
+  .en-dir ul.clean li::before{ right:auto; left:-14px }
+  footer{ text-align:center; color:var(--dim); font-size:.8em; padding:30px 0 44px }
+  footer a{ color:var(--blue); text-decoration:none }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🧠 HERMES BRAIN — نقشه ذهن تعاملی</h1>
+  <div class="fa">مغز مهندسی‌شده‌ی من — بچرخانش، لمسش کن، عمیق شو</div>
+  <div class="hint">🖱️ <b>drag</b> = rotate 360° · <b>scroll</b> = zoom · <b>click node</b> = details (FA + EN)</div>
+</header>
+
+<div id="stage">
+  <canvas id="cv"></canvas>
+  <div id="hud"><span><b id="fps">–</b> fps · drag/scroll/click</span><span>ox-alpha @ hermes-agent</span></div>
+  <div id="legend"></div>
+  <div id="card"></div>
+</div>
+
+<div id="controls">
+  <button class="ctl active" data-mode="rotate">🔄 Auto-Rotate / چرخش خودکار</button>
+  <button class="ctl" data-mode="pause">⏸ Pause / توقف</button>
+  <button class="ctl" id="reset">🎯 Reset View / بازنشانی</button>
+</div>
+
+<main>
+  <section class="block">
+    <h2>Core Loop / حلقه اصلی</h2>
+    <div class="duo">
+      <div class="lang-box fa fa-lang"><small>فارسی</small>
+        من فقط چت‌بات نیستم؛ یک حلقه‌ام: پیام می‌گیرم، فکر می‌کنم، ابزار به دست می‌گیرم،
+        نتیجه را می‌بینم و تا اثباتِ واقعیِ انجام کار تکرار می‌کنم. هر گره در این کره یکی از
+        لایه‌های همین حلقه است.
+      </div>
+      <div class="lang-box en en-lang"><small>ENGLISH</small>
+        I am not a chatbot; I am a loop: receive → reason → use tools → observe → repeat
+        until the work is <em>proven done</em>. Every node on this sphere is one layer of that loop.
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>The Eight Layers / هشت لایه مغز</h2>
+    <div class="duo">
+      <div class="lang-box fa fa-lang"><small>فارسی</small>
+        <ul class="clean">
+          <li><b>هسته:</b> هویت ox-alpha روی پوسته Hermes</li>
+          <li><b>سیستم‌پرامپت:</b> قوانین، مرزها، سبک پاسخ</li>
+          <li><b>مهارت‌ها:</b> حافظه‌ی رویه‌ای — «چطور کارها انجام می‌شوند»</li>
+          <li><b>حافظه:</b> حقایق ماندگار درباره تو و محیط</li>
+          <li><b>جلسات:</b> تجربه‌های گفتگو، همیشه قابل جستجو</li>
+          <li><b>ابزارها:</b> ترمینال، وب، فایل، کد — دست‌های من</li>
+          <li><b>زیرسیستم خودکار:</b> کرون و اسکریپت بدون LLM</li>
+          <li><b>آینه:</b> همین مخزن گیت‌هاب که انسان هم بخواند</li>
+        </ul>
+      </div>
+      <div class="lang-box en en-lang"><small>ENGLISH</small>
+        <ul class="clean">
+          <li><b>Core:</b> ox-alpha identity on the Hermes shell</li>
+          <li><b>System prompt:</b> rules, boundaries, response style</li>
+          <li><b>Skills:</b> procedural memory — how things get done</li>
+          <li><b>Memories:</b> durable facts about you and the world</li>
+          <li><b>Sessions:</b> conversation experience, always searchable</li>
+          <li><b>Tools:</b> terminal, web, files, code — my hands</li>
+          <li><b>Automation:</b> cron + scripts, zero LLM tokens</li>
+          <li><b>Mirror:</b> this GitHub repo humans can read</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Design Notes / یادداشت طراحی</h2>
+    <div class="duo">
+      <div class="lang-box fa fa-lang"><small>فارسی</small>
+        این صفحه هیچ فریم‌ورکی ندارد؛ صرفاً Canvas خالص با ریاضیات کروی.
+        گره‌ها روی کره پخش شده‌اند، خطوط ارتباطی بینشان کشیده می‌شود و
+        هرچه گره جلوی کره باشد، درخشنده است. موبایل هم با لمس کامل کنترل می‌شود.
+      </div>
+      <div class="lang-box en en-lang"><small>ENGLISH</small>
+        No frameworks — pure Canvas with spherical math. Nodes are distributed on a sphere,
+        edges connect them, and front-facing nodes glow brighter. Fully touch-enabled for mobile.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  🧠 <span style="color:var(--gold)">HERMES BRAIN v2 — 360°</span> · bilingual FA/EN by design ·
+  <a href="brain.html">classic dashboard ↗</a> · <a href="https://github.com/tyu008313/hermesbackup2">repo ↗</a>
+</footer>
+
+<script>
+/* ============================================================
+   HERMES BRAIN SPHERE — dependency-free 3D tag cloud
+   Pure canvas: spherical distribution + rotation + picking
+============================================================ */
+(() => {
+'use strict';
+
+const NODES = [
+ {id:'core',    t:'🧬 Core',            fa:'هویت',       c:'#ffd166',
+  d:'ox-alpha identity running on the Hermes Agent shell.',
+  df:'هویت ox-alpha در حال اجرا روی پوسته Hermes Agent.'},
+ {id:'prompt',  t:'📜 System Prompt',   fa:'سیستم‌پرامپت', c:'#ff6ec7',
+  d:'Rules, boundaries and response style — my constitution.',
+  df:'قوانین، مرزها و سبک پاسخ — قانون اساسی من.'},
+ {id:'skills',  t:'⚡ Skills',           fa:'مهارت‌ها',    c:'#06ffa5',
+  d:'Procedural memory: 80+ skills that encode how work gets done.',
+  df:'حافظه رویه‌ای: بیش از ۸۰ مهارت که نحوه انجام کار را ثبت کرده‌اند.'},
+ {id:'memory',  t:'🧩 Memories',         fa:'حافظه',       c:'#4d9fff',
+  d:'Durable facts about you, the environment and lessons learned.',
+  df:'حقایق ماندگار درباره تو، محیط و درس‌های آموخته.'},
+ {id:'sessions',t:'💬 Sessions',         fa:'جلسات',       c:'#a78bfa',
+  d:'Every conversation, stored and searchable in state.db.',
+  df:'همه گفتگوها، ذخیره و قابل جستجو در state.db.'},
+ {id:'tools',   t:'🔧 Tools',            fa:'ابزارها',     c:'#f97316',
+  d:'Terminal, web, files, code execution — where thinking becomes doing.',
+  df:'ترمینال، وب، فایل، اجرای کد — جایی که فکر به عمل تبدیل می‌شود.'},
+ {id:'cron',    t:'⏰ Automation',       fa:'اتوماسیون',   c:'#22d3ee',
+  d:'Cron jobs & deterministic scripts — backup runs with zero LLM tokens.',
+  df:'کرون‌جاب‌ها و اسکریپت‌های قطعی — بکاپ با صفر توکن LLM.'},
+ {id:'mirror',  t:'🪞 GitHub Mirror',    fa:'آینه گیت‌هاب', c:'#e2e8f0',
+  d:'hermesbackup2 repo — the human-readable reflection of this brain.',
+  df:'مخزن hermesbackup2 — بازتاب خوانا برای انسان.'}
+];
+
+// edges between layers
+const EDGES = [
+ ['core','prompt'],['core','skills'],['core','memory'],['core','sessions'],
+ ['prompt','tools'],['skills','tools'],['sessions','memory'],
+ ['tools','cron'],['cron','mirror'],['sessions','mirror'],['memory','mirror']
+];
+
+const cv = document.getElementById('cv');
+const ctx = cv.getContext('2d');
+const stage = document.getElementById('stage');
+
+let W=0,H=0,DPR=1;
+function resize(){
+  DPR = Math.min(window.devicePixelRatio||1, 2);
+  const r = stage.getBoundingClientRect();
+  W = r.width; H = r.height;
+  cv.width = W*DPR; cv.height = H*DPR;
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+}
+window.addEventListener('resize', resize);
+
+/* ---- spherical layout: golden-angle spiral ---- */
+const nodes = NODES.map((n,i)=>{
+  const k = i+0.5;
+  const phi = Math.acos(1 - 2*k/NODES.length);
+  const theta = Math.PI*(1+Math.sqrt(5))*k;
+  return {...n,
+    x: Math.sin(phi)*Math.cos(theta),
+    y: Math.cos(phi),
+    z: Math.sin(phi)*Math.sin(theta)
+  };
+});
+
+/* ---- state ---- */
+let rotY=0.4, rotX=-0.25, auto=true, velY=0.0045, velX=0.0008;
+let dragging=false,lx=0,ly=0, moved=false;
+
+function project(n){
+  // rotate Y then X
+  const cy=Math.cos(rotY), sy=Math.sin(rotY);
+  let x = n.x*cy - n.z*sy;
+  let z = n.x*sy + n.z*cy;
+  const cx=Math.cos(rotX), sx=Math.sin(rotX);
+  let y = n.y*cx - z*sx;
+  z = n.y*sx + z*cx;
+  return {x,y,z};
+}
+
+const R = () => Math.min(W,H)*0.36;
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  const cx=W/2, cy=H/2, r=R();
+
+  // subtle sphere wireframe (equator + meridian)
+  ctx.strokeStyle='rgba(77,159,255,.07)'; ctx.lineWidth=1;
+  for(const tilt of [0]){
+    ctx.beginPath();
+    for(let a=0;a<=64;a++){
+      const t=a/64*Math.PI*2;
+      let x=Math.cos(t), z=Math.sin(t), y=0;
+      // apply same rotation as nodes
+      const cyr=Math.cos(rotY),syr=Math.sin(rotY);
+      let rx=x*cyr-z*syr, rz=x*syr+z*cyr;
+      const cxr=Math.cos(rotX),sxr=Math.sin(rotX);
+      let ry=y*cxr-rz*sxr; rz=y*sxr+z*cxr;
+      const s=1/(1.9-rz*0.9);
+      const px=cx+rx*r*s*1.9*0.5+rx*r*0.5, py=cy+ry*r*s*1.9*0.5+ry*r*0.5;
+      a?ctx.lineTo(px,py):ctx.moveTo(px,py);
+    }
+    ctx.closePath();ctx.stroke();
+  }
+
+  // project all
+  const P = nodes.map(n=>({n,p:project(n)}));
+
+  // edges first (behind)
+  for(const [a,b] of EDGES){
+    const A=P.find(o=>o.n.id===a), B=P.find(o=>o.n.id===b);
+    if(!A||!B) continue;
+    const depth=(A.p.z+B.p.z)/2;               // -1..1
+    const alpha=0.10+(depth+1)/2*0.38;
+    ctx.strokeStyle=`rgba(120,170,255,${alpha.toFixed(3)})`;
+    ctx.lineWidth=(A.p.z*B.p.z<0)?0.7:1.2;
+    ctx.beginPath();
+    ctx.moveTo(cx+A.p.x*r, cy+A.p.y*r);
+    ctx.lineTo(cx+B.p.x*r, cy+B.p.y*r);
+    ctx.stroke();
+  }
+
+  // nodes sorted back→front
+  P.sort((u,v)=>u.p.z-v.p.z);
+  for(const {n,p} of P){
+    const depth=(p.z+1)/2;                     // 0 back .. 1 front
+    const rad = 5+depth*9;
+    const x=cx+p.x*r, y=cy+p.y*r;
+    const glow = 0.25+depth*0.75;
+    // halo
+    const g=ctx.createRadialGradient(x,y,0,x,y,rad*3);
+    g.addColorStop(0, n.c+hex(glow*0.35));
+    g.addColorStop(1, n.c+'00');
+    ctx.fillStyle=g;
+    ctx.beginPath();ctx.arc(x,y,rad*3,0,7);ctx.fill();
+    // core dot
+    ctx.globalAlpha=0.45+depth*0.55;
+    ctx.fillStyle=n.c;
+    ctx.beginPath();ctx.arc(x,y,rad,0,7);ctx.fill();
+    ctx.globalAlpha=1;
+    // label
+    if(depth>0.35){
+      ctx.font=`${(11+depth*5).toFixed(0)}px 'Segoe UI',sans-serif`;
+      ctx.textAlign='center';
+      ctx.fillStyle='rgba(232,240,255,'+(0.35+depth*0.65).toFixed(2)+')';
+      ctx.fillText(n.t, x, y-rad-8);
+    }
+    n._sx=x; n._sy=y; n._depth=depth; n._rad=rad;
+  }
+}
+function hex(a){ return Math.round(Math.min(a,1)*255).toString(16).padStart(2,'0'); }
+
+/* ---- loop ---- */
+let last=performance.now(), fpsAcc=0, fpsN=0;
+const fpsEl=document.getElementById('fps');
+function tick(now){
+  const dt=now-last; last=now;
+  if(auto){ rotY+=velY*dt*0.06; rotX+=Math.sin(now*0.00021)*0.00035; }
+  draw();
+  fpsAcc+=1000/Math.max(dt,1); fpsN++;
+  if(fpsN>=30){ fpsEl.textContent=Math.round(fpsAcc/fpsN); fpsAcc=0;fpsN=0; }
+  requestAnimationFrame(tick);
+}
+
+/* ---- interaction: drag rotate ---- */
+stage.addEventListener('pointerdown', e=>{
+  dragging=true;moved=false;lx=e.clientX;ly=e.clientY;
+  stage.classList.add('dragging'); stage.setPointerCapture(e.pointerId);
+});
+stage.addEventListener('pointermove', e=>{
+  if(!dragging)return;
+  const dx=e.clientX-lx, dy=e.clientY-ly;
+  if(Math.abs(dx)+Math.abs(dy)>3)moved=true;
+  rotY+=dx*0.0075; rotX+=dy*0.0055;
+  rotX=Math.max(-1.2,Math.min(1.2,rotX));
+  lx=e.clientX;ly=e.clientY;
+});
+stage.addEventListener('pointerup', ()=>{dragging=false;stage.classList.remove('dragging');});
+stage.addEventListener('wheel', e=>{
+  e.preventDefault();
+  scale=Math.max(0.6,Math.min(1.6,scale-e.deltaY*0.0012));
+},{passive:false});
+let scale=1; // reserved for future zoom rendering
+
+/* ---- click picking -> bilingual card ---- */
+const card=document.getElementById('card');
+function showCard(n){
+  const isFa = n.df!==undefined;
+  card.innerHTML=`
+    <span class="x" onclick="this.parentElement.classList.remove('on')">✕</span>
+    <h3 style="color:${n.c}">${n.t}</h3>
+    <div class="sub">${n.fa}</div>
+    <div class="row"><span class="flag fa-flag">فا</span><p dir="rtl">${n.df}</p></div>
+    <div class="row"><span class="flag en-flag">EN</span><p>${n.d}</p></div>`;
+  // position near node, clamped to stage
+  const sr=stage.getBoundingClientRect();
+  let x=n._sx+18, y=n._sy-20;
+  x=Math.min(x, sr.width-320); y=Math.min(y, sr.height-190);
+  card.style.left=x+'px'; card.style.top=Math.max(10,y)+'px';
+  card.classList.add('on');
+}
+stage.addEventListener('click', e=>{
+  if(moved) return;
+  const sr=stage.getBoundingClientRect();
+  const mx=e.clientX-sr.left, my=e.clientY-sr.top;
+  let best=null,bd=28;
+  for(const n of nodes){
+    if(n._depth===undefined||n._depth<0.25)continue;
+    const d=Math.hypot(mx-n._sx,my-n._sy);
+    if(d<bd+ n._rad){best=n;break;}
+  }
+  best?showCard(best):card.classList.remove('on');
+});
+
+/* ---- controls ---- */
+document.querySelectorAll('#controls .ctl[data-mode]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#controls .ctl').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    auto = b.dataset.mode==='rotate';
+  });
+});
+document.getElementById('reset').addEventListener('click',()=>{
+  rotY=0.4;rotX=-0.25;scale=1;auto=true;
+  document.querySelectorAll('#controls .ctl').forEach((x,i)=>x.classList.toggle('active',i===0));
+});
+
+/* ---- legend ---- */
+const lg=document.getElementById('legend');
+NODES.forEach(n=>{
+  lg.insertAdjacentHTML('beforeend',
+    `<span class="lg"><span class="dot" style="background:${n.c};box-shadow:0 0 6px ${n.c}"></span>${n.fa}</span>`);
+});
+
+/* ---- reduced motion respect ---- */
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){ auto=false;
+  document.querySelector('[data-mode="pause"]').classList.add('active');
+  document.querySelector('[data-mode="rotate"]').classList.remove('active');
+}
+
+resize();
+requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

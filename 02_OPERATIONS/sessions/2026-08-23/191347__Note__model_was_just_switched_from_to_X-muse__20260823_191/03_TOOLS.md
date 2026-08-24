@@ -65,3 +65,13 @@
 | 2026-08-24 13:13:45 UTC | `terminal` | {"output": "total 16\ndrwxr-xr-x 2 root root 4096 Aug 24 13:13 .\ndrwxr-xr-x 4 root root 4096 Aug 24 13:13 ..\n-rw-r--r- |
 | 2026-08-24 13:14:07 UTC | `terminal` | {"output": ".../references/api-evaluation.md \| 3 +-\n .../google-workspace/scripts/gws_bridge.py \| 2 +-\n .../producti |
 | 2026-08-24 13:14:16 UTC | `patch` | {"success": true, "diff": "--- a//data/workspace/backup_scripts/export_assets.py\n+++ b//data/workspace/backup_scripts/e |
+| 2026-08-24 13:14:24 UTC | `terminal` | {"output": "[2026-08-24 13:14:24] PUSH OK → 3fd111c (31 files)\n=== own scripts now in repo ===\nbuild_dashboard.py\nexp |
+| 2026-08-24 13:14:35 UTC | `terminal` | {"output": "=== what got redacted in run_backup.sh copy ===\n11:TOKEN=\"gh****REDACTED****\"\n21:export HERMES_SCRUB_LIT |
+| 2026-08-24 13:14:48 UTC | `skill_manage` | {"success": true, "message": "Patched SKILL.md in skill 'backup-trigger' (1 replacement).", "_change": {"old": "## نکات\ |
+| 2026-08-24 13:15:42 UTC | `terminal` | {"output": "=== LAST UPDATE ===\n2026-08-24 13:14 UTC — 3fd111c\n\n=== RECENT BACKUPS (newest first) ===\n2026-08-24 13: |
+| 2026-08-24 16:22:57 UTC | `skill_view` | {"success": true, "name": "claude-design", "description": "Design one-off HTML artifacts (landing, deck, prototype).", " |
+| 2026-08-24 16:24:27 UTC | `todo` | {"todos": [{"id": "brain3d", "content": "طراحی و ساخت BRAIN3D.html (مغز سه‌بعدی چرخشی دوزبانه)", "status": "in_progress" |
+| 2026-08-24 16:26:21 UTC | `write_file` | {"bytes_written": 19290, "dirs_created": true, "verified": true, "lint": {"status": "skipped", "message": "No linter for |
+| 2026-08-24 16:26:29 UTC | `todo` | {"todos": [{"id": "brain3d", "content": "طراحی و ساخت BRAIN3D.html (مغز سه‌بعدی چرخشی دوزبانه)", "status": "completed"}, |
+| 2026-08-24 16:27:38 UTC | `execute_code` | {"status": "success", "output": "script extracted: 8951 chars\nJS_SYNTAX_OK exit: 0\nhtml: open=1 close=1 OK\nhead: open |
+| 2026-08-24 16:27:46 UTC | `todo` | {"todos": [{"id": "brain3d", "content": "طراحی و ساخت BRAIN3D.html (مغز سه‌بعدی چرخشی دوزبانه)", "status": "completed"}, |
