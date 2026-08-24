@@ -8,14 +8,14 @@
   "profile": null,
   "cwd": null,
   "started_at_utc": "2026-08-23 19:13:47 UTC",
-  "ended_at_utc": "—",
-  "message_count_db": 196,
-  "tool_call_count": 92,
+  "ended_at_utc": "2026-08-24 18:19:14 UTC",
+  "message_count_db": 254,
+  "tool_call_count": 117,
   "input_tokens": 0,
   "output_tokens": 0,
   "estimated_cost_usd": null,
-  "_message_count": 196,
-  "_ended": false,
-  "_exported_at": "2026-08-24T16:40:06.565757+00:00",
-  "_last_msg_at": "2026-08-24 16:39:39 UTC"
+  "_message_count": 254,
+  "_ended": true,
+  "_exported_at": "2026-08-24T19:13:08.950966+00:00",
+  "_last_msg_at": "2026-08-24 17:57:13 UTC"
 }
