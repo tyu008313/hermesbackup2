@@ -40,3 +40,11 @@
 | 2026-08-24 12:21:07 UTC | `terminal` | {"output": "scrubbed files: 14\n=== VERIFY: no full-length provider tokens left (regex, no literals) ===\nbackup_repo/02 |
 | 2026-08-24 12:21:46 UTC | `terminal` | {"output": "=== PRECISE CHECK: word-boundary PAT patterns ===\n0\n=== LITERAL TOKEN CHECK (via env var, not cmdline lite |
 | 2026-08-24 12:22:11 UTC | `patch` | {"success": true, "diff": "--- a//data/workspace/backup_scripts/scrub.py\n+++ b//data/workspace/backup_scripts/scrub.py\ |
+| 2026-08-24 12:22:26 UTC | `terminal` | {"output": "scrubbed files: 3\n=== masked leftovers ===\nbackup_repo/01_CORE_ASSETS/skills/autonomous-ai-agents/hermes-a |
+| 2026-08-24 12:22:43 UTC | `terminal` | {"output": "", "exit_code": -1, "error": "BLOCKED (hardline): command parser limit or malformed executable payload. This |
+| 2026-08-24 12:22:58 UTC | `terminal` | {"output": "remote HEAD: 39ba36b\nmessage: backup: auto-sync 2026-08-24 12:22 UTC — sessions/assets/dashboard [no-llm]\n |
+| 2026-08-24 12:24:15 UTC | `terminal` | {"output": "status: built\nhtml_url: https://tyu008313.github.io/hermesbackup2/\n--- direct probe ---\nbrain.html -> HTT |
+| 2026-08-24 12:25:59 UTC | `cronjob` | {"error": "Script path must be relative to ~/.hermes/scripts/. Got absolute or home-relative path: '/data/workspace/back |
+| 2026-08-24 12:27:09 UTC | `terminal` | {"output": "total 12\ndrwxr-xr-x 2 root root 4096 Aug 24 12:27 .\ndrwx------ 19 root root 4096 Aug 24 12:27 ..\n-rwxr-xr |
+| 2026-08-24 12:27:16 UTC | `cronjob` | {"success": true, "job_id": "dd6bd38d99d4", "name": "Hermes Brain Backup — 12h mirror sync", "skill": null, "skills": [] |
+| 2026-08-24 12:27:40 UTC | `write_file` | {"bytes_written": 141, "dirs_created": true, "verified": true, "lint": {"status": "skipped", "message": "No linter for . |

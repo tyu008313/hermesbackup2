@@ -9,13 +9,13 @@
   "cwd": null,
   "started_at_utc": "2026-08-23 19:13:47 UTC",
   "ended_at_utc": "—",
-  "message_count_db": 81,
-  "tool_call_count": 39,
+  "message_count_db": 97,
+  "tool_call_count": 47,
   "input_tokens": 0,
   "output_tokens": 0,
   "estimated_cost_usd": null,
-  "_message_count": 81,
+  "_message_count": 97,
   "_ended": false,
-  "_exported_at": "2026-08-24T12:22:22.900131+00:00",
-  "_last_msg_at": "2026-08-24 12:22:20 UTC"
+  "_exported_at": "2026-08-24T12:28:09.152924+00:00",
+  "_last_msg_at": "2026-08-24 12:26:59 UTC"
 }
