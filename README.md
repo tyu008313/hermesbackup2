@@ -1,34 +1,57 @@
-# 🤖 مرکز فرماندهی و مدیریت هوش مصنوعی Hermes
+# 🧠 HERMES BRAIN — مرکز مغز دیجیتال
 
-![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
-![Structure](https://img.shields.io/badge/Architecture-SOP_Standard-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/backup-auto_12h-brightgreen?style=flat-square)
+![Mode](https://img.shields.io/badge/LLM%20tokens-0-success?style=flat-square)
+![Sessions](https://img.shields.io/badge/sessions-1-blue?style=flat-square)
+![Messages](https://img.shields.io/badge/messages-81-blueviolet?style=flat-square)
+![Skills](https://img.shields.io/badge/skills-83-orange?style=flat-square)
 
-خوش آمدید! این مخزن (Repository)، مرکز اصلی مدیریت تمامی مهارت‌ها، حافظه، تاریخچه گفتگوها و پروژه‌های کاری **Hermes Agent** است. این ساختار بر پایه اصول **استاندارد عملیاتی (SOP)** طراحی شده تا دسترسی و مدیریت فایل‌ها در بالاترین سطح از نظم و کارایی قرار داشته باشد.
+> مخزن رسمی بکاپ کامل مغز **Hermes Agent** — جلسات، حافظه، مهارت‌ها، تنظیمات و داشبورد زنده.
+> هر ۱۲ ساعت به‌صورت خودکار سینک می‌شود. کاملاً بدون مدل LLM (صفر توکن).
 
----
-
-## 📂 ساختار درختی مخزن (Organizational Tree)
-
-| پوشه اصلی | توضیحات | محتوا |
-| :--- | :--- | :--- |
-| **`01_CORE_ASSETS`** | هسته مرکزی هوش | مهارت‌ها (Skills) و حافظه ماندگار (Memories) |
-| **`02_OPERATIONS`** | عملیات جاری | تاریخچه جلسات (Sessions) و وظایف (Tasks) |
-| **`03_INFRASTRUCTURE`** | زیرساخت | تنظیمات سیستمی (Configs) و اسکریپت‌ها |
-| **`04_PROJECTS_LAB`** | آزمایشگاه پروژه‌ها | پروژه‌های فعال (Active) و آرشیو شده |
-| **`05_SYSTEM_INTELLIGENCE`** | هوش سیستمی | گزارش‌های سلامت و مستندات فنی |
+**🌐 داشبورد زنده:** https://tyu008313.github.io/hermesbackup2/brain.html
 
 ---
 
-## 🛠️ دستورالعمل‌های عملیاتی
+## 📂 ساختار مخزن
 
-برای تعامل با این سیستم، از دستورات زیر در محیط چت استفاده کنید:
-
-*   **`BACKUP`**: اجرای همگام‌سازی خودکار و طبقه‌بندی هوشمند تمامی داده‌ها در ساختار فوق.
+| پوشه | محتوا | توضیح |
+|---|---|---|
+| **`01_CORE_ASSETS/`** | 🧠 هسته هوش | مهارت‌ها (`skills/`) و حافظه ماندگار (`memories/`) |
+| **`02_OPERATIONS/`** | 💬 عملیات | ترنسکریپت کامل جلسات به تفکیک روز + ایندکس |
+| **`03_INFRASTRUCTURE/`** | ⚙️ زیرساخت | کانفیگ (رمزها حذف‌شده)، اسکریپت‌های بکاپ |
+| **`04_PROJECTS_LAB/`** | 🧪 پروژه‌ها | پروژه‌های فعال |
+| **`05_SYSTEM_INTELLIGENCE/`** | 🩺 هوش سیستمی | گزارش سلامت سیستم + مغز مهندسی پرامپت |
 
 ---
 
-## 🛡️ وضعیت امنیتی
-تمامی داده‌های این مخزن به‌صورت رمزنگاری شده و با رعایت پروتکل‌های دسترسی مدیریت می‌شوند. این مخزن تضمین می‌کند که هیچ دانشی از دست نرود و تمامی تجربیات کاری شما برای همیشه حفظ و قابل بازیابی باشد.
+## 🔍 راهنمای مطالعه سریع
 
-*طراحی شده با دقت برای 𝑹𝑬𝒁𝑨*
-*مدیریت شده توسط Hermes Agent*
+| می‌خوای بدونی... | برو سراغ |
+|---|---|
+| در همه جلسات چه گفتیم؟ | [`02_OPERATIONS/sessions/00_INDEX.md`](02_OPERATIONS/sessions/00_INDEX.md) |
+| هرمس چه چیزهایی یاد گرفته؟ | [`01_CORE_ASSETS/memories/`](01_CORE_ASSETS/memories/) |
+| چه مهارت‌هایی نصبه؟ | [`01_CORE_ASSETS/skills/`](01_CORE_ASSETS/skills/) |
+| مغز و شخصیت هرمس چطور کار می‌کنه؟ | [`05_SYSTEM_INTELLIGENCE/BRAIN.md`](05_SYSTEM_INTELLIGENCE/BRAIN.md) |
+| وضعیت لحظه‌ای سیستم؟ | [`05_SYSTEM_INTELLIGENCE/health/LATEST.md`](05_SYSTEM_INTELLIGENCE/health/LATEST.md) |
+| نمای گرافیکی همه‌چیز | [داشبورد brain.html](https://tyu008313.github.io/hermesbackup2/brain.html) |
+
+---
+
+## 🔄 مکانیزم بکاپ خودکار
+
+```
+هر 12 ساعت:
+  1️⃣ state.db → ترنسکریپت Markdown خوانا برای هر session
+  2️⃣ skills + memories + config(رمززدایی‌شده) → کپی کامل
+  3️⃣ README + docs → بازتولید با آمار زنده
+  4️⃣ brain.html → داشبورد HTML تیره و زیبا
+  5️⃣ git push (HTTPS) → قابل مشاهده در گیت‌هاب
+```
+
+- 🔒 هیچ Secret / Token / API Key هرگز آپلود نمی‌شود (فقط ساختار کلیدها)
+- ♻️ Idempotent: فقط فایل‌های تغییریافته commit می‌شوند
+- 🚫 بدون LLM: تمام مراحل با اسکریپت خالص Python/Bash اجرا می‌شوند
+
+---
+*آخرین سینک: 2026-08-24 12:22 UTC — توسط Hermes Brain Backup System v2*

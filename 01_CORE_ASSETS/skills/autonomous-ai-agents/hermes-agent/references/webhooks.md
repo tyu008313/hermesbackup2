@@ -25,7 +25,7 @@ platforms:
     enabled: true
     extra:
       port: 8644
-      secret: "your-webhook-secret-here"
+      secret: "****REDACTED****"
 ```
 
 Omitting `host` uses the dual-stack default and listens on both IPv4 and IPv6.

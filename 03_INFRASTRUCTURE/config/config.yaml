@@ -8,7 +8,6 @@ compression:
 onboarding:
   seen:
     profile_build_offered: true
-    busy_input_prompt: true
 _config_version: 37
 platforms:
   telegram:
@@ -16,7 +15,7 @@ platforms:
     home_channel:
       platform: telegram
       chat_id: '7025776524'
-      name: 𝑹𝑬𝒁𝑨 | 𝟮𝟯:𝟱𝟭
+      name: 𝑹𝑬𝒁𝑨 | 𝟭𝟵:𝟬𝟱
       user_id: '7025776524'
 
 # ── Security ──────────────────────────────────────────────────────────

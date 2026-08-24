@@ -1,11 +1,7 @@
-Environment: Running on Railway; port 22 is closed. Use HTTPS for GitHub operations.
+Backup repo: github.com/tyu008313/hermesbackup2 (owner tyu008313). REZA wants full Hermes mirror (sessions, memories, skills, config, dashboard) synced every 12h - readable, clean structure, all sections in sync. Layout: 01_CORE_ASSETS..05_SYSTEM_INTELLIGENCE + brain.html dashboard + BRAIN.md/BRAIN.html prompt-engineering brain.
 §
-Trigger word "BACKUP" executes the backup script at ~/.hermes/scripts/backup_script.sh to sync to https://github.com/tyu008313/hermesbackup2.
+Network: port 22 (SSH) to GitHub is BLOCKED on this relay - push only via HTTPS + token. Backup system: /data/workspace/backup_scripts/ (run_backup.sh orchestrator, export_sessions.py, export_assets.py, build_dashboard.py, write_docs.py, scrub.py); local repo /data/workspace/backup_repo; log /data/workspace/backup.log.
 §
-کاربر در حال راه اندازی یک سایت فروشگاهی وردپرس بر روی پلتفرم Railway برای اهداف تست است. همچنین، وقتی کاربر درخواست اجرای کارهای پس زمینه (مانند بک آپ) را می دهد، ترجیح می دهد بلافاصله اجرا شوند و منتظر زمان زمان بندی شده نماند.
+Backup security protocol: session transcripts may contain the GitHub token - scrub.py must run on the whole repo before every push (export_assets.py runs scrub_tree on the repo already). Real token must never reach the public repo. Security scanner holds token-containing terminal commands for approval - keep tokens in files, not on command lines.
 §
-Railway API Token: 87c2a073-7eac-4a4a-9840-e826344fb699 (Use with caution: This token should ideally be set as an environment variable, not in memory. Access via RAILWAY_API_TOKEN).
-§
-Windows VPS target: 100.88.97.60 (user NvdAdmin) — a Tailscale CGNAT-range IP, not public; all direct ports filtered. Local Tailscale installed (userspace-networking, SOCKS5 localhost:1055); connection pending user approving a login.tailscale.com link. Pending task: speed test + remote admin once joined.
-§
-Telegram self-bot project (Miney game): single-file Telethon script; activates via '.ماین زمان X:Ym|Yh' sent in Saved Messages; auto-clicks green button «بفروشش بره» in group «ماین»; no logs allowed — only errors reported to Saved Messages. Note: telethon.errors has no MessageNotFoundError (ImportError bug in user's ff_bot.py).
+STATUS 2026-08-23: backup system fully built and tested locally; exports verified; NOTHING pushed to GitHub yet and no leak occurred. Blocked awaiting user approval: run scrub.py over repo then bash run_backup.sh (first push), enable GitHub Pages for brain.html, create 12h no_agent cronjob running the script. Resume from exactly this point when user returns.
