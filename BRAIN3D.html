@@ -3,449 +3,515 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🧠 HERMES BRAIN — 360° Interactive Mind Map</title>
+<title>🧠 HERMES BRAIN v3 — Neural Command Sphere</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Fira+Sans:wght@300;400;600&display=swap');
   :root{
-    --bg:#04060b; --ink:#e8f0ff; --dim:#7d8ca3;
-    --gold:#ffd166; --green:#06ffa5; --blue:#4d9fff; --pink:#ff6ec7; --violet:#a78bfa;
+    --bg:#0d1424; --card:#1b2336; --ink:#f8fafc; --dim:#94a3b8;
+    --gold:#ffd166; --green:#22c55e; --cyan:#00ffff; --pink:#ff2ea6; --blue:#38bdf8;
+    --border:rgba(148,163,184,.25);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%}
   body{
     background:
-      radial-gradient(1200px 700px at 20% -10%, rgba(77,159,255,.10), transparent 55%),
-      radial-gradient(900px 600px at 85% 110%, rgba(255,110,199,.09), transparent 55%),
+      radial-gradient(1000px 620px at 15% -8%, rgba(56,189,248,.10), transparent 55%),
+      radial-gradient(900px 600px at 88% 108%, rgba(255,46,166,.08), transparent 55%),
       var(--bg);
-    color:var(--ink);
-    font-family:'Segoe UI', Tahoma, Vazirmatn, sans-serif;
+    color:var(--ink); font-family:'Fira Sans','Segoe UI',Tahoma,Vazirmatn,sans-serif;
     overflow-x:hidden;
   }
+  ::selection{ background:rgba(255,209,102,.35) }
 
-  /* ---------- header ---------- */
-  header{ text-align:center; padding:34px 16px 10px; }
-  header h1{
-    font-size:clamp(1.6em,4vw,2.5em); color:var(--gold);
-    text-shadow:0 0 32px rgba(255,209,102,.35); letter-spacing:.5px;
+  /* scanline overlay (retro-futurism, very subtle) */
+  body::after{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:60;
+    background:repeating-linear-gradient(0deg, transparent 0 2px, rgba(255,255,255,.012) 2px 4px);
   }
-  header .fa{ font-size:clamp(.95em,2vw,1.15em); color:var(--dim); margin-top:6px; }
-  header .hint{ margin-top:8px; font-size:.8em; color:var(--dim); opacity:.85; }
-  header .hint b{ color:var(--green); }
 
-  /* ---------- stage ---------- */
+  header{text-align:center;padding:36px 16px 6px}
+  h1{
+    font-family:'Fira Code',monospace; font-size:clamp(1.5em,3.6vw,2.4em);
+    color:var(--gold); text-shadow:0 0 14px rgba(255,209,102,.5),0 0 44px rgba(255,209,102,.22);
+    letter-spacing:.06em;
+  }
+  .sub-fa{color:var(--dim);margin-top:8px;font-size:clamp(.9em,1.8vw,1.05em)}
+  .hint{margin-top:10px;font-size:.78em;color:var(--dim)}
+  .hint b{color:var(--cyan)}
+
+  /* ============ STAGE ============ */
   #stage{
-    position:relative; width:min(980px,94vw); aspect-ratio:16/9;
-    max-height:72vh; margin:18px auto 0; border-radius:22px; overflow:hidden;
-    background:linear-gradient(180deg,#070b14,#04060b 65%);
-    border:1px solid rgba(77,159,255,.22);
-    box-shadow:0 30px 80px rgba(0,0,0,.55), inset 0 0 120px rgba(77,159,255,.05);
-    cursor:grab; touch-action:none;
+    position:relative;width:min(1020px,95vw);aspect-ratio:16/9;max-height:70vh;
+    margin:20px auto 0;border-radius:24px;overflow:hidden;
+    background:radial-gradient(120% 120% at 50% 45%, #101a30 0%, #0a1120 55%, #070d18 100%);
+    border:1px solid var(--border);
+    box-shadow:0 34px 90px rgba(0,0,0,.6), inset 0 0 140px rgba(56,189,248,.05);
+    cursor:grab;touch-action:none;
   }
-  #stage.dragging{ cursor:grabbing; }
-  canvas{ display:block; width:100%; height:100%; }
+  #stage.dragging{cursor:grabbing}
+  canvas{display:block;width:100%;height:100%}
 
-  /* HUD */
+  /* SVG motion layer (pulses + orbit ring) — sits above canvas, pointer-events none */
+  #fx{position:absolute;inset:0;pointer-events:none}
+
   #hud{
-    position:absolute; inset-inline:14px; top:12px;
-    display:flex; justify-content:space-between; pointer-events:none;
-    font-size:.72em; color:var(--dim); direction:ltr;
+    position:absolute;top:14px;inset-inline:18px;display:flex;justify-content:space-between;
+    font:600 .68em 'Fira Code',monospace;color:var(--dim);direction:ltr;pointer-events:none;z-index:6;
   }
-  #hud b{ color:var(--blue); font-weight:600 }
+  #hud b{color:var(--cyan)}
+  .live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);
+    box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;margin-right:5px}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
   #legend{
-    position:absolute; right:14px; bottom:12px; display:flex; gap:10px; flex-wrap:wrap;
-    justify-content:flex-end; max-width:70%;
-    font-size:.68em; color:var(--dim); pointer-events:none;
+    position:absolute;right:16px;bottom:14px;display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end;
+    max-width:62%;font-size:.66em;color:var(--dim);z-index:6;pointer-events:none
   }
-  .lg{ display:flex; align-items:center; gap:5px }
-  .dot{ width:8px;height:8px;border-radius:50% }
+  .lg{display:flex;align-items:center;gap:5px}
+  .dot{width:7px;height:7px;border-radius:50%}
 
-  /* tooltip card (bilingual) */
+  /* bilingual card */
   #card{
-    position:absolute; z-index:5; min-width:230px; max-width:300px;
-    background:rgba(8,13,24,.92); border:1px solid var(--line,#223252);
-    border-radius:14px; padding:13px 15px; backdrop-filter:blur(6px);
-    box-shadow:0 18px 50px rgba(0,0,0,.6);
-    opacity:0; transform:translateY(6px) scale(.97); transition:.18s ease;
-    pointer-events:none;
+    position:absolute;z-index:10;min-width:250px;max-width:320px;
+    background:rgba(27,35,54,.94);
+    border:1px solid rgba(148,163,184,.3);border-radius:16px;padding:15px 17px;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    box-shadow:0 22px 60px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.07);
+    opacity:0;transform:translateY(8px) scale(.97);transition:.2s ease;pointer-events:none;
   }
-  #card.on{ opacity:1; transform:none; pointer-events:auto }
-  #card h3{ font-size:.95em; margin-bottom:2px }
-  #card .sub{ font-size:.72em; color:var(--dim); margin-bottom:8px }
-  #card p{ font-size:.78em; line-height:1.75 }
-  #card .row{ display:flex; gap:8px; align-items:flex-start; margin-top:7px }
-  #card .flag{ flex:0 0 auto; font-size:.75em; padding:1px 7px; border-radius:99px; margin-top:1px }
-  .fa-flag{ background:rgba(6,255,165,.12); color:var(--green) }
-  .en-flag{ background:rgba(77,159,255,.12); color:var(--blue) }
-  #card .x{ position:absolute; top:8px; left:10px; cursor:pointer; color:var(--dim); font-size:.8em }
-  [dir="rtl"] #card .x{ left:auto; right:10px }
+  #card.on{opacity:1;transform:none;pointer-events:auto}
+  #card::before{ /* glass light reflection */
+    content:'';position:absolute;inset:0;border-radius:16px;pointer-events:none;
+    background:linear-gradient(160deg, rgba(255,255,255,.09), transparent 38%);
+  }
+  #card h3{font-family:'Fira Code',monospace;font-size:.92em;margin-bottom:2px}
+  #card .sub{font-size:.72em;color:var(--dim);margin-bottom:9px}
+  #card p{font-size:.77em;line-height:1.8}
+  #card .row{display:flex;gap:9px;align-items:flex-start;margin-top:8px}
+  #card .flag{flex:0 0 auto;font-size:.68em;padding:2px 8px;border-radius:99px;margin-top:2px;
+    font-family:'Fira Code',monospace}
+  .fa-flag{background:rgba(34,197,94,.14);color:var(--green)}
+  .en-flag{background:rgba(56,189,248,.14);color:var(--blue)}
+  .x{position:absolute;top:9px;left:11px;cursor:pointer;color:var(--dim);font-size:.85em;z-index:2}
 
-  /* controls */
-  #controls{
-    width:min(980px,94vw); margin:14px auto 0; display:flex; gap:10px; flex-wrap:wrap;
-    justify-content:center; align-items:center;
-  }
+  #controls{width:min(1020px,95vw);margin:16px auto 0;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
   button.ctl{
-    background:#0c1424; color:var(--ink); border:1px solid #223252; border-radius:12px;
-    padding:9px 16px; cursor:pointer; font-size:.82em; transition:.2s; font-family:inherit;
+    font-family:'Fira Code',monospace;font-size:.76em;
+    background:linear-gradient(170deg,#1b2336,#141c2e);color:var(--ink);
+    border:1px solid var(--border);border-radius:12px;padding:10px 17px;cursor:pointer;
+    transition:.2s;display:inline-flex;align-items:center;gap:7px;
   }
-  button.ctl:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-2px) }
-  button.ctl.active{ border-color:var(--gold); color:var(--gold) }
+  button.ctl:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--gold);
+    box-shadow:0 8px 26px rgba(255,209,102,.13)}
+  button.ctl.active{border-color:var(--gold);color:var(--gold)}
 
-  /* ---------- sections ---------- */
-  main{ max-width:980px; margin:26px auto 60px; padding:0 18px }
+  /* ============ SECTIONS ============ */
+  main{max-width:1020px;margin:28px auto 40px;padding:0 18px}
   section.block{
-    background:linear-gradient(170deg,rgba(13,18,32,.85),rgba(10,15,26,.92));
-    border:1px solid rgba(34,50,82,.9); border-radius:18px;
-    padding:24px 28px; margin-top:22px;
+    background:linear-gradient(172deg,rgba(27,35,54,.75),rgba(13,20,36,.9));
+    border:1px solid var(--border);border-radius:20px;padding:26px 30px;margin-top:22px;
+    backdrop-filter:blur(8px);position:relative;overflow:hidden;
   }
-  section.block h2{
-    font-size:1.15em; color:var(--gold); margin-bottom:14px;
-    display:flex; align-items:center; gap:10px;
+  section.block::before{content:'';position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(160deg,rgba(255,255,255,.045),transparent 30%)}
+  h2{
+    font-family:'Fira Code',monospace;font-size:1.02em;color:var(--gold);margin-bottom:16px;
+    display:flex;align-items:center;gap:11px;text-shadow:0 0 10px rgba(255,209,102,.3)
   }
-  section.block h2::before{ content:''; width:4px; height:20px; background:var(--gold); border-radius:4px }
-  .duo{ display:grid; grid-template-columns:1fr 1fr; gap:18px }
-  @media(max-width:720px){ .duo{ grid-template-columns:1fr } }
-  .lang-box{ padding:14px 16px; border-radius:12px; background:rgba(4,6,11,.5); line-height:1.95 }
-  .lang-box.fa{ border-right:3px solid var(--green) }
-  .lang-box.en{ border-left:3px solid var(--blue); direction:ltr; text-align:left }
-  .lang-box small{ display:block; letter-spacing:2px; font-size:.62em; opacity:.6; margin-bottom:6px }
-  .fa-lang small{ color:var(--green) } .en-lang small{ color:var(--blue) }
-  ul.clean{ list-style:none; margin-top:8px }
-  ul.clean li{ padding-right:20px; position:relative; margin:6px 0 }
-  ul.clean li::before{ content:'▸'; position:absolute; right:0; color:var(--violet) }
-  .en-dir ul.clean li::before{ right:auto; left:-14px }
-  footer{ text-align:center; color:var(--dim); font-size:.8em; padding:30px 0 44px }
-  footer a{ color:var(--blue); text-decoration:none }
+  h2 svg{filter:drop-shadow(0 0 4px rgba(255,209,102,.5))}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:720px){.duo{grid-template-columns:1fr}}
+  .lang-box{padding:15px 17px;border-radius:13px;background:rgba(7,13,24,.55);
+    line-height:1.95;font-size:.9em}
+  .lang-box.fa{border-right:3px solid var(--green)}
+  .lang-box.en{border-left:3px solid var(--blue);direction:ltr;text-align:left}
+  .lang-box small{display:block;letter-spacing:2.5px;font-size:.6em;opacity:.65;margin-bottom:7px;
+    font-family:'Fira Code',monospace}
+  .fa-lang small{color:var(--green)} .en-lang small{color:var(--blue)}
+  ul.clean{list-style:none;margin-top:6px}
+  ul.clean li{padding-right:20px;position:relative;margin:7px 0}
+  ul.clean li::before{content:'▸';position:absolute;right:0;color:var(--violet,#a78bfa)}
+  .en-dir ul.clean{padding-right:0;padding-left:0}
+  .en-dir ul.clean li{padding-right:0;padding-left:18px}
+  .en-dir ul.clean li::before{right:auto;left:0}
+  footer{text-align:center;color:var(--dim);font-size:.8em;padding:32px 0 46px;line-height:2}
+  footer a{color:var(--blue);text-decoration:none}
+  footer a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>🧠 HERMES BRAIN — نقشه ذهن تعاملی</h1>
-  <div class="fa">مغز مهندسی‌شده‌ی من — بچرخانش، لمسش کن، عمیق شو</div>
-  <div class="hint">🖱️ <b>drag</b> = rotate 360° · <b>scroll</b> = zoom · <b>click node</b> = details (FA + EN)</div>
+  <h1>[ HERMES BRAIN v3 ]</h1>
+  <div class="sub-fa">کره فرماندهی عصبی — بچرخان، عمیق شو، زنده‌ست</div>
+  <div class="hint">🖱️ <b>drag / لمس</b> چرخش ۳۶۰° · <b>scroll</b> زوم · <b>click node</b> جزئیات FA/EN · <span class="live-dot"></span><b style="font-family:'Fira Code'">LIVE</b></div>
 </header>
 
 <div id="stage">
   <canvas id="cv"></canvas>
-  <div id="hud"><span><b id="fps">–</b> fps · drag/scroll/click</span><span>ox-alpha @ hermes-agent</span></div>
+
+  <!-- SVG MOTION LAYER: rotating radar sweep + node pulse rings -->
+  <svg id="fx" width="100%" height="100%" viewBox="0 0 1000 562" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="sweepGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#38bdf8" stop-opacity=".14"/>
+        <stop offset="80%" stop-color="#38bdf8" stop-opacity=".03"/>
+        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#ffd166" stop-opacity=".55"/>
+        <stop offset="55%" stop-color="#38bdf8" stop-opacity=".18"/>
+        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="soft"><feGaussianBlur stdDeviation="2.2"/></filter>
+    </defs>
+
+    <!-- outer dashed orbit ring, slow counter-rotation -->
+    <g id="orbit">
+      <circle cx="500" cy="281" r="252" fill="none" stroke="url(#ringGrad)" stroke-width="1.4"
+              stroke-dasharray="4 14" opacity=".8"/>
+      <circle cx="500" cy="281" r="236" fill="none" stroke="#38bdf8" stroke-width=".6"
+              stroke-dasharray="1 9" opacity=".35"/>
+    </g>
+
+    <!-- radar sweep -->
+    <g id="sweep">
+      <path d="M500,281 L752,281 A252,252 0 0,0 723,180 Z" fill="url(#sweepGrad)" filter="url(#soft)"/>
+      <line x1="500" y1="281" x2="752" y2="281" stroke="#38bdf8" stroke-width="1.1"
+            stroke-opacity=".5" stroke-linecap="round"/>
+    </g>
+
+    <!-- three expanding pulse rings (SVG SMIL animation, no JS needed) -->
+    <circle cx="500" cy="281" r="60" fill="none" stroke="#22c55e" stroke-width="1.4" opacity=".5">
+      <animate attributeName="r" values="58;250" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".55;.0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="500" cy="281" r="90" fill="none" stroke="#38bdf8" stroke-width="1.1" opacity=".4">
+      <animate attributeName="r" values="58;250" dur="4s" begin="1.33s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".5;0" dur="4s" begin="1.33s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="500" cy="281" r="120" fill="none" stroke="#ff2ea6" stroke-width="1" opacity=".35">
+      <animate attributeName="r" values="58;250" dur="4s" begin="2.66s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".45;0" dur="4s" begin="2.66s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+
+  <div id="hud">
+    <span><span class="live-dot"></span><b id="fps">–</b> fps · NEURAL LINK ACTIVE</span>
+    <span>ox-alpha @ hermes-agent</span>
+  </div>
   <div id="legend"></div>
   <div id="card"></div>
 </div>
 
 <div id="controls">
-  <button class="ctl active" data-mode="rotate">🔄 Auto-Rotate / چرخش خودکار</button>
+  <button class="ctl active" data-mode="rotate">⟳ Auto / چرخش خودکار</button>
   <button class="ctl" data-mode="pause">⏸ Pause / توقف</button>
-  <button class="ctl" id="reset">🎯 Reset View / بازنشانی</button>
+  <button class="ctl" id="burst">✦ Pulse Burst / پالس</button>
+  <button class="ctl" id="reset">⌂ Reset / بازنشانی</button>
 </div>
 
 <main>
   <section class="block">
-    <h2>Core Loop / حلقه اصلی</h2>
+    <h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg> Core Loop / حلقه اصلی</h2>
     <div class="duo">
       <div class="lang-box fa fa-lang"><small>فارسی</small>
-        من فقط چت‌بات نیستم؛ یک حلقه‌ام: پیام می‌گیرم، فکر می‌کنم، ابزار به دست می‌گیرم،
-        نتیجه را می‌بینم و تا اثباتِ واقعیِ انجام کار تکرار می‌کنم. هر گره در این کره یکی از
-        لایه‌های همین حلقه است.
+        من یک حلقه‌ام، نه یک جعبه‌گفتگو: پیام می‌گیرم، استدلال می‌کنم، ابزار به دست می‌گیرم،
+        نتیجه را مشاهده می‌کنم و تا وقتی کار <b>اثبات شده</b> تمام نشده، تکرار می‌کنم.
+        هشت گره روی این کره، هشت لایه‌ی همین حلقه‌اند — با هم نفس می‌کشند.
       </div>
       <div class="lang-box en en-lang"><small>ENGLISH</small>
-        I am not a chatbot; I am a loop: receive → reason → use tools → observe → repeat
-        until the work is <em>proven done</em>. Every node on this sphere is one layer of that loop.
+        I am a loop, not a chat box: receive → reason → act with tools → observe → repeat
+        until the work is <b>proven done</b>. The eight nodes on this sphere are the eight layers
+        of that loop — breathing together.
       </div>
     </div>
   </section>
 
   <section class="block">
-    <h2>The Eight Layers / هشت لایه مغز</h2>
+    <h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4c0 1.1-.45 2.1-1.17 2.83A4 4 0 0 1 20 12a4 4 0 0 1-4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1-4-4 4 4 0 0 1 5.17-3.83A4 4 0 0 1 8 6a4 4 0 0 1 4-4z"/></svg> Eight Layers / هشت لایه</h2>
     <div class="duo">
       <div class="lang-box fa fa-lang"><small>فارسی</small>
         <ul class="clean">
-          <li><b>هسته:</b> هویت ox-alpha روی پوسته Hermes</li>
-          <li><b>سیستم‌پرامپت:</b> قوانین، مرزها، سبک پاسخ</li>
-          <li><b>مهارت‌ها:</b> حافظه‌ی رویه‌ای — «چطور کارها انجام می‌شوند»</li>
+          <li><b>هویت:</b> ox-alpha روی پوسته هرمس</li>
+          <li><b>قانون:</b> سیستم‌پرامپت؛ مرزها و سبک من</li>
+          <li><b>مهارت:</b> حافظه رویه‌ای؛ «چطور» کارها</li>
           <li><b>حافظه:</b> حقایق ماندگار درباره تو و محیط</li>
-          <li><b>جلسات:</b> تجربه‌های گفتگو، همیشه قابل جستجو</li>
-          <li><b>ابزارها:</b> ترمینال، وب، فایل، کد — دست‌های من</li>
-          <li><b>زیرسیستم خودکار:</b> کرون و اسکریپت بدون LLM</li>
-          <li><b>آینه:</b> همین مخزن گیت‌هاب که انسان هم بخواند</li>
+          <li><b>تجربه:</b> جلسات، همیشه قابل جستجو</li>
+          <li><b>دست:</b> ابزارها؛ ترمینال، وب، فایل، کد</li>
+          <li><b>ضربان:</b> اتوماسیون بدون LLM با صفر توکن</li>
+          <li><b>آینه:</b> همین مخزن برای چشم انسان</li>
         </ul>
       </div>
-      <div class="lang-box en en-lang"><small>ENGLISH</small>
+      <div class="lang-box en en-lang en-dir"><small>ENGLISH</small>
         <ul class="clean">
-          <li><b>Core:</b> ox-alpha identity on the Hermes shell</li>
-          <li><b>System prompt:</b> rules, boundaries, response style</li>
-          <li><b>Skills:</b> procedural memory — how things get done</li>
-          <li><b>Memories:</b> durable facts about you and the world</li>
-          <li><b>Sessions:</b> conversation experience, always searchable</li>
-          <li><b>Tools:</b> terminal, web, files, code — my hands</li>
-          <li><b>Automation:</b> cron + scripts, zero LLM tokens</li>
-          <li><b>Mirror:</b> this GitHub repo humans can read</li>
+          <li><b>Identity:</b> ox-alpha on the Hermes shell</li>
+          <li><b>Law:</b> system prompt; my boundaries and voice</li>
+          <li><b>Skill:</b> procedural memory; the "how"</li>
+          <li><b>Memory:</b> durable facts about you and the world</li>
+          <li><b>Experience:</b> sessions, forever searchable</li>
+          <li><b>Hand:</b> tools; terminal, web, files, code</li>
+          <li><b>Heartbeat:</b> LLM-free automation at zero tokens</li>
+          <li><b>Mirror:</b> this repo, readable by humans</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section class="block">
-    <h2>Design Notes / یادداشت طراحی</h2>
+    <h2><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg> Under the Hood / زیر کاپوت</h2>
     <div class="duo">
       <div class="lang-box fa fa-lang"><small>فارسی</small>
-        این صفحه هیچ فریم‌ورکی ندارد؛ صرفاً Canvas خالص با ریاضیات کروی.
-        گره‌ها روی کره پخش شده‌اند، خطوط ارتباطی بینشان کشیده می‌شود و
-        هرچه گره جلوی کره باشد، درخشنده است. موبایل هم با لمس کامل کنترل می‌شود.
+        لایه ذرات و خطوط عصبی: Canvas خالص با ریاضیات کروی. لایه موشن: SVG با رادارِ چرخان
+        و حلقه‌های پالس SMIL — بدون هیچ کتابخانه‌ای. طراحی از روی دیزاین‌سیستم
+        Glassmorphism + Retro-Futurism با تایپوگرافی Fira و احترام به reduced-motion.
       </div>
       <div class="lang-box en en-lang"><small>ENGLISH</small>
-        No frameworks — pure Canvas with spherical math. Nodes are distributed on a sphere,
-        edges connect them, and front-facing nodes glow brighter. Fully touch-enabled for mobile.
+        Neural particles & edges: pure Canvas with spherical math. Motion layer: SVG radar
+        sweep + SMIL pulse rings — zero libraries. Styled from a real design system
+        (Glassmorphism × Retro-Futurism, Fira type, prefers-reduced-motion respected).
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  🧠 <span style="color:var(--gold)">HERMES BRAIN v2 — 360°</span> · bilingual FA/EN by design ·
-  <a href="brain.html">classic dashboard ↗</a> · <a href="https://github.com/tyu008313/hermesbackup2">repo ↗</a>
+  🧠 <span style="color:var(--gold);font-family:'Fira Code',monospace">HERMES BRAIN v3 — NEURAL SPHERE</span><br>
+  <a href="BRAIN3D.html">v2 classic ↗</a> · <a href="brain.html">dashboard ↗</a> ·
+  <a href="https://github.com/tyu008313/hermesbackup2">repo ↗</a>
 </footer>
 
 <script>
 /* ============================================================
-   HERMES BRAIN SPHERE — dependency-free 3D tag cloud
-   Pure canvas: spherical distribution + rotation + picking
+   HERMES BRAIN v3 — Neural Command Sphere
+   Canvas particle-sphere + SVG motion layer + bilingual cards
+   Zero dependencies. Touch-first. Reduced-motion aware.
 ============================================================ */
 (() => {
 'use strict';
 
-const NODES = [
- {id:'core',    t:'🧬 Core',            fa:'هویت',       c:'#ffd166',
-  d:'ox-alpha identity running on the Hermes Agent shell.',
+const NODES=[
+ {id:'core',   t:'CORE',       fa:'هویت',        c:'#ffd166',
+  d:'ox-alpha identity on the Hermes Agent shell.',
   df:'هویت ox-alpha در حال اجرا روی پوسته Hermes Agent.'},
- {id:'prompt',  t:'📜 System Prompt',   fa:'سیستم‌پرامپت', c:'#ff6ec7',
-  d:'Rules, boundaries and response style — my constitution.',
-  df:'قوانین، مرزها و سبک پاسخ — قانون اساسی من.'},
- {id:'skills',  t:'⚡ Skills',           fa:'مهارت‌ها',    c:'#06ffa5',
-  d:'Procedural memory: 80+ skills that encode how work gets done.',
-  df:'حافظه رویه‌ای: بیش از ۸۰ مهارت که نحوه انجام کار را ثبت کرده‌اند.'},
- {id:'memory',  t:'🧩 Memories',         fa:'حافظه',       c:'#4d9fff',
-  d:'Durable facts about you, the environment and lessons learned.',
-  df:'حقایق ماندگار درباره تو، محیط و درس‌های آموخته.'},
- {id:'sessions',t:'💬 Sessions',         fa:'جلسات',       c:'#a78bfa',
-  d:'Every conversation, stored and searchable in state.db.',
-  df:'همه گفتگوها، ذخیره و قابل جستجو در state.db.'},
- {id:'tools',   t:'🔧 Tools',            fa:'ابزارها',     c:'#f97316',
-  d:'Terminal, web, files, code execution — where thinking becomes doing.',
-  df:'ترمینال، وب، فایل، اجرای کد — جایی که فکر به عمل تبدیل می‌شود.'},
- {id:'cron',    t:'⏰ Automation',       fa:'اتوماسیون',   c:'#22d3ee',
-  d:'Cron jobs & deterministic scripts — backup runs with zero LLM tokens.',
-  df:'کرون‌جاب‌ها و اسکریپت‌های قطعی — بکاپ با صفر توکن LLM.'},
- {id:'mirror',  t:'🪞 GitHub Mirror',    fa:'آینه گیت‌هاب', c:'#e2e8f0',
-  d:'hermesbackup2 repo — the human-readable reflection of this brain.',
-  df:'مخزن hermesbackup2 — بازتاب خوانا برای انسان.'}
+ {id:'prompt', t:'PROMPT',     fa:'سیستم‌پرامپت', c:'#ff2ea6',
+  d:'My constitution: rules, boundaries and response style.',
+  df:'قانون اساسی من: قوانین، مرزها و سبک پاسخ.'},
+ {id:'skills', t:'SKILLS',     fa:'مهارت\u200cها', c:'#22c55e',
+  d:'Procedural memory — 80+ skills encoding how work gets done.',
+  df:'حافظه رویه\u200cای — بیش از ۸۰ مهارت که نحوه انجام کار را ثبت کرده\u200cاند.'},
+ {id:'memory', t:'MEMORY',     fa:'حافظه',        c:'#38bdf8',
+  d:'Durable facts about you, the environment, lessons burned in.',
+  df:'حقایق ماندگار درباره تو، محیط و درس\u200cهای سخت\u200cآموخته.'},
+ {id:'sess',   t:'SESSIONS',   fa:'جلسات',        c:'#a78bfa',
+  d:'Every conversation stored & searchable in state.db.',
+  df:'همه گفتگوها در state.db ذخیره و قابل جستجو\u200cاند.'},
+ {id:'tools',  t:'TOOLS',      fa:'ابزارها',      c:'#fb923c',
+  d:'Terminal, web, files, code — where thinking becomes doing.',
+  df:'ترمینال، وب، فایل، اجرای کد — جایی که فکر به عمل بدل می\u200cشود.'},
+ {id:'cron',   t:'AUTOMATION', fa:'اتوماسیون',    c:'#22d3ee',
+  d:'Cron + deterministic scripts: the backup heartbeat, zero tokens.',
+  df:'کرون و اسکریپت قطعی: ضربان بکاپ، با صفر توکن.'},
+ {id:'mirror', t:'MIRROR',     fa:'آینه گیت\u200cهاب', c:'#e2e8f0',
+  d:'hermesbackup2 — the human-readable reflection of this brain.',
+  df:'hermesbackup2 — بازتاب خوانا برای چشم انسان.'}
 ];
+const EDGES=[['core','prompt'],['core','skills'],['core','memory'],['core','sess'],
+ ['prompt','tools'],['skills','tools'],['sess','memory'],['tools','cron'],
+ ['cron','mirror'],['sess','mirror'],['memory','mirror'],['skills','mirror']];
 
-// edges between layers
-const EDGES = [
- ['core','prompt'],['core','skills'],['core','memory'],['core','sessions'],
- ['prompt','tools'],['skills','tools'],['sessions','memory'],
- ['tools','cron'],['cron','mirror'],['sessions','mirror'],['memory','mirror']
-];
-
-const cv = document.getElementById('cv');
-const ctx = cv.getContext('2d');
-const stage = document.getElementById('stage');
-
+const cv=document.getElementById('cv'), ctx=cv.getContext('2d');
+const stage=document.getElementById('stage');
 let W=0,H=0,DPR=1;
+
 function resize(){
-  DPR = Math.min(window.devicePixelRatio||1, 2);
-  const r = stage.getBoundingClientRect();
-  W = r.width; H = r.height;
-  cv.width = W*DPR; cv.height = H*DPR;
+  DPR=Math.min(devicePixelRatio||1,2);
+  const r=stage.getBoundingClientRect();
+  W=r.width;H=r.height;
+  cv.width=W*DPR;cv.height=H*DPR;
   ctx.setTransform(DPR,0,0,DPR,0,0);
 }
-window.addEventListener('resize', resize);
+addEventListener('resize',resize);
 
-/* ---- spherical layout: golden-angle spiral ---- */
-const nodes = NODES.map((n,i)=>{
-  const k = i+0.5;
-  const phi = Math.acos(1 - 2*k/NODES.length);
-  const theta = Math.PI*(1+Math.sqrt(5))*k;
-  return {...n,
-    x: Math.sin(phi)*Math.cos(theta),
-    y: Math.cos(phi),
-    z: Math.sin(phi)*Math.sin(theta)
-  };
+/* golden-angle spherical layout */
+const nodes=NODES.map((n,i)=>{
+  const k=i+.5, phi=Math.acos(1-2*k/NODES.length), th=Math.PI*(1+Math.sqrt(5))*k;
+  return {...n,x:Math.sin(phi)*Math.cos(th),y:Math.cos(phi),z:Math.sin(phi)*Math.sin(th)};
 });
 
-/* ---- state ---- */
-let rotY=0.4, rotX=-0.25, auto=true, velY=0.0045, velX=0.0008;
-let dragging=false,lx=0,ly=0, moved=false;
+let rotY=.5,rotX=-.28,auto=true,scale=1,zoom=1;
+let dragging=false,lx=0,ly=0,moved=false,pulseBoost=0;
 
 function project(n){
-  // rotate Y then X
-  const cy=Math.cos(rotY), sy=Math.sin(rotY);
-  let x = n.x*cy - n.z*sy;
-  let z = n.x*sy + n.z*cy;
-  const cx=Math.cos(rotX), sx=Math.sin(rotX);
-  let y = n.y*cx - z*sx;
-  z = n.y*sx + z*cx;
-  return {x,y,z};
+  const cy=Math.cos(rotY),sy=Math.sin(rotY);
+  let x=n.x*cy-n.z*sy, z=n.x*sy+n.z*cy;
+  const cx=Math.cos(rotX),sx=Math.sin(rotX);
+  let y=n.y*cx-z*sx; z=n.y*sx+z*cx;
+  return{x,y,z};
 }
 
-const R = () => Math.min(W,H)*0.36;
+/* ambient neural dust */
+const dust=Array.from({length:42},()=>({
+  x:Math.random(),y:Math.random(),s:Math.random()*1.4+.4,
+  vx:(Math.random()-.5)*.00022,vy:(Math.random()-.5)*.00018,a:Math.random()*.35+.08
+}));
 
-function draw(){
+function draw(now){
   ctx.clearRect(0,0,W,H);
-  const cx=W/2, cy=H/2, r=R();
+  const cx=W/2,cy=H/2,r=Math.min(W,H)*.335*zoom;
 
-  // subtle sphere wireframe (equator + meridian)
-  ctx.strokeStyle='rgba(77,159,255,.07)'; ctx.lineWidth=1;
-  for(const tilt of [0]){
-    ctx.beginPath();
-    for(let a=0;a<=64;a++){
-      const t=a/64*Math.PI*2;
-      let x=Math.cos(t), z=Math.sin(t), y=0;
-      // apply same rotation as nodes
-      const cyr=Math.cos(rotY),syr=Math.sin(rotY);
-      let rx=x*cyr-z*syr, rz=x*syr+z*cyr;
-      const cxr=Math.cos(rotX),sxr=Math.sin(rotX);
-      let ry=y*cxr-rz*sxr; rz=y*sxr+z*cxr;
-      const s=1/(1.9-rz*0.9);
-      const px=cx+rx*r*s*1.9*0.5+rx*r*0.5, py=cy+ry*r*s*1.9*0.5+ry*r*0.5;
-      a?ctx.lineTo(px,py):ctx.moveTo(px,py);
-    }
-    ctx.closePath();ctx.stroke();
+  /* dust field */
+  for(const d of dust){
+    d.x=(d.x+d.vx+1)%1; d.y=(d.y+d.vy+1)%1;
+    ctx.fillStyle=`rgba(148,197,255,${d.a})`;
+    ctx.fillRect(d.x*W,d.y*H,d.s,d.s);
   }
 
-  // project all
-  const P = nodes.map(n=>({n,p:project(n)}));
+  const P=nodes.map(n=>({n,p:project(n)}));
 
-  // edges first (behind)
-  for(const [a,b] of EDGES){
-    const A=P.find(o=>o.n.id===a), B=P.find(o=>o.n.id===b);
-    if(!A||!B) continue;
-    const depth=(A.p.z+B.p.z)/2;               // -1..1
-    const alpha=0.10+(depth+1)/2*0.38;
-    ctx.strokeStyle=`rgba(120,170,255,${alpha.toFixed(3)})`;
-    ctx.lineWidth=(A.p.z*B.p.z<0)?0.7:1.2;
-    ctx.beginPath();
-    ctx.moveTo(cx+A.p.x*r, cy+A.p.y*r);
-    ctx.lineTo(cx+B.p.x*r, cy+B.p.y*r);
-    ctx.stroke();
+  /* neural edges with signal packets */
+  for(const[a,b]of EDGES){
+    const A=P.find(o=>o.n.id===a),B=P.find(o=>o.n.id===b);
+    if(!A||!B)continue;
+    const depth=(A.p.z+B.p.z)/2, alpha=.08+(depth+1)/2*.34;
+    ctx.strokeStyle=`rgba(110,180,255,${alpha.toFixed(3)})`;
+    ctx.lineWidth=A.p.z*B.p.z<0?.7:1.25;
+    ctx.beginPath();ctx.moveTo(cx+A.p.x*r,cy+A.p.y*r);ctx.lineTo(cx+B.p.x*r,cy+B.p.y*r);ctx.stroke();
+    /* travelling signal dot along edge */
+    const t=((now*.00022)+((A.n.id.length+b.length)%7)/7)%1;
+    const px=cx+(A.p.x+(B.p.x-A.p.x)*t)*r, py=cy+(A.p.y+(B.p.y-A.p.y)*t)*r;
+    ctx.fillStyle=`rgba(0,255,255,${(.25+(A.p.z+B.p.z)).toFixed(2)} )`.replace(' ','');
+    ctx.beginPath();ctx.arc(px,py,1.6,0,7);ctx.fill();
   }
 
-  // nodes sorted back→front
+  /* nodes */
   P.sort((u,v)=>u.p.z-v.p.z);
-  for(const {n,p} of P){
-    const depth=(p.z+1)/2;                     // 0 back .. 1 front
-    const rad = 5+depth*9;
-    const x=cx+p.x*r, y=cy+p.y*r;
-    const glow = 0.25+depth*0.75;
-    // halo
-    const g=ctx.createRadialGradient(x,y,0,x,y,rad*3);
-    g.addColorStop(0, n.c+hex(glow*0.35));
-    g.addColorStop(1, n.c+'00');
-    ctx.fillStyle=g;
-    ctx.beginPath();ctx.arc(x,y,rad*3,0,7);ctx.fill();
-    // core dot
-    ctx.globalAlpha=0.45+depth*0.55;
+  for(const{n,p}of P){
+    const depth=(p.z+1)/2, rad=(4.5+depth*8)*zoom, x=cx+p.x*r,y=cy+p.y*r;
+    n._sx=x;n._sy=y;n._depth=depth;n._rad=rad;
+    if(depth<.02)continue;
+    /* halo */
+    const g=ctx.createRadialGradient(x,y,0,x,y,rad*3.4);
+    g.addColorStop(0,n.c+alphaHex(.32*depth+pulseBoost*.3));
+    g.addColorStop(1,n.c+'00');
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,rad*3.4,0,7);ctx.fill();
+    /* core */
+    ctx.globalAlpha=.45+depth*.55;
     ctx.fillStyle=n.c;
-    ctx.beginPath();ctx.arc(x,y,rad,0,7);ctx.fill();
+    ctx.beginPath();ctx.arc(x,y,rad*(1+pulseBoost*.25),0,7);ctx.fill();
+    /* inner white spark for front nodes */
+    if(depth>.75){ctx.fillStyle='rgba(255,255,255,.85)';
+      ctx.beginPath();ctx.arc(x-rad*.25,y-rad*.25,rad*.28,0,7);ctx.fill();}
     ctx.globalAlpha=1;
-    // label
-    if(depth>0.35){
-      ctx.font=`${(11+depth*5).toFixed(0)}px 'Segoe UI',sans-serif`;
+    /* label */
+    if(depth>.32){
+      ctx.font=`600 ${(10+depth*5).toFixed(0)}px 'Fira Code',monospace`;
       ctx.textAlign='center';
-      ctx.fillStyle='rgba(232,240,255,'+(0.35+depth*0.65).toFixed(2)+')';
-      ctx.fillText(n.t, x, y-rad-8);
+      ctx.shadowColor=n.c;ctx.shadowBlur=depth*9;
+      ctx.fillStyle=`rgba(232,240,255,${(.35+depth*.65).toFixed(2)})`;
+      ctx.fillText(n.t,x,y-rad-9);
+      ctx.shadowBlur=0;
     }
-    n._sx=x; n._sy=y; n._depth=depth; n._rad=rad;
   }
 }
-function hex(a){ return Math.round(Math.min(a,1)*255).toString(16).padStart(2,'0'); }
+const alphaHex=a=>Math.round(Math.min(a,1)*255).toString(16).padStart(2,'0');
 
-/* ---- loop ---- */
-let last=performance.now(), fpsAcc=0, fpsN=0;
+/* loop */
+let last=performance.now(),fAcc=0,fN=0;
 const fpsEl=document.getElementById('fps');
+const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function tick(now){
-  const dt=now-last; last=now;
-  if(auto){ rotY+=velY*dt*0.06; rotX+=Math.sin(now*0.00021)*0.00035; }
-  draw();
-  fpsAcc+=1000/Math.max(dt,1); fpsN++;
-  if(fpsN>=30){ fpsEl.textContent=Math.round(fpsAcc/fpsN); fpsAcc=0;fpsN=0; }
+  const dt=Math.max(now-last,1);last=now;
+  pulseBoost=Math.max(0,pulseBoost-dt*.0012);
+  if(auto&&!REDUCED&&!dragging){
+    rotY+=.0048*dt*.06;
+    rotX+=Math.sin(now*.00021)*.00032;
+  }
+  draw(now);
+  fAcc+=1000/dt;fN++;
+  if(fN>=30){fpsEl.textContent=Math.round(fAcc/fN);fAcc=0;fN=0;}
   requestAnimationFrame(tick);
 }
 
-/* ---- interaction: drag rotate ---- */
-stage.addEventListener('pointerdown', e=>{
+/* drag rotate (mouse + touch via pointer events) */
+stage.addEventListener('pointerdown',e=>{
   dragging=true;moved=false;lx=e.clientX;ly=e.clientY;
-  stage.classList.add('dragging'); stage.setPointerCapture(e.pointerId);
+  stage.classList.add('dragging');stage.setPointerCapture(e.pointerId);
 });
-stage.addEventListener('pointermove', e=>{
+stage.addEventListener('pointermove',e=>{
   if(!dragging)return;
-  const dx=e.clientX-lx, dy=e.clientY-ly;
+  const dx=e.clientX-lx,dy=e.clientY-ly;
   if(Math.abs(dx)+Math.abs(dy)>3)moved=true;
-  rotY+=dx*0.0075; rotX+=dy*0.0055;
-  rotX=Math.max(-1.2,Math.min(1.2,rotX));
+  rotY+=dx*.0075;rotX=Math.max(-1.25,Math.min(1.25,rotX+dy*.0055));
   lx=e.clientX;ly=e.clientY;
 });
-stage.addEventListener('pointerup', ()=>{dragging=false;stage.classList.remove('dragging');});
-stage.addEventListener('wheel', e=>{
+addEventListener('pointerup',()=>{dragging=false;stage.classList.remove('dragging');});
+stage.addEventListener('wheel',e=>{
   e.preventDefault();
-  scale=Math.max(0.6,Math.min(1.6,scale-e.deltaY*0.0012));
+  zoom=Math.max(.6,Math.min(1.7,zoom-e.deltaY*.0013));
 },{passive:false});
-let scale=1; // reserved for future zoom rendering
 
-/* ---- click picking -> bilingual card ---- */
+/* bilingual card */
 const card=document.getElementById('card');
 function showCard(n){
-  const isFa = n.df!==undefined;
   card.innerHTML=`
-    <span class="x" onclick="this.parentElement.classList.remove('on')">✕</span>
-    <h3 style="color:${n.c}">${n.t}</h3>
-    <div class="sub">${n.fa}</div>
-    <div class="row"><span class="flag fa-flag">فا</span><p dir="rtl">${n.df}</p></div>
-    <div class="row"><span class="flag en-flag">EN</span><p>${n.d}</p></div>`;
-  // position near node, clamped to stage
+   <span class="x" onclick="this.parentElement.classList.remove('on')">✕</span>
+   <h3 style="color:${n.c}">[ ${n.t} ]</h3>
+   <div class="sub">${n.fa}</div>
+   <div class="row"><span class="flag fa-flag">فا</span><p dir="rtl">${n.df}</p></div>
+   <div class="row"><span class="flag en-flag">EN</span><p>${n.d}</p></div>`;
   const sr=stage.getBoundingClientRect();
-  let x=n._sx+18, y=n._sy-20;
-  x=Math.min(x, sr.width-320); y=Math.min(y, sr.height-190);
-  card.style.left=x+'px'; card.style.top=Math.max(10,y)+'px';
+  let x=Math.min(Math.max(12,n._sx+22),sr.width-330);
+  let y=Math.min(Math.max(12,n._sy-30),sr.height-200);
+  card.style.left=x+'px';card.style.top=y+'px';
   card.classList.add('on');
 }
-stage.addEventListener('click', e=>{
-  if(moved) return;
+stage.addEventListener('click',e=>{
+  if(moved)return;
   const sr=stage.getBoundingClientRect();
-  const mx=e.clientX-sr.left, my=e.clientY-sr.top;
-  let best=null,bd=28;
+  const mx=e.clientX-sr.left,my=e.clientY-sr.top;
+  let best=null,bd=30;
   for(const n of nodes){
-    if(n._depth===undefined||n._depth<0.25)continue;
-    const d=Math.hypot(mx-n._sx,my-n._sy);
-    if(d<bd+ n._rad){best=n;break;}
+    if((n._depth||0)<.25)continue;
+    if(Math.hypot(mx-n._sx,my-n._sy)<bd+n._rad){best=n;break;}
   }
   best?showCard(best):card.classList.remove('on');
 });
 
-/* ---- controls ---- */
-document.querySelectorAll('#controls .ctl[data-mode]').forEach(b=>{
+/* controls */
+document.querySelectorAll('#controls [data-mode]').forEach(b=>{
   b.addEventListener('click',()=>{
     document.querySelectorAll('#controls .ctl').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    auto = b.dataset.mode==='rotate';
+    b.classList.add('active');auto=b.dataset.mode==='rotate';
   });
 });
 document.getElementById('reset').addEventListener('click',()=>{
-  rotY=0.4;rotX=-0.25;scale=1;auto=true;
+  rotY=.5;rotX=-.28;zoom=1;auto=true;
   document.querySelectorAll('#controls .ctl').forEach((x,i)=>x.classList.toggle('active',i===0));
 });
+document.getElementById('burst').addEventListener('click',()=>{pulseBoost=1;});
 
-/* ---- legend ---- */
+/* legend */
 const lg=document.getElementById('legend');
-NODES.forEach(n=>{
-  lg.insertAdjacentHTML('beforeend',
-    `<span class="lg"><span class="dot" style="background:${n.c};box-shadow:0 0 6px ${n.c}"></span>${n.fa}</span>`);
-});
+NODES.forEach(n=>lg.insertAdjacentHTML('beforeend',
+  `<span class="lg"><span class="dot" style="background:${n.c};box-shadow:0 0 7px ${n.c}"></span>${n.fa}</span>`));
 
-/* ---- reduced motion respect ---- */
-if(matchMedia('(prefers-reduced-motion: reduce)').matches){ auto=false;
+/* sync SVG fx layer rotation speed with auto-rotate pause */
+const fxOrbit=document.getElementById('orbit'),fxSweep=document.getElementById('sweep');
+if(REDUCED){
+  auto=false;
   document.querySelector('[data-mode="pause"]').classList.add('active');
   document.querySelector('[data-mode="rotate"]').classList.remove('active');
+}else{
+  /* animate SVG via rAF so it pauses with the sphere */
+  let ang=0,lastT=performance.now();
+  (function spinFx(t){
+    const dt=t-lastT;lastT=t;
+    if(auto&&!dragging){ang+=dt*.012;
+      fxOrbit.setAttribute('transform',`rotate(${-ang*.4} 500 281)`);
+      fxSweep.setAttribute('transform',`rotate(${ang} 500 281)`);}
+    requestAnimationFrame(spinFx);
+  })(lastT);
 }
 
 resize();
