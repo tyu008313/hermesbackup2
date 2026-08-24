@@ -99,7 +99,7 @@ def main():
         print("Usage: gws_bridge.py <gws args...>", file=sys.stderr)
         sys.exit(1)
 
-    access_token = get_valid_token()
+    access_token = ****REDACTED****()
     env = os.environ.copy()
     env["GOOGLE_WORKSPACE_CLI_TOKEN"] = access_token
 

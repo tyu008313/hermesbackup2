@@ -81,7 +81,7 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     files = []
     for pageno in pages:
-        img = _raster.rasterize_page(args.pdf, pageno, dpi=args.dpi, password=args.password)
+        img = _raster.rasterize_page(args.pdf, pageno, dpi=args.dpi, password=****REDACTED****)
         if img is None:
             json.dump({"rendered": False, "missing": _raster.missing_hints()}, sys.stdout)
             print()

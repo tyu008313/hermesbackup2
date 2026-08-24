@@ -414,8 +414,7 @@ lm_eval --model openai-chat-completions \
 
 Check API key:
 ```bash
-echo $OPENAI_API_KEY  # Should print sk-...
-echo $ANTHROPIC_API_KEY  # Should print sk-ant-...
+echo $OPENAI_API_KEY  # Should print ****MASKED_TOKEN**** $ANTHROPIC_API_KEY  # Should print sk-ant-...
 ```
 
 ### "Rate limit exceeded"

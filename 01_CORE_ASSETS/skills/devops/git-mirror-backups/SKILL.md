@@ -62,7 +62,7 @@ cron (no_agent) -> run_backup.sh:
   patterns must cover: provider PAT prefixes (`gh[pousr]_`, `github_pat_`),
   `sk-` keys, AWS AKIA, Slack `xox`, Telegram `bot<id>:<tok>`, Bearer/auth
   headers, generic `key=value` assignments ≥12 chars, AND *partially masked*
-  leftovers like `ghp_HN...bYAa` from upstream redactors. Inject the exact
+  leftovers like `****MASKED_TOKEN****` from upstream redactors. Inject the exact
   literal(s) in use via env var for belt-and-suspenders matching.
 - **Verify scrubs with word boundaries.** `\bsk-[A-Za-z0-9]{20,}\b` false-positives
   inside words like `task-concurrency-diagnosis` — always use `\b...\b` and check

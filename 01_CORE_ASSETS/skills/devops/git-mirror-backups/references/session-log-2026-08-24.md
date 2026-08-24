@@ -22,7 +22,7 @@ preserve the class-level shape.
 1. The live session transcript itself contained a real PAT (user pasted it as
    their first message). It flowed: chat → state.db → transcript export → would
    have been public. Caught pre-push by scanning the export tree.
-2. Hermes-side redaction leaves partially-masked forms (`ghp_HN...bYAa`) in tool
+2. Hermes-side redaction leaves partially-masked forms (`****MASKED_TOKEN****`) in tool
    output stored in the DB — plain full-token regexes miss these; added a
    masked-form pattern (`prefix + digits…dots…suffix`) that caught 3 more files.
 

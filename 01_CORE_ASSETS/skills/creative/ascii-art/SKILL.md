@@ -204,8 +204,7 @@ sudo snap install ascii-image-converter
 ```
 
 ```bash
-ascii-image-converter image.png                  # Basic
-ascii-image-converter image.png -C               # Color output
+ascii-image-converter image.png                  # Basic ****REDACTED**** image.png -C               # Color output
 ascii-image-converter image.png -d 60,30         # Set dimensions
 ascii-image-converter image.png -b               # Braille characters
 ascii-image-converter image.png -n               # Negative/inverted

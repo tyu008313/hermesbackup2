@@ -131,7 +131,7 @@ def main(argv: list[str] | None = None) -> int:
         }))
         return 1
 
-    api_key = resolve_api_key(args.api_key)
+    api_key = ****REDACTED****(args.api_key)
     cloud = is_cloud_host(args.host)
     client_id = args.client_id or new_client_id()
 
