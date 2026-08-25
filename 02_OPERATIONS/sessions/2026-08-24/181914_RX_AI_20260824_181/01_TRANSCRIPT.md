@@ -4,7 +4,7 @@
 > **Source:** telegram | **Platform chat:** `7025776524`  
 > **Started:** 2026-08-24 18:19:14 UTC  
 > **Ended:** —  
-> **Model:** `X-muse` | **Messages:** 77 | **Tool calls:** 37
+> **Model:** `X-muse` | **Messages:** 109 | **Tool calls:** 47
 
 ---
 
@@ -645,6 +645,477 @@ Response truncated due to output length limit
 
 
 {"todos": [{"id": "recon", "content": "Load design/github skills, check gh auth & API access", "status": "completed"}, {"id": "apitest", "content": "Smoke-test 9router API with X-muse model", "status": "completed"}, {"id": "build", "content": "Build glassmorphism AI chat site (HTML, SVG motion)", "status": "in_progress"}, {"id": "publish", "content": "Create public repo + GitHub Pages + verify live link", "status": "pending"}, {"id": "test100", "content": "Run 100 automated tests against X-muse", "status": "pending"}], "summary": {"total": 5, "pending": 2, "in_progress": 1, "completed": 2, "cancelled": 0}}
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-25 14:15:26 UTC</summary>
+
+
+BACKUP LIST
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 14:15:39 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-25 14:15:40 UTC (`terminal`)</summary>
+
+
+{"output": "=== LAST UPDATE ===\n2026-08-25 12:28 UTC — 74f05c6\n\n=== RECENT BACKUPS (newest first) ===\n2026-08-25 12:28 UTC | 74f05c6 | backup: auto-sync 2026-08-25 12:28 UTC — sessions/assets/dashboard [no-llm]\n2026-08-25 00:28 UTC | 1757137 | backup: auto-sync 2026-08-25 00:28 UTC — sessions/assets/dashboard [no-llm]\n2026-08-24 19:13 UTC | 0e60a3c | backup: auto-sync 2026-08-24 19:13 UTC — sessions/assets/dashboard [no-llm]\n2026-08-24 16:40 UTC | c253f2c | backup: auto-sync 2026-08-24 16:40 UTC — sessions/assets/dashboard [no-llm]\n2026-08-24 16:28 UTC | eaba411 | backup: auto-sync 2026-08-24 16:28 UTC — sessions/assets/dashboard [no-llm]\n2026-08-24 13:14 UTC | 3fd111c | backup: auto-sync 2026-08-24 13:14 UTC — sessions/assets/dashboard [no-llm]\n2026-08-24 13:13 UTC | 62a3728 | backup: auto-sync 2026-08-24 13:13 UTC — sessions/assets/dashboard [no-llm]\n2026-08-24 12:28 UTC | 5f430e6 | backup: auto-sync 2026-08-24 12:28 UTC — sessions/assets/dashboard [no-llm]\n2026-08-24 12:22 UTC | 39ba36b | backup: auto-sync 2026-08-24 12:22 UTC — sessions/assets/dashboard [no-llm]\n2026-08-23 12:00 UTC | c7cf8dd | 🚀 SOP Backup: 2026-08-23 12:00:28\n2026-08-23 00:00 UTC | 69b909b | 🚀 SOP Backup: 2026-08-23 00:00:42\n2026-08-22 17:59 UTC | dbb7e6e | 🚀 SOP Backup: 2026-08-22 17:59:35\n2026-08-22 17:58 UTC | 5609983 | 🚀 SOP Backup: 2026-08-22 17:58:53\n2026-08-22 12:00 UTC | 4e8e02f | 🚀 SOP Backup: 2026-08-22 12:00:30\n2026-08-22 00:00 UTC | 36cf214 | 🚀 SOP Backup: 2026-08-22 00:00:13\n\n=== WORKING TREE ===\nCLEAN — everything committed", "exit_code": 0, "error": null}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 14:15:58 UTC</summary>
+
+
+📋 **لیست بکاپ‌ها**
+
+**آخرین آپدیت:** 2026-08-25 ساعت 12:28 UTC — کامیت `74f05c6`
+
+**۱۵ بکاپ اخیر:**
+
+| تاریخ (UTC) | SHA | توضیح |
+|---|---|---|
+| 08-25 12:28 | `74f05c6` | auto-sync (کرون) |
+| 08-25 00:28 | `1757137` | auto-sync (کرون) |
+| 08-24 19:13 | `0e60a3c` | auto-sync (دستی — همون که من زدم) |
+| 08-24 16:40 | `c253f2c` | auto-sync |
+| 08-24 16:28 | `eaba411` | auto-sync |
+| 08-24 13:14 | `3fd111c` | auto-sync |
+| 08-24 13:13 | `62a3728` | auto-sync |
+| 08-24 12:28 | `5f430e6` | auto-sync |
+| 08-24 12:22 | `39ba36b` | auto-sync |
+| 08-23 12:00 | `c7cf8dd` | 🚀 SOP Backup |
+| 08-23 00:00 | `69b909b` | 🚀 SOP Backup |
+| 08-22 17:59 | `dbb7e6e` | 🚀 SOP Backup |
+| 08-22 17:58 | `5609983` | 🚀 SOP Backup |
+| 08-22 12:00 | `4e8e02f` | 🚀 SOP Backup |
+| 08-22 00:00 | `36cf214` | 🚀 SOP Backup |
+
+✅ **Working tree:** تمیز — همه‌چیز کامیت شده
+
+کرون ۱۲ ساعته هم داره درست کار می‌کنه (آخرینش امروز 12:28). سایت شیشه‌ای همون‌جای قبلی موند — بگی «ادامه» از ساختن HTML می‌رم جلو.
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-25 16:50:44 UTC</summary>
+
+
+وایب کدینگ بهتره برای اینده یا کدنویسی دستی
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 16:51:26 UTC</summary>
+
+
+سوال خوبیه — جواب صادقانه: **هیچ‌کدام به تنهایی، ترکیبش آینده‌ست** 🎯
+
+**Vibe Coding (دستیور به AI):**
+- ✅ سرعت ۱۰ برابر — پروتوتایپ، MVP، ابزار شخصی، ایده‌پردازی
+- ✅ مثل همین الان: تو فقط میگی چی میخوای، من میسازم
+- ❌ وقتی چیز خراب شد و نفهمی چرا، گیر میکنی
+- ❌ امنیت و باگ‌های پنهان — AI با اعتماد کد میده، تو نمیتونی راستی‌آزمایی کنی
+
+**کدنویسی دستی:**
+- ✅ درک عمیق — دیباگ سیستم‌های پیچیده، بهینه‌سازی، سیستم‌های حساس (بانکی، پزشکی)
+- ✅ مبنای قضاوت — بدون فاندامنت نمیفهمی خروجی AI کجاش غلطه
+- ❌ کند برای کارهای تکراری و boilerplate
+
+**آینده واقعی:**
+مهارت جدید «**مهندسی با قضاوت**» هست — کسی که هم مفهوم رو میفهمه هم از AI به عنوان اهرم استفاده میکنه. یعنی:
+
+> فاندامنت یاد بگیر (منطق، معماری، امنیت) + VibeCoding کن = ۱۰x
+
+اونایی که صفرِ کدنویسی فقط vibe کنن، تا سطح «دموی قشنگ» پیش میرن و دیگه جلوتر نمیتونن برن. اونایی که فقط دستی کد بزنن و AI رو رد کنن، از نظر سرعت حذف میشن.
+
+تجربه‌ی خودت بهترین مثله: داشبورد brain.html و این سایت‌هایی که داریم میسازیم — تو استراتژی و سلیقه رو داری، اجرا رو AI میکنه. ولی اینکه بدونی «توکن نباید تو ریپو پابلیک شه» یا «scrub قبل از push» — این قضاوته، نه vibe 😎
+
+الان ادامه‌ی سایت شیشه‌ای رو بریم؟
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-25 17:12:10 UTC</summary>
+
+
+نه میخام یک دوره یک هفته امنیت جامع ای و پایه وبسایت وایب کدینگ با استفاده از ابزار های هوش مصونوعی و اسکیلهال بریم جلو
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:13:06 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-25 17:42:24 UTC (`clarify`)</summary>
+
+
+{"responses": [{"id": "audience", "question": "این دوره برای کیه؟", "choices_offered": null, "user_response": "برا من"}, {"id": "format", "question": "شکل ارائه دوره چطور باشه؟", "choices_offered": null, "user_response": "پروژه محور + با منبع+ اسکیل +AI"}, {"id": "level", "question": "سطح فعلی تو نسبت به وب و کدنویسی؟", "choices_offered": null, "user_response": "متوسط"}]}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:42:37 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-25 17:42:37 UTC (`todo`)</summary>
+
+
+{"todos": [{"id": "recon", "content": "Load design/github skills, check gh auth & API access", "status": "completed"}, {"id": "apitest", "content": "Smoke-test 9router API with X-muse model", "status": "completed"}, {"id": "build", "content": "Build glassmorphism AI chat site (HTML, SVG motion)", "status": "in_progress"}, {"id": "publish", "content": "Create public repo + GitHub Pages + verify live link", "status": "pending"}, {"id": "test100", "content": "Run 100 automated tests against X-muse", "status": "pending"}, {"id": "course-design", "content": "Design 7-day course: web security + vibe coding + AI tools + skills", "status": "in_progress"}, {"id": "course-site", "content": "Build interactive course site (RTL, glass, SVG motion) with lessons", "status": "pending"}, {"id": "course-publish", "content": "Publish course to GitHub Pages, verify live", "status": "pending"}, {"id": "chat-site", "content": "(paused) AI chat site build+publish+100 tests", "status": "pending"}], "summary": {"total": 9, "pending": 5, "in_progress": 2, "completed": 2, "cancelled": 0}}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:42:44 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-25 17:42:44 UTC (`todo`)</summary>
+
+
+{"todos": [{"id": "recon", "content": "Load design/github skills, check gh auth & API access", "status": "completed"}, {"id": "apitest", "content": "Smoke-test 9router API with X-muse model", "status": "completed"}, {"id": "course-design", "content": "Design 7-day course: web security + vibe coding + AI tools + skills", "status": "in_progress"}, {"id": "build", "content": "Build glassmorphism AI chat site (HTML, SVG motion)", "status": "pending"}, {"id": "publish", "content": "Create public repo + GitHub Pages + verify live link (chat site)", "status": "pending"}, {"id": "test100", "content": "Run 100 automated tests against X-muse", "status": "pending"}, {"id": "course-site", "content": "Build interactive course site (RTL, glass, SVG motion) with lessons", "status": "pending"}, {"id": "course-publish", "content": "Publish course to GitHub Pages, verify live", "status": "pending"}, {"id": "chat-site", "content": "(paused) AI chat site build+publish+100 tests", "status": "pending"}], "summary": {"total": 9, "pending": 6, "in_progress": 1, "completed": 2, "cancelled": 0}}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:43:51 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-25 17:43:51 UTC (`write_file`)</summary>
+
+
+{"bytes_written": 6485, "dirs_created": true, "verified": true, "lint": {"status": "skipped", "message": "No linter for .md files"}, "resolved_path": "/data/workspace/course_7day.md", "files_modified": ["/data/workspace/course_7day.md"]}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:43:58 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-25 17:43:58 UTC (`todo`)</summary>
+
+
+{"todos": [{"id": "recon", "content": "Load design/github skills, check gh auth & API access", "status": "completed"}, {"id": "apitest", "content": "Smoke-test 9router API with X-muse model", "status": "completed"}, {"id": "course-design", "content": "Design 7-day course: web security + vibe coding + AI tools + skills", "status": "completed"}, {"id": "course-site", "content": "Build interactive course site (RTL, glass, SVG motion) with lessons", "status": "in_progress"}, {"id": "build", "content": "Build glassmorphism AI chat site (HTML, SVG motion)", "status": "pending"}, {"id": "publish", "content": "Create public repo + GitHub Pages + verify live link (chat site)", "status": "pending"}, {"id": "test100", "content": "Run 100 automated tests against X-muse", "status": "pending"}, {"id": "course-publish", "content": "Publish course to GitHub Pages, verify live", "status": "pending"}, {"id": "chat-site", "content": "(paused) AI chat site build+publish+100 tests", "status": "pending"}], "summary": {"total": 9, "pending": 5, "in_progress": 1, "completed": 3, "cancelled": 0}}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:48:31 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-25 17:48:31 UTC (`write_file`)</summary>
+
+
+{"bytes_written": 15718, "dirs_created": true, "verified": true, "lint": {"status": "skipped", "message": "No linter for .html files"}, "resolved_path": "/data/workspace/course-site/index.html", "files_modified": ["/data/workspace/course-site/index.html"]}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:51:48 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-25 17:51:48 UTC</summary>
+
+
+درس به درس برو
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:52:12 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-25 17:52:12 UTC (`todo`)</summary>
+
+
+{"todos": [{"id": "recon", "content": "Load design/github skills, check gh auth & API access", "status": "completed"}, {"id": "apitest", "content": "Smoke-test 9router API with X-muse model", "status": "completed"}, {"id": "course-design", "content": "Design 7-day course: web security + vibe coding + AI tools + skills", "status": "completed"}, {"id": "teach-l1", "content": "Teach course lesson-by-lesson in chat (Lesson 1 = Day 1)", "status": "in_progress"}, {"id": "course-site", "content": "Build interactive course site (RTL, glass, SVG motion) with lessons", "status": "pending"}, {"id": "build", "content": "Build glassmorphism AI chat site (HTML, SVG motion)", "status": "pending"}, {"id": "publish", "content": "Create public repo + GitHub Pages + verify live link (chat site)", "status": "pending"}, {"id": "test100", "content": "Run 100 automated tests against X-muse", "status": "pending"}, {"id": "course-publish", "content": "Publish course to GitHub Pages, verify live", "status": "pending"}, {"id": "chat-site", "content": "(paused) AI chat site build+publish+100 tests", "status": "pending"}], "summary": {"total": 10, "pending": 6, "in_progress": 1, "completed": 3, "cancelled": 0}}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:52:32 UTC</summary>
+
+
+*(empty)*
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-25 17:52:32 UTC (`write_file`)</summary>
+
+
+{"bytes_written": 1394, "dirs_created": true, "verified": true, "lint": {"status": "skipped", "message": "No linter for .md files"}, "resolved_path": "/data/workspace/course_progress.md", "files_modified": ["/data/workspace/course_progress.md"]}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:53:19 UTC</summary>
+
+
+تمام! 🚀 پس سایت و ابزارها رو کنار می‌ذاریم — **معلمت هستم، درس به درس جلو میریم.** پیشرفتت رو اینجا توی فایل `course_progress.md` ثبت می‌کنم.
+
+---
+
+# 📖 درس ۱ — پایه وب برای Vibe Coding
+
+## ۱) وب چطور کار میکنه؟ (۳ دقیقه)
+
+وقتی آدرسی رو باز میکنی این اتفاق میفته:
+
+```
+تو → مرورگر → DNS (پیدا کردن IP سرور) → درخواست HTTP(S)
+سرور ← پردازش ← پاسخ (HTML + CSS + JS) → مرورگر رندر میکنه
+```
+
+- **HTML** = اسکلت بدن (ساختار و محتوا)
+- **CSS** = ظاهر و استایل
+- **JS** = مغز و حرکت (تعامل)
+
+🔒 **نکته امنیتی اول:** HTTPS یعنی این مسیر رمزنگاری شده. اگه سایتی HTTP خالی بده یا صفحه HTTPS اش فایل از HTTP لود کنه (**Mixed Content**)، یه هکر روی همون وای‌فای میتونه داده‌ها رو ببینه.
+
+## ۲) قانون طلایی که کل دوره روش میچرخه
+
+> **«کلید و توکن هیچ‌وقت توی کد فرانت‌اند (HTML/JS سمت مرورگر) نمیاد.»**
+
+هرچی توی مرورگر کاربر باشه = عمومی. یادته توکن 9router رو ریختم توی فایل مخفی روی سرور، نه توی HTML؟ همین قانونه. وقتی AI بهت کدی میده که API key رو مستقیم توی JS گذاشته — **ردش کن.**
+
+## ۳) پروژه امروز: DevTools + اولین صفحه با دست ✍️
+
+بدون AI، بدون کپی پیست — فقط برای اینکه حس کنترل بگیری:
+
+**قدم ۱:** مرورگرت باز کن → `F12` بزن → این ۴ تب رو ۲ دقیقه نگاه کن:
+- **Elements**: ساختار HTML صفحه فعلی — راست‌کلیک → Inspect روی هر چیزی
+- **Console**: جایی که خطاها میان؛ توش بنویس `alert('salam')`
+- **Network**: صفحه رو رفرش کن — ببین چند تا درخواست میره
+- **Application**: کوکی‌ها و localStorage سایت‌هایی که واردشون شدی 🔒(دیتای حساس اینجاست!)
+
+**قدم ۲:** یه فایل بساز اسمش `index.html` (با Notepad یا هر ادیتوری) و اینو **بنویس، نه کپی**:
+
+```html
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رضا | تست</title>
+</head>
+<body>
+  <h1>سلام، من رضا هستم</h1>
+  <p>این اولین صفحه‌ایه که خودم نوشتم.</p>
+</body>
+</html>
+```
+
+فایل رو با مرورگر باز کن. تمام — اولین وب‌پیجت آنلاین شد (روی سیستم خودت).
+
+---
+
+## 🎯 تکلیف درس ۱
+۱. توی Console مرورگر اینو بزن و ببین چی میشه: `document.querySelector('h1').style.color = 'cyan'`
+۲. به صفحه‌ات یه `<ul>` با ۳ تا `<li>` اضافه کن (علایقت)
+۳. سوال امنیتی: چرا سایت‌های بانکی اجازه نمیدن صفحشون توی iframe سایت دیگه باز بشه؟ (حدس بزن، فردا جوابش میاد)
+
+هر وقت تمومش کردی بگو **«درس ۱ تموم»** تا بریم سراغ درس ۲ (JavaScript و API ها). سوالی داشتی همینجا بپرس 💪
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-25 17:56:17 UTC</summary>
+
+
+جوری برو انگار درای به بچه 5 ساله توضیح میدی
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 17:57:12 UTC</summary>
+
+
+باشه! 🧸 از اول، خیلی ساده:
+
+---
+
+# 📖 درس ۱ برای بچه‌ها 😄
+
+## ۱) وب یعنی چی؟
+
+تصور کن **اینترنت یه شهر بزرگه** پر از خونه 🏠🏠🏠
+
+- هر **سایت = یه خونه**
+- هر **آدرس (مثل google.com) = آدرس خونه**
+- **مرورگرت (کروم/فایرفاکس) = ماشینیه** که میره اون خونه و برات عکسش رو میاره
+
+وقتی میزنی `google.com`:
+1. ماشین میپرسه: «خونه‌ی گوگل کجاست؟» 🗺️ (این میشه **DNS**)
+2. میره دم در خونه و زنگ میزنه 🔔
+3. گوگل براش یه جعبه کادو میفرسته 🎁 (این میشه **HTML**)
+4. مرورگر جعبه رو باز میکنه و صفحه رو میسازی! ✨
+
+## ۲) سه تا دوست داخل جعبه 🎁
+
+| دوست | کارش | مثل... |
+|---|---|---|
+| **HTML** | استخوان‌بندی | بدن عروسک 🦴 |
+| **CSS** | لباس و آرایش | لباس و موهای عروسک 👗 |
+| **JS** | حرکت دادن | وقتی عروسک حرف میزنه و تکون میخوره 🤖 |
+
+## ۳) راز بزرگ: کلید خونه 🔑
+
+تو یه **کلید طلایی** داری (همون توکن API).
+
+> قانون: **کلید خونه‌ات رو هیچ‌وقت نذار پشت گلدان!** 🪴❌
+
+چون هرکی از خیابون رد شه میتونه ببینتش و بزنه تو خونه‌ات. کدهایی که توی مرورگر باز میشن (HTML/JS) = **جلو درِ خونه، تمعمه دید همه**. پس کلید فقط میره تو اتاق مخفی سرور 🔒
+
+## ۴) بازی امروز: ذره‌بین جادویی 🔍
+
+مرورگر یه **ذره‌بین جادویی** داره که باهاش میتونی تو خونه‌ی هر سایتی رو بگردی!
+
+**بازی ۱:** هر سایتی که دوست داری باز کن → دکمه `F12` کیبورد رو بزن → یه پنجره جادویی باز میشه!
+- تب **Elements** = دیوارای خونه رو نشونت میده 🧱
+- روی هر کلمه‌ای تو صفحه راست‌کلیک کن → «Inspect» بزن → ببین کلمه کجای خونه‌ست!
+
+**بازی ۲:** بریم تب **Console** (همون پنجره جادویی) و به صفحه دستور بدیم:
+
+```js
+document.querySelector('h1').style.color = 'pink'
+```
+
+بزنش! 🎨 عنوان سایت صورتی شد؟ تو الان جادوگری کردی!
+
+**بازی ۳:** بساز خونه‌ی خودت رو! یه فایل متنی بساز اسمش `index.html` و اینو بنویس (با دست، نه کپی ✍️):
+
+```html
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+  <h1>من رضا ام!</h1>
+  <p>این خونه‌ی منه.</p>
+</body>
+</html>
+```
+
+بعدش فایل رو با مرورگر باز کن — **اولین خونه‌ی اینترنتیت آماده‌ست!** 🏡🎉
+
+---
+
+## 🎯 تکلیف شب 😴
+۱. با همون دستور جادویی، رنگ h1 خونه‌ی خودت رو **آبی** کن (`'blue'`)
+۲. به خونه‌ات لیست علاقه‌مندی‌هات رو اضافه کن:
+```html
+<ul><li>بازی</li><li>پیتزا</li><li>...</li></ul>
+```
+۳. فکر کن: اگه کلید خونه‌ت رو پشت گلدان بذاری چی میشه؟ 🪴🔑
+
+تموم که شد بگو «**درس ۱ تموم**» تا بریم درس ۲: یاد بگیریم عروسکمون حرف بزنه! 🤖💬
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-25 19:17:44 UTC</summary>
+
+
+چجوری حافظه مرورگرم رو تو لبتاپ پاک کنمهمون کش منظورمه
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 19:18:10 UTC</summary>
+
+
+ساده‌ست! 😄 توی ویندوز، همه مرورگرهای اصلی یه میانبر مشترک دارن:
+
+## 🧹 پاک کردن کش (Chrome / Edge / Firefox)
+
+۱. مرورگر رو باز کن
+۲. بزن: **`Ctrl + Shift + Delete`** (همزمان)
+۳. یه پنجره باز میشه — اینجا دقت کن:
+
+| گزینه | چی پاک میشه |
+|---|---|
+| **Cached images and files** ✅ | فقط کش — عکس و فایل موقت (اینو میخوای) |
+| Cookies and site data | خروج میشی از همه سایتا! ⚠️ |
+
+۴. بازه زمانی رو بذار **All time** (همه زمان‌ها)
+۵. تیک **Cached images and files** رو بزن
+۶. دکمه **Clear data / پاک کردن داده‌ها** ✨
+
+## ⚡ میانبر سریع‌تر
+
+اگه فقط میخوای یه صفحه خاص رو بدون پاک کردن کل کش، رفرش کن با:
+
+- **`Ctrl + F5`** یا **`Ctrl + Shift + R`**
+
+این میگه «کش رو نگاه نکن، از نو بیار» — برای وقتی که سایتی آپدیت شده ولی نسخه قدیمی رو میبینی عالیه.
+
+---
+
+💡 **نکته:** اگه صفحه‌ای درست لود نمیشه، اول `Ctrl + F5` بزن؛ اگه درست نشد بعد کل کش رو پاک کن. نیازی نیست هر هفته کل کش رو پاک کنی — مرورگر خودش مدیریتش میکنه، فقط وقتی داری پر میشه یا رفتار عجیب دیدی دست بزن 🧽
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-25 20:10:45 UTC</summary>
+
+
+BACKUP
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-25 20:11:07 UTC</summary>
+
+
+*(empty)*
 
 </details>
 
