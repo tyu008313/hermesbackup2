@@ -8,8 +8,8 @@ STATUS: LIVE. Pages serve brain.html + BRAIN3D.html (ui-ux-pro-max skill under c
 §
 Landing reza-landing DELETED 2026-08-24. Private repos lack Pages (422) - publish sites in PUBLIC repos only. CTA handle: @RG7YT.
 §
-User profile: REZA, Persian speaker - reply in Persian. Telegram handle @RG7YT. Design taste: dark, neon-glow, futuristic, interactive (360-degree rotation), bilingual FA+EN outputs. Expects every repo section kept in sync and human-readable; recurring jobs run script-only (no LLM tokens); gives quick decisive commands.
+User profile: REZA, Persian speaker, Telegram handle @RG7YT. Design taste: dark, neon-glow, futuristic, interactive (360-degree rotation), bilingual FA+EN outputs. Expects every repo section kept in sync and human-readable; recurring jobs run script-only (no LLM tokens); gives quick decisive commands.
 §
-REZA is mid-way through a 7-day course (web basics + security + vibe coding) taught lesson-by-lesson in chat; started lesson 1 on 2026-08-25. Teaching style he asked for: ELI5-simple Persian, everyday analogies, small hands-on homework. Plan + progress: course_7day.md / course_progress.md in /data/workspace.
+REZA is taking a 7-day web security + vibe coding course (Lesson 1 completed, ready for L2), taught ELI5-simple Persian with everyday analogies and small hands-on homework. Course artifacts: /data/workspace/course_7day.md, /data/workspace/course_progress.md, and a public GitHub Pages site (glassmorphism/SVG motion).
 §
-9router AI API: https://9router-production-df048.up.railway.app/v1, custom model X-muse (smoke-tested OK). Token lives in /data/workspace/.secrets/9router_token (never inline). Router quirks: JSON reply served as text/event-stream with trailing 'data: [DONE]' → parse with json raw_decode; intermittent 503s → retry. Tester script: /data/workspace/test_xmuse.py.
+9router AI API: https://9router-production-df048.up.railway.app/v1, custom model X-muse (smoke-tested OK). Ox-alpha / GLM 5.3 FLASH model NOT found on 9router. Token lives in /data/workspace/.secrets/9router_token (never inline). Router quirks: JSON reply served as text/event-stream with trailing 'data: [DONE]' → parse with json raw_decode; intermittent 503s → retry. Tester script: /data/workspace/test_xmuse.py.

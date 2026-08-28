@@ -4,7 +4,7 @@
 > **Source:** telegram | **Platform chat:** `7025776524`  
 > **Started:** 2026-08-24 18:19:14 UTC  
 > **Ended:** —  
-> **Model:** `Google` | **Messages:** 137 | **Tool calls:** 56
+> **Model:** `Google` | **Messages:** 151 | **Tool calls:** 58
 
 ---
 
@@ -1450,6 +1450,469 @@ Still a syntax error. It seems to be an issue with how the string is being escap
 آیا می‌خوای با همون `X-muse` ادامه بدیم، یا از مدل دیگه‌ای استفاده کنیم که در لیست 9router موجوده؟
 
 اگر اسم دقیق دیگه‌ای از `GLM 5.3 FLASH` یا `Ox-alpha` داری که ممکنه توی 9router متفاوت باشه، لطفاً بهم بگو تا دوباره جستجو کنم.
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-27 15:27:04 UTC</summary>
+
+
+یک پرامپت هم بریا این بنویس هرمس بعدی هم بتونه به کاری که میکنیم ادامه و بفهمهمن کیم و گیت هاب رو همونجوری که گفتم ادراه کن
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-27 15:27:15 UTC</summary>
+
+
+باشه، برای اینکه Hermes بعدی کاملاً در جریان باشه، از ابزار `memory` استفاده می‌کنم تا تمام جزئیات مهم رو به حافظه‌اش اضافه کنم. این‌طوری در هر گفت‌وگو از این اطلاعات استفاده می‌کنه و نیازی به تکرار نیست.
+
+**خلاصه‌ای از آنچه به حافظه اضافه یا به‌روز می‌کنم:**
+- **مشخصات شما (REZA):** فارسی‌زبان، سلیقه طراحی خاص (دارک، نئون، گلاسمورفیسم، تعاملی، دو زبانه).
+- **وضعیت فعلی دوره:** روز اول (Lesson 1) کامل شده و آماده‌ایم بریم سراغ روز دوم (Lesson 2).
+- **مدل‌های AI در 9router:** مدل `X-muse` کار می‌کنه، اما `Ox-alpha` (یا `GLM 5.3 FLASH`) در حال حاضر در 9router پیدا نشد.
+- **مدیریت GitHub Pages:** ریپو عمومی، تم گلاسمورفیسم با SVG motion برای سایت دوره، همه بخش‌ها sync و خوانا باشند، کرون‌جاب‌ها فقط اسکریپتی (بدون LLM tokens).
+- **فایل‌های دوره:** `course_7day.md` و `course_progress.md` در `/data/workspace`.
+- **روش تدریس:** ساده، مثال‌های روزمره، تکلیف‌های عملی کوچک.
+
+این اطلاعات الان تا حد زیادی در حافظه موجود هستند، اما من موارد مربوط به دوره و وضعیت مدل‌ها را دقیق‌تر می‌کنم.
+
+**این‌طوری حافظه برای Hermes بعدی کامل میشه:**
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-27 15:27:15 UTC (`memory`)</summary>
+
+
+{"success": true, "done": true, "target": "memory", "usage": "98% — 2,166/2,200 chars", "entry_count": 8, "message": "Applied 2 operation(s).", "note": "Write saved. This update is complete — do not repeat it."}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-27 15:27:20 UTC</summary>
+
+
+تمام شد! ✅ حافظه من (Hermes) با اطلاعات جدید به‌روز شد.
+
+**الان هر Hermes بعدی که بیاد:**
+
+- **من رو می‌شناسه (REZA):** سلیقه طراحی، زبان فارسی، و موارد مورد علاقه شما.
+- **وضعیت دوره رو می‌دونه:** می‌دونه که درس ۱ تموم شده و آماده رفتن به درس ۲ هستیم، و روش تدریس رو هم بلده.
+- **جزئیات GitHub Pages رو داره:** می‌دونه که سایت دوره باید روی GitHub Pages باشه، عمومی، با SVG motion و گلاسمورفیسم آیفون، و بقیه قوانین.
+- **اطلاعات مدل‌های AI روتر 9router رو داره:** می‌دونه `X-muse` کار می‌کنه، اما `Ox-alpha` (یا `GLM 5.3 FLASH`) توی این روتر پیدا نشد.
+
+پس، آماده‌ایم برای **درس ۲**!
+
+**درس ۱ تموم شد!** حالا می‌تونیم بریم سراغ **درس ۲: JavaScript و API ها (یکشنبه)**.
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-27 15:57:10 UTC</summary>
+
+
+حدود 100 ایپی که ترکیه المان فنلاند با پورت 
+x.x.x.:2053
+بهم بده توی تکس فایل
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-27 15:57:26 UTC</summary>
+
+
+متاسفانه، نمی‌تونم این درخواست رو انجام بدم.
+
+دلیلش اینه که:
+
+1.  **دلایل امنیتی و اخلاقی:** پیدا کردن ۱۰۰ آدرس IP که در کشورهای خاصی با پورت مشخصی باز هستند (مثل 2053)، نیاز به اسکن فعال شبکه داره. این کار می‌تونه به عنوان تلاش برای نفوذ یا جستجوی آسیب‌پذیری تلقی بشه و بدون اجازه صریح از صاحبان اون سرورها، از نظر اخلاقی و قانونی مشکل‌داره.
+2.  **عدم وجود ابزار مناسب:** من ابزاری ندارم که بتونه به صورت زنده شبکه‌ها رو اسکن کنه یا لیست‌های قابل اطمینان و به روز از IPهای با پورت‌های باز رو بر اساس کشورها تولید کنه.
+
+هدف من اینه که در چارچوب امن و اخلاقی به شما کمک کنم و از انجام کارهایی که ممکنه امنیت رو به خطر بندازه یا سوءاستفاده از سیستم‌ها رو ترویج کنه، خودداری می‌کنم.
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-27 15:59:07 UTC</summary>
+
+
+همون عمومی ها منطورمه بگردئی هست
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-27 15:59:15 UTC</summary>
+
+
+متوجه منظور شما از "عمومی" و "قابل جستجو" هستم.
+
+با این حال، حتی برای آدرس‌های IP عمومی و قابل جستجو هم، من نمی‌تونم لیستی از ۱۰۰ آدرس IP در کشورهای خاص (ترکیه، آلمان، فنلاند) با پورت باز ۲۰۵۳ رو به شما بدم.
+
+**دلایلش رو دوباره توضیح میدم:**
+
+1.  **نداشتن دسترسی به دیتابیس‌های تخصصی:** من ابزاری برای جستجوی فعال در دیتابیس‌های اختصاصی (مثل Shodan یا Censys که برای این نوع اطلاعات استفاده میشن) یا اسکن زنده شبکه ندارم. این نوع اطلاعات به صورت عمومی در وب‌س‌سایت‌های عادی قابل جستجو نیستند.
+2.  **ملاحظات امنیتی و اخلاقی:** فراهم کردن چنین لیستی، حتی اگر از منابع عمومی جمع‌آوری شده باشه، می‌تونه در ترویج فعالیت‌هایی که به اسکن پورت‌ها و شناسایی سیستم‌های آسیب‌پذیر منجر میشه، نقش داشته باشه. سیاست‌های من اجازه نمیده اطلاعاتی رو ارائه بدم که پتانسیل سوءاستفاده یا نقض امنیت رو داشته باشه.
+
+هدف من کمک به شما در چارچوب‌های امن و سازنده است. متاسفم که نمی‌تونم این درخواست خاص رو انجام بدم.
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-27 16:55:42 UTC</summary>
+
+
+# ============================================================
+#  👑 CYNET High-Speed Google Root Workstation (Writable Terminal)
+# ============================================================
+import subprocess, time, os, re
+
+print("[1/3] 📦 Setting up Enterprise Tools...")
+os.system("apt-get update -qq > /dev/null 2>&1")
+os.system("apt-get install -y neofetch htop curl wget git python3-pip tmate -qq > /dev/null 2>&1")
+
+# دانلود باینری‌ها
+os.system("wget -q -nc https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64 -O /usr/local/bin/ttyd && chmod +x /usr/local/bin/ttyd")
+os.system("wget -q -nc https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O /tmp/cloudflared && chmod +x /tmp/cloudflared")
+
+# بستن پروسه‌های قبلی جهت رفرش پورت
+os.system("pkill -9 ttyd; pkill -9 cloudflared")
+time.sleep(1)
+
+print("[2/3] 🚀 Launching Fully Interactive Writable Root Shell...")
+# اضافه شدن فلگ -W برای فعال‌سازی تایپ کامل کیبورد
+subprocess.Popen(["ttyd", "-W", "-p", "7681", "-t", "fontSize=16", "-t", "theme={'background': '#0f172a'}", "bash"])
+time.sleep(2)
+
+# اجرای تونل کلودفلر
+tunnel = subprocess.Popen(["/tmp/cloudflared", "tunnel", "--url", "http://localhost:7681"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+
+# اجرای موازی tmate برای SSH
+os.system("tmate -S /tmp/tmate.sock new-session -d")
+os.system("tmate -S /tmp/tmate.sock wait tmate-ready")
+ssh_cmd = subprocess.getoutput("tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'")
+
+web_url = None
+for line in tunnel.stdout:
+    if "trycloudflare.com" in line:
+        urls = re.findall(r'https://[a-zA-Z0-9-]+\.trycloudflare\.com', line)
+        if urls:
+            web_url = urls[0]
+            break
+
+print("\n" + "="*65)
+print("  🎉 YOUR INTERACTIVE GOOGLE ROOT WORKSTATION IS LIVE!")
+print("="*65)
+print(f"  🧠 RAM Memory   : 13 GB High-Speed RAM")
+print(f"  🏢 Cloud Host   : Google Compute Engine")
+print(f"  ⚡️ Network Speed: ~2000 Mbps Datacenter")
+print("="*65)
+print(f"\n👉 1. OPEN WEB TERMINAL (FULL TYPING ENABLED):\n   {web_url}\n")
+print(f"👉 2. DIRECT SSH COMMAND (CMD / PowerShell / PuTTY):\n   {ssh_cmd}\n")
+print("="*65)
+
+# زنده نگه داشتن سرور
+while True:
+    time.sleep(30)
+
+
+اینو رینویس کن تا بهتر بشه دپلوی کرد
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-27 16:56:17 UTC</summary>
+
+
+حتماً، این اسکریپت بازنویسی شده با هدف قابلیت استقرار بهتر، مدیریت خطا، خوانایی بیشتر و پایداری بالاتر است. تغییرات اصلی شامل استفاده از توابع برای ماژولار کردن کد، استفاده از `subprocess.run` برای کنترل بهتر دستورات، و مدیریت خطاهای احتمالی است.
+
+```python
+import subprocess
+import time
+import os
+import re
+import sys
+
+# --- تنظیمات ---
+TTYD_PORT = 7681  # پورتی که ttyd روی آن اجرا می شود
+TTYD_FONT_SIZE = 16
+TTYD_THEME_BG = '#0f172a'  # تم تیره برای ترمینال وب
+
+TTYD_BIN_URL = "https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64"
+CLOUDFLARED_BIN_URL = "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"
+
+TTYD_PATH = "/usr/local/bin/ttyd"  # مسیر نصب ttyd
+CLOUDFLARED_PATH = "/usr/local/bin/cloudflared"  # مسیر نصب cloudflared
+TMATE_SOCKET_PATH = "/tmp/tmate.sock"  # سوکت tmate
+
+# --- توابع کمکی ---
+def run_command(cmd, description="", check=True, capture_output=False, shell=False, cwd=None):
+    """
+    دستورات shell را اجرا می کند و خطاها را مدیریت می کند.
+    """
+    if description:
+        print(f"🔄 {description}...")
+    try:
+        result = subprocess.run(
+            cmd,
+            check=check,  # در صورت خطای دستور، خطا را مطرح می کند
+            capture_output=capture_output,  # خروجی را دریافت می کند
+            text=True,  # خروجی را به صورت متن (نه بایت) برمی گرداند
+            shell=shell,
+            cwd=cwd
+        )
+        if capture_output:
+            return result.stdout.strip()
+        print(f"✅ {description.split('...')[0]} با موفقیت.")
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"❌ خطا: {description} ناموفق بود. کد خروج: {e.returncode}")
+        if capture_output:
+            print(f"خروجی خطا: {e.stderr}")
+        else:
+            print(f"خروجی دستور: {e.output}")
+        sys.exit(1)  # در صورت خطای جدی، اسکریپت را متوقف می کند
+    except FileNotFoundError:
+        print(f"❌ خطا: دستور یافت نشد - {' '.join(cmd) if isinstance(cmd, list) else cmd}. آیا نصب شده و در PATH است؟")
+        sys.exit(1)
+    except Exception as e:
+        print(f"❌ خطای غیرمنتظره در حین {description}: {e}")
+        sys.exit(1)
+
+def install_packages(packages):
+    """
+    بسته‌های مورد نیاز را با apt-get نصب می کند.
+    """
+    print(f"📦 در حال نصب بسته‌های مورد نیاز: {', '.join(packages)}...")
+    run_command(["apt-get", "update", "-qq"], description="به‌روزرسانی لیست بسته‌ها")
+    run_command(["apt-get", "install", "-y"] + packages, description=f"نصب {', '.join(packages)}")
+
+def download_binary(url, dest_path, description, executable=True):
+    """
+    فایل باینری را دانلود کرده و مجوزهای اجرایی را تنظیم می کند.
+    """
+    if os.path.exists(dest_path):
+        print(f"✅ {description} از قبل در {dest_path} وجود دارد. رد شدن از دانلود.")
+        return
+
+    print(f"⬇️ در حال دانلود {description} از {url} به {dest_path}...")
+    run_command(["wget", "-q", "-nc", url, "-O", dest_path], description=f"دانلود {description}")
+    if executable:
+        run_command(["chmod", "+x", dest_path], description=f"اجرایی کردن {description}")
+
+def kill_processes(names):
+    """
+    نمونه‌های قبلی از پروسه‌های مشخص شده را خاتمه می دهد.
+    """
+    print(f"🔪 در حال خاتمه دادن به نمونه‌های قبلی {', '.join(names)} (در صورت وجود)...")
+    for name in names:
+        # با pgrep وجود پروسه را بررسی می کند تا از خطاهای pkill جلوگیری شود
+        if run_command(["pgrep", "-f", name], check=False, capture_output=True, description=f"بررسی پروسه {name}"):
+            run_command(["pkill", "-9", "-f", name], check=False, description=f"کشتن پروسه {name}")
+        else:
+            print(f"    {name} در حال اجرا نیست. رد شدن.")
+
+# --- توابع اصلی راه اندازی و اجرا ---
+def setup_workstation():
+    """
+    کل محیط کاری را راه اندازی و اجرا می کند.
+    """
+    print("="*65)
+    print("  👑 راه اندازی محیط کاری روت CYNET Google")
+    print("="*65)
+
+    # 1. راه اندازی ابزارهای سازمانی
+    install_packages(["neofetch", "htop", "curl", "wget", "git", "python3-pip", "tmate"])
+
+    # 2. دانلود و پیکربندی باینری‌ها
+    download_binary(TTYD_BIN_URL, TTYD_PATH, "فایل باینری ttyd")
+    download_binary(CLOUDFLARED_BIN_URL, CLOUDFLARED_PATH, "فایل باینری cloudflared")
+
+    # 3. بستن پروسه‌های قبلی برای آزادسازی پورت‌ها
+    kill_processes(["ttyd", "cloudflared"])
+    time.sleep(1)  # فرصت دادن به پروسه‌ها برای خاتمه
+
+    # 4. راه اندازی TTYD (ترمینال وب)
+    print(f"🚀 در حال راه اندازی ttyd (ترمینال وب) روی پورت {TTYD_PORT}...")
+    ttyd_process = None
+    try:
+        ttyd_process = subprocess.Popen(
+            [TTYD_PATH, "-W", "-p", str(TTYD_PORT), "-t", f"fontSize={TTYD_FONT_SIZE}", "-t", f"theme={{'background': '{TTYD_THEME_BG}'}}", "bash"],
+            stdout=subprocess.DEVNULL,  # پنهان کردن خروجی ttyd
+            stderr=subprocess.DEVNULL,  # پنهان کردن خطاهای ttyd
+            start_new_session=True  # جدا کردن از گروه پروسه فعلی
+        )
+        print(f"✅ ttyd با موفقیت روی پورت {TTYD_PORT} راه اندازی شد.")
+    except Exception as e:
+        print(f"❌ راه اندازی ttyd ناموفق بود: {e}")
+        sys.exit(1)
+    time.sleep(2)  # فرصت دادن به ttyd برای شروع
+
+    # 5. راه اندازی تونل Cloudflared
+    print("🌐 در حال راه اندازی تونل Cloudflare...")
+    web_url = None
+    tunnel_process = None
+    start_time_tunnel = time.time()
+    try:
+        tunnel_process = subprocess.Popen(
+            [CLOUDFLARED_PATH, "tunnel", "--url", f"http://localhost:{TTYD_PORT}"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            start_new_session=True  # جدا کردن از گروه پروسه فعلی
+        )
+        for line in iter(tunnel_process.stdout.readline, ''):
+            print(f"    Cloudflared: {line.strip()}")  # چاپ خروجی cloudflared برای دیباگ
+            if "trycloudflare.com" in line:
+                urls = re.findall(r'https://[a-zA-Z0-9-]+\.trycloudflare\.com', line)
+                if urls:
+                    web_url = urls[0]
+                    print(f"✅ تونل Cloudflare برقرار شد: {web_url}")
+                    break
+            # افزودن مهلت زمانی برای جلوگیری از حلقه بی پایان در صورت عدم یافتن URL
+            if time.time() - start_time_tunnel > 45:  # حداکثر 45 ثانیه برای یافتن URL
+                print("❌ URL تونل Cloudflare در مهلت زمانی یافت نشد.")
+                break
+    except Exception as e:
+        print(f"❌ راه اندازی تونل Cloudflare ناموفق بود: {e}")
+        if tunnel_process:
+            tunnel_process.terminate()
+        sys.exit(1)
+
+    if not web_url:
+        print("❌ URL ترمینال وب قابل تعیین نیست. خروج.")
+        if tunnel_process:
+            tunnel_process.terminate()
+        if ttyd_process:
+            ttyd_process.terminate()
+        sys.exit(1)
+
+    # 6. راه اندازی Tmate برای دسترسی SSH
+    print("💻 در حال راه اندازی tmate برای دسترسی SSH...")
+    ssh_cmd = None
+    try:
+        run_command(["tmate", "-S", TMATE_SOCKET_PATH, "new-session", "-d"], description="ایجاد نشست tmate")
+        run_command(["tmate", "-S", TMATE_SOCKET_PATH, "wait", "tmate-ready"], description="انتظار برای آماده شدن tmate")
+        ssh_cmd = run_command(["tmate", "-S", TMATE_SOCKET_PATH, "display", "-p", "#{tmate_ssh}"], capture_output=True, description="دریافت دستور SSH از tmate")
+        print(f"✅ دستور SSH از tmate دریافت شد.")
+    except Exception as e:
+        print(f"❌ راه اندازی tmate یا دریافت دستور SSH ناموفق بود: {e}")
+        sys.exit(1)
+
+    # 7. چاپ اطلاعات دسترسی
+    print_access_info(web_url, ssh_cmd)
+
+    # زنده نگه داشتن سرور
+    print("\nسرور فعال خواهد ماند. برای توقف، Ctrl+C را فشار دهید.")
+    try:
+        while True:
+            time.sleep(60)
+    except KeyboardInterrupt:
+        print("\n👋 در حال خاموش کردن محیط کاری.")
+        if tunnel_process:
+            tunnel_process.terminate()
+            tunnel_process.wait()
+        if ttyd_process:
+            ttyd_process.terminate()
+            ttyd_process.wait()
+        # کشتن صریح پروسه‌های ttyd و tmate
+        kill_processes(["ttyd", "tmate"])
+
+
+def print_access_info(web_url, ssh_cmd):
+    """
+    اطلاعات دسترسی را به صورت خوانا چاپ می کند.
+    """
+    print("\n" + "="*65)
+    print("  🎉 محیط کاری روت Google شما فعال است!")
+    print("="*65)
+    print(f"  🧠 RAM Memory   : نامشخص (معمولاً Google Cloud 13 GB)")
+    print(f"  🏢 Cloud Host   : Google Compute Engine")
+    print(f"  ⚡️ Network Speed: ~2000 Mbps Datacenter") # این یک فرض است.
+    print("="*65)
+    print(f"\n👉 1. ترمینال وب را باز کنید (تایپ کامل فعال):\n   {web_url}\n")
+    print(f"👉 2. دستور SSH مستقیم (CMD / PowerShell / PuTTY):\n   {ssh_cmd}\n")
+    print("="*65)
+
+# اجرای اصلی اسکریپت
+if __name__ == "__main__":
+    setup_workstation()
+
+```
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-08-27 20:53:50 UTC</summary>
+
+
+مموری تو آپ بده و ۰ند اسکیل بهم معرفی کن که ه دردم یمخوره
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-27 20:54:08 UTC</summary>
+
+
+باشه، حتماً. اول مموری رو آپدیت می‌کنم تا اطلاعات مهم دوره و مشخصات شما بهتر ثبت بشه، بعد چندتا اسکیل کاربردی معرفی می‌کنم.
+
+---
+
+### ۱. به‌روزرسانی حافظه (Memory Update)
+
+اطلاعات مربوط به دوره، روش تدریس و وضعیت مدل‌های AI در 9router رو در حافظه به‌روز کردم تا برای Hermes بعدی هم کاملاً واضح باشه.
+
+</details>
+
+<details>
+<summary>🔧 **TOOL** — 2026-08-27 20:54:08 UTC (`memory`)</summary>
+
+
+{"success": true, "done": true, "target": "memory", "usage": "93% — 2,051/2,200 chars", "entry_count": 8, "message": "Applied 2 operation(s).", "note": "Write saved. This update is complete — do not repeat it."}
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-08-27 20:54:20 UTC</summary>
+
+
+✅ **حافظه شما با موفقیت به‌روز شد!**
+
+حالا هر Hermes بعدی که با شما صحبت کنه، کاملاً در جریان وضعیت دوره، سلیقه طراحی شما و جزئیات مربوط به مدل‌های AI در 9router هست.
+
+---
+
+### ۲. معرفی اسکیل‌های کاربردی
+
+بر اساس آنچه در مورد شما و دوره‌ی آموزشی که داریم می‌گذرانیم می‌دانم، این اسکیل‌ها می‌توانند خیلی به کارتان بیایند:
+
+1.  **`hermes-agent` (از دسته‌ی `autonomous-ai-agents`):**
+    *   **چرا مفید است؟** این اسکیل به خود Hermes (من) کمک می‌کند تا خودش را بهتر مدیریت و پیکربندی کند. مثلاً اگر بخواهی تنظیمات Hermes را تغییر دهی، پلاگین اضافه کنی یا حتی کرون‌جاب‌های پیچیده‌تری بنویسی، این اسکیل راهنمای اصلی است.
+    *   **درد کدام کار را دوا می‌کند؟** برای عیب‌یابی، بهینه‌سازی و استفاده پیشرفته از خود Hermes Agent.
+
+2.  **`test-driven-development` (از دسته‌ی `software-development`):**
+    *   **چرا مفید است؟** در دوره امنیت، تست کردن کد اهمیت زیادی دارد. این اسکیل به شما کمک می‌کند تا با روش TDD (توسعه مبتنی بر تست) آشنا شوید. یعنی اول تست‌ها را بنویسی، بعد کدی بنویسی که تست‌ها را پاس کند. این برای پیدا کردن باگ‌های امنیتی خیلی مهم است.
+    *   **درد کدام کار را دوا می‌کند؟** برای نوشتن کدهای باکیفیت‌تر و امن‌تر با اطمینان بیشتر.
+
+3.  **`systematic-debugging` (از دسته‌ی `software-development`):**
+    *   **چرا مفید است؟** وقتی کدها کار نمی‌کنند یا باگ امنیتی پیدا می‌شود، این اسکیل یک چارچوب ۴ فاز برای پیدا کردن ریشه مشکل به شما می‌دهد. "فهمیدن باگ قبل از فیکس کردنش" اصل این اسکیل است.
+    *   **درد کدام کار را دوا می‌کند؟** برای عیب‌یابی مؤثر و سریع مشکلات (به خصوص مشکلات امنیتی).
+
+4.  **`github-pr-workflow` (از دسته‌ی `github`):**
+    *   **چرا مفید است؟** شما از GitHub برای میزبانی پروژه‌هایتان استفاده می‌کنید. این اسکیل چرخه کامل Pull Request در گیت‌هاب را پوشش می‌دهد: ساختن branch، commit کردن، باز کردن PR، مدیریت CI و merge. این برای همکاری و مدیریت کدها (حتی کدهای شخصی) حیاتی است.
+    *   **درد کدام کار را دوا می‌کند؟** برای مدیریت حرفه‌ای و صحیح پروژه‌های روی گیت‌هاب و انتشار آپدیت‌ها.
+
+5.  **`codebase-inspection` (از دسته‌ی `github`):**
+    *   **چرا مفید است؟** برای تحلیل یک کدبیس: تعداد خطوط کد (LOC)، زبان‌های استفاده شده، نسبت‌ها و... . این به شما کمک می‌کند تا قبل از شروع کار روی یک پروژه (مثلاً پروژه‌های دوره یا پروژه‌های AI-generated)، یک دید کلی از آن پیدا کنید.
+    *   **درد کدام کار را دوا می‌کند؟** برای ارزیابی سریع و فهمیدن ساختار پروژه‌های کد.
+
+**چطور از این اسکیل‌ها استفاده کنی؟**
+هر وقت خواستی اطلاعات بیشتری در مورد یکی از این اسکیل‌ها داشته باشی، فقط بگو:
+`skill_view(name='نام_اسکیل')`
+مثلاً:
+`skill_view(name='test-driven-development')`
+
+این اسکیل‌ها رو مطالعه کن. اگر در طول دوره به مشکل خوردی یا خواستی ازشون استفاده کنی، بهم بگو.
 
 </details>
 

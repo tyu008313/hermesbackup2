@@ -58,3 +58,5 @@
 | 2026-08-27 03:36:37 UTC | `patch` | {"success": true, "diff": "--- a//data/workspace/test_xmuse.py\n+++ b//data/workspace/test_xmuse.py\n@@ -105,6 +105,12 @ |
 | 2026-08-27 03:38:45 UTC | `terminal` | {"output": "/models OK -> 395 models\nzai-like ids: (none)", "exit_code": 0, "error": null} |
 | 2026-08-27 03:38:46 UTC | `terminal` | {"output": "/models OK -> 395 models\nglm-5.3 flash-like ids: (none)", "exit_code": 0, "error": null} |
+| 2026-08-27 15:27:15 UTC | `memory` | {"success": true, "done": true, "target": "memory", "usage": "98% — 2,166/2,200 chars", "entry_count": 8, "message": "Ap |
+| 2026-08-27 20:54:08 UTC | `memory` | {"success": true, "done": true, "target": "memory", "usage": "93% — 2,051/2,200 chars", "entry_count": 8, "message": "Ap |
