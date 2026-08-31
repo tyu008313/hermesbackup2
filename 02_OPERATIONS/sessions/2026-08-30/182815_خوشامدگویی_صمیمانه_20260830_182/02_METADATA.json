@@ -1,0 +1,21 @@
+{
+  "session_id": "20260830_182815_64756382",
+  "title": "خوشامدگویی صمیمانه",
+  "source": "telegram",
+  "chat_id": "7025776524",
+  "display_name": "𝑹𝑬𝒁𝑨 | 𝟭𝟵:𝟬𝟱",
+  "model": "Mimio",
+  "profile": null,
+  "cwd": null,
+  "started_at_utc": "2026-08-30 18:28:15 UTC",
+  "ended_at_utc": "—",
+  "message_count_db": 3,
+  "tool_call_count": 0,
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "estimated_cost_usd": null,
+  "_message_count": 3,
+  "_ended": false,
+  "_exported_at": "2026-08-31T00:35:58.767212+00:00",
+  "_last_msg_at": "2026-08-30 18:28:25 UTC"
+}

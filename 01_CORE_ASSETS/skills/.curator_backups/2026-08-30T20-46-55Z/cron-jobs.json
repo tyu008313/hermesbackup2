@@ -1,0 +1,55 @@
+{
+  "jobs": [
+    {
+      "id": "dd6bd38d99d4",
+      "name": "Hermes Brain Backup — 12h mirror sync",
+      "prompt": "Backup is handled entirely by the script (no LLM).",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "hermes_brain_backup.sh",
+      "no_agent": true,
+      "monitor_script": null,
+      "monitor_url": null,
+      "monitor_state": null,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 720,
+        "display": "every 720m"
+      },
+      "schedule_display": "every 720m",
+      "repeat": {
+        "times": null,
+        "completed": 12
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-08-24T12:27:16.340428+00:00",
+      "next_run_at": "2026-08-31T00:35:13.369598+00:00",
+      "last_run_at": "2026-08-30T12:35:13.369598+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "failure_streak": 0,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "7025776524",
+        "chat_name": "𝑹𝑬𝒁𝑨 | 𝟭𝟱:𝟰𝟳",
+        "thread_id": null,
+        "user_id": "7025776524"
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null
+    }
+  ],
+  "updated_at": "2026-08-30T12:35:13.369765+00:00"
+}
