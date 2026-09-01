@@ -1,1 +1,1 @@
-User profile: REZA, Persian speaker - reply in Persian. Telegram handle @RG7YT. Design taste: high quality, professional, dark, neon-glow, futuristic, interactive (360-degree rotation), bilingual FA+EN outputs, leveraging skills/best practices for design tasks. Expects every repo section kept in sync and human-readable; recurring jobs run script-only (no LLM tokens); gives quick decisive commands.
+Name: Reza (رضا), Telegram: @RG7YT, ID: 7025776524. Always reply in Persian (Farsi). Prefers dark/neon/futuristic design, bilingual FA+EN. Quick decisive commands, no fluff.
