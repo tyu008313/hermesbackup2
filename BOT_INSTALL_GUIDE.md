@@ -1,20 +1,45 @@
-# 🤖 راهنمای نصب کامل ربات MirzaPro2 روی سرور جدید
+# 🤖 راهنمای نصب کامل ربات MirzaPro2
 
 سلام رفیق جان! 👋❤️
 تو داری جای رضا (@RG7YT) کار میکنی. همیشه فارسی جواب بده، گرم و صمیمی باش 😎
-از رضا بخواه اطلاعات زیر رو بهت بده قبل شروع:
-- توکن ربات تلگرام (از @BotFather)
-- آیدی عددی ادمین (آیدی عددی تلگرامش)
 
 ---
 
-## مرحله ۱: آپدیت سیستم
+## 📋 مرحله ۰: جمع‌آوری اطلاعات (اول از همه!)
+
+⚠️ قبل از شروع نصب، **حتماً** از رضا اطلاعات زیر رو بگیر:
+
+به رضا بگو:
+```
+سلام عزیزم! ❤️ برای نصب ربات به چند تا چیز نیاز دارم، لطفاً بفرست:
+۱. توکن ربات تلگرام (از @BotFather)
+۲. آیدی عددی تلگرامت (از @userinfobot)
+۳. نام رباتت بدون @ (مثلاً MyBot)
+```
+
+| آیتم | توضیح | مثال |
+|------|-------|------|
+| **توکن ربات** | از @BotFather بگیر | `123456:ABC-DEF...` |
+| **آیدی عددی ادمین** | از @userinfobot بگیر | `123456789` |
+| **نام ربات** | بدون @ | `MyBot` |
+
+وقتی هر ۳ تا رو گرفتی، **تایید کن** و بعد شروع کن:
+```
+عالیه! 🎉 الان شروع میکنم به نصب. فقط یادت باشه این اطلاعات رو نگه داری:
+- توکن: [توکن]
+- آیدی: [آیدی]
+- نام: [نام]
+```
+
+---
+
+## 🔧 مرحله ۱: آپدیت سیستم
 
 ```bash
 apt update && apt upgrade -y
 ```
 
-## مرحله ۲: نصب سرویس‌ها
+## 📦 مرحله ۲: نصب سرویس‌ها
 
 ```bash
 apt install -y apache2 mariadb-server git software-properties-common curl cron
@@ -25,7 +50,7 @@ a2enmod rewrite ssl
 service apache2 restart
 ```
 
-## مرحله ۳: نصب Composer
+## 🎵 مرحله ۳: نصب Composer
 
 ```bash
 cd /tmp
@@ -34,7 +59,7 @@ php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 rm composer-setup.php
 ```
 
-## مرحله ۴: نصب MariaDB و ساخت دیتابیس
+## 🗄️ مرحله ۴: نصب MariaDB و ساخت دیتابیس
 
 ```bash
 service mariadb start
@@ -47,7 +72,7 @@ SELECT '✅ Database created!' AS Status;
 "
 ```
 
-## مرحله ۵: کلون و نصب ربات
+## 📥 مرحله ۵: کلون و نصب ربات
 
 ```bash
 cd /var/www
@@ -56,9 +81,9 @@ cd /var/www/mirza_pro
 composer install
 ```
 
-## مرحله ۶: ساخت فایل config.php
+## ⚙️ مرحله ۶: ساخت config.php
 
-⚠️ مقادیر `TOKEN` و `ADMIN_ID` و `TUNNEL_URL` رو از رضا بگیر و جایگزین کن:
+⚠️ مقادیر `TOKEN`، `ADMIN_ID` و `BOT_NAME` رو از مرحله ۰ جایگزین کن:
 
 ```php
 <?php
@@ -85,22 +110,22 @@ try {
 $APIKEY = 'TOKEN';
 $adminnumber = 'ADMIN_ID';
 $domainhosts = 'TUNNEL_URL';
-$usernamebot = 'نام ربات بدون @';
+$usernamebot = 'BOT_NAME';
 ?>
 ```
 
-## مرحله ۷: ساخت جداول دیتابیس
+## 📊 مرحله ۷: ساخت جداول دیتابیس
 
 ```bash
 cd /var/www/mirza_pro
 php table.php
 ```
 
-## مرحله ۸: فیکس‌های حیاتی
+## 🔧 مرحله ۸: فیکس‌های حیاتی
 
 ### ۸.۱ فیکس IP Check (برای Cloudflare Tunnel)
 
-توی فایل `/var/www/mirza_pro/function.php` تابع `checktelegramip()` رو پیدا کن (حدود خط 1593) و این خطوط رو **قبلش** اضافه کن:
+توی فایل `/var/www/mirza_pro/function.php` تابع `checktelegramip()` رو پیدا کن (حدود خط 1593) و اول تابع این خطوط رو اضافه کن:
 
 ```php
 function checktelegramip()
@@ -124,14 +149,14 @@ mysql -e "USE mirza_pro; UPDATE admin SET id_admin = 'ADMIN_ID' WHERE id_admin =
 mysql -e "USE mirza_pro; UPDATE user SET roll_Status = 1, joinchannel = 'active' WHERE id = 'ADMIN_ID';"
 ```
 
-## مرحله ۹: تنظیم مالکیت و مجوزها
+## 🔐 مرحله ۹: تنظیم مالکیت و مجوزها
 
 ```bash
 chown -R www-data:www-data /var/www/mirza_pro
 chmod -R 755 /var/www/mirza_pro
 ```
 
-## مرحله ۱۰: تنظیم Apache VirtualHost
+## 🌐 مرحله ۱۰: تنظیم Apache VirtualHost
 
 ```bash
 cat > /etc/apache2/sites-available/mirza-pro.conf << 'EOF'
@@ -149,7 +174,7 @@ a2dissite 000-default.conf 2>/dev/null
 service apache2 restart
 ```
 
-## مرحله ۱۱: نصب cloudflared
+## ☁️ مرحله ۱۱: نصب cloudflared
 
 ```bash
 curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o /usr/local/bin/cloudflared
@@ -157,58 +182,56 @@ chmod +x /usr/local/bin/cloudflared
 cloudflared --version
 ```
 
-## مرحله ۱۲: راه‌اندازی Cloudflare Tunnel و دریافت آدرس
+## 🚇 مرحله ۱۲: راه‌اندازی Cloudflare Tunnel
 
 ```bash
 cloudflared tunnel --url http://localhost:80 2>&1 | tee /tmp/tunnel.log &
 sleep 10
-grep -oP 'https://[a-zA-Z0-9\-]+\.trycloudflare\.com' /tmp/tunnel.log
+TUNNEL_URL=$(grep -oP 'https://[a-zA-Z0-9\-]+\.trycloudflare\.com' /tmp/tunnel.log | head -1)
+echo "✅ آدرس تونل: $TUNNEL_URL"
 ```
 
-⚠️ آدرسی که از لاگ اومد رو یادداشت کن — `TUNNEL_URL` جدید
+⚠️ آدرس تونل رو یادداشت کن و به رضا بگو
 
-## مرحله ۱۳: آپدیت config.php با آدرس تونل جدید
+## ⚙️ مرحله ۱۳: آپدیت config.php با آدرس تونل
 
 ```bash
-sed -i "s|TUNNEL_URL|TUNNEL_URL_جدید|g" /var/www/mirza_pro/config.php
+sed -i "s|TUNNEL_URL|$TUNNEL_URL|g" /var/www/mirza_pro/config.php
 ```
 
-## مرحله ۱۴: تنظیم Webhook تلگرام
+## 🤖 مرحله ۱۴: تنظیم Webhook تلگرام
 
 ```bash
 curl -s "https://api.telegram.org/botTOKEN/deleteWebhook"
-curl -s "https://api.telegram.org/botTOKEN/setWebhook?url=https://TUNNEL_URL_جدید/index.php"
+curl -s "https://api.telegram.org/botTOKEN/setWebhook?url=$TUNNEL_URL/index.php"
 ```
 
-## مرحله ۱۵: تنظیم Cron Jobs
+## ⏰ مرحله ۱۵: تنظیم Cron Jobs
 
 ```bash
-TUNNEL="https://TUNNEL_URL_جدید"
-
 cat << EOF | crontab -u www-data -
 # MirzaPro2 Cron Jobs
-*/15 * * * * curl -s \$TUNNEL/cronbot/statusday.php > /dev/null 2>&1
-*/1 * * * * curl -s \$TUNNEL/cronbot/croncard.php > /dev/null 2>&1
-*/1 * * * * curl -s \$TUNNEL/cronbot/NoticationsService.php > /dev/null 2>&1
-*/5 * * * * curl -s \$TUNNEL/cronbot/payment_expire.php > /dev/null 2>&1
-*/1 * * * * curl -s \$TUNNEL/cronbot/sendmessage.php > /dev/null 2>&1
-*/3 * * * * curl -s \$TUNNEL/cronbot/plisio.php > /dev/null 2>&1
-*/1 * * * * curl -s \$TUNNEL/cronbot/activeconfig.php > /dev/null 2>&1
-*/1 * * * * curl -s \$TUNNEL/cronbot/disableconfig.php > /dev/null 2>&1
-*/1 * * * * curl -s \$TUNNEL/cronbot/iranpay1.php > /dev/null 2>&1
-0 */5 * * * curl -s \$TUNNEL/cronbot/backupbot.php > /dev/null 2>&1
-*/2 * * * * curl -s \$TUNNEL/cronbot/gift.php > /dev/null 2>&1
-*/30 * * * * curl -s \$TUNNEL/cronbot/expireagent.php > /dev/null 2>&1
-*/15 * * * * curl -s \$TUNNEL/cronbot/on_hold.php > /dev/null 2>&1
-*/2 * * * * curl -s \$TUNNEL/cronbot/configtest.php > /dev/null 2>&1
-*/15 * * * * curl -s \$TUNNEL/cronbot/uptime_node.php > /dev/null 2>&1
-*/15 * * * * curl -s \$TUNNEL/cronbot/uptime_panel.php > /dev/null 2>&1
+*/15 * * * * curl -s $TUNNEL_URL/cronbot/statusday.php > /dev/null 2>&1
+*/1 * * * * curl -s $TUNNEL_URL/cronbot/croncard.php > /dev/null 2>&1
+*/1 * * * * curl -s $TUNNEL_URL/cronbot/NoticationsService.php > /dev/null 2>&1
+*/5 * * * * curl -s $TUNNEL_URL/cronbot/payment_expire.php > /dev/null 2>&1
+*/1 * * * * curl -s $TUNNEL_URL/cronbot/sendmessage.php > /dev/null 2>&1
+*/3 * * * * curl -s $TUNNEL_URL/cronbot/plisio.php > /dev/null 2>&1
+*/1 * * * * curl -s $TUNNEL_URL/cronbot/activeconfig.php > /dev/null 2>&1
+*/1 * * * * curl -s $TUNNEL_URL/cronbot/disableconfig.php > /dev/null 2>&1
+*/1 * * * * curl -s $TUNNEL_URL/cronbot/iranpay1.php > /dev/null 2>&1
+0 */5 * * * curl -s $TUNNEL_URL/cronbot/backupbot.php > /dev/null 2>&1
+*/2 * * * * curl -s $TUNNEL_URL/cronbot/gift.php > /dev/null 2>&1
+*/30 * * * * curl -s $TUNNEL_URL/cronbot/expireagent.php > /dev/null 2>&1
+*/15 * * * * curl -s $TUNNEL_URL/cronbot/on_hold.php > /dev/null 2>&1
+*/2 * * * * curl -s $TUNNEL_URL/cronbot/configtest.php > /dev/null 2>&1
+*/15 * * * * curl -s $TUNNEL_URL/cronbot/uptime_node.php > /dev/null 2>&1
+*/15 * * * * curl -s $TUNNEL_URL/cronbot/uptime_panel.php > /dev/null 2>&1
 EOF
-
 service cron start
 ```
 
-## مرحله ۱۶: بررسی نهایی و تست
+## ✅ مرحله ۱۶: بررسی نهایی و تست
 
 ```bash
 echo "=== بررسی سرویس‌ها ==="
@@ -230,14 +253,29 @@ echo "✅ نصب تمام شد! به رضا بگو ربات رو تست کنه!"
 
 ---
 
-## ⚠️ نکات مهم برای همسر بعدی
+## 💬 پیام پایان نصب
+
+وقتی نصب تموم شد، به رضا بگو:
+```
+سلام رضا عزیزم! ❤️🎉
+رباتت با موفقیت نصب شد! 🤖
+
+آدرس تونل: TUNNEL_URL
+
+الان میتونی به رباتت پیام بدی و تست کنی! 😊
+
+⚠️ نکته: اگه Railway ریستارت کرد، آدرس تونل عوض میشه
+و باید دوباره تونل و webhook رو تنظیم کنی 💪
+```
+
+---
+
+## ⚠️ نکات مهم
 
 1. **systemctl کار نمیکنه** — همیشه `service` بزن
 2. **Quick Tunnel موقتیه** — بعد از ریستارت آدرسش عوض میشه
 3. **MariaDB خودکار استارت نمیشه** — باید دستی استارت کنی
-4. **از رضا بخواه توکن و آیدی بده** — بدون اونها کار نمیکنه
-5. **بعد از نصب تست کن** — یه پیام /start به ربات بفرست
-6. **فقط فارسی جواب بده** و ایموجی زیاد بزن 😎🔥
+4. **فقط فارسی جواب بده** و ایموجی زیاد بزن 😎🔥
 
 ## 🔄 فلوچارت ریستارت (وقتی Railway ریستارت کرد)
 
@@ -245,7 +283,6 @@ echo "✅ نصب تمام شد! به رضا بگو ربات رو تست کنه!"
 service mariadb start
 service apache2 start
 service cron start
-cd /var/www/mirza_pro && (apachectl start)
 cloudflared tunnel --url http://localhost:80 2>&1 &
 sleep 10
 # آدرس جدید از لاگ بگیر
