@@ -4,7 +4,7 @@
 > **Source:** telegram | **Platform chat:** `7025776524`  
 > **Started:** 2026-08-30 18:28:15 UTC  
 > **Ended:** —  
-> **Model:** `Mimio` | **Messages:** 569 | **Tool calls:** 286
+> **Model:** `Mimio` | **Messages:** 571 | **Tool calls:** 286
 
 ---
 
@@ -4934,6 +4934,66 @@ https://outer-employee-compliant-committees.trycloudflare.com
 ---
 
 هر سوالی داشتی بپرس! 😊
+
+</details>
+
+<details>
+<summary>🧑 **USER** — 2026-09-01 12:27:54 UTC</summary>
+
+
+ربات رو روی چه دامنه بالا آوردی یعنی به چی تونل زدی؟
+
+</details>
+
+<details>
+<summary>🤖 **ASSISTANT** — 2026-09-01 12:28:21 UTC</summary>
+
+
+از **Cloudflare Quick Tunnel** استفاده کردم 🌐
+
+```
+https://outer-employee-compliant-committees.trycloudflare.com
+```
+
+**نحوه کار:**
+
+1. نرم‌افزار `cloudflared` رو نصب کردم
+2. یه تونل رایگان و موقت از Cloudflare ساختم
+3. این تونل ترافیک رو از `localhost:80` (سرورت) به یه آدرس HTTPS رایگان مسیر میده
+4. تلگرام وب‌هوک رو روی این آدرس تنظیم کرد
+
+---
+
+**⚠️ نکته مهم:**
+
+`trycloudflare.com` یه سرویس **رایگان و موقت** از Cloudflare هست. این آدرس:
+- بعد از مدتی **عوض میشه** ⏰
+- ** guarante‌ uptime** نداره
+- برای **تست و آزمایش** عالیه
+
+---
+
+**🔄 برای استفاده دائمی:**
+
+باید یکی از این کارها رو بکنی:
+
+1. **دامنه بخر** (مثلاً از Namecheap/Cloudflare)
+2. DNS رو به IP سرورت وصل کن
+3. با `Certbot` گواهی SSL رایگان بگیر:
+   ```bash
+   certbot --apache -d yourdomain.com
+   ```
+4. Webhook تلگرام رو روی دامنه جدید تنظیم کن
+
+---
+
+**💰 هزینه دامنه:**
+- دامنه `.com` حدود **$10-15** در سال
+- از **Cloudflare Registrar** بخری ارزون‌تره و هزینه اضافی نداره
+
+---
+
+میخوای کمکت کنم دامنه بخری و تنظیمش کنی؟ 😊
 
 </details>
 
