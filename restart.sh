@@ -1,7 +1,6 @@
 #!/bin/bash
 # ============================================
-# 🔧 اسکریپت خودکار راه‌اندازی مجدد ربات
-# این اسکریپت رو بعد از هر ریستارت Railway اجرا کن
+# 🔧 اسکریپت خودکار راه‌اندازی مجدد ربات (MirzaBot Pro)
 # ============================================
 
 BOT_TOKEN="8691766146:AAHfGJUkGNeqWrfn7zpmoRye9-2i-EU0DnQ"
@@ -44,7 +43,7 @@ echo "✅ آدرس جدید تونل: $TUNNEL_URL"
 
 # ۷. آپدیت config.php
 echo "⚙️ آپدیت config.php..."
-sed -i "s|https://[^'\"]*trycloudflare\.com|$TUNNEL_URL|g" /var/www/mirza_pro/config.php
+sed -i "s|https://[^'\"]*trycloudflare\.com|$TUNNEL_URL|g" /var/www/mirza_bot/config.php
 
 # ۸. آپدیت Webhook تلگرام
 echo "🤖 آپدیت Webhook..."
@@ -54,7 +53,7 @@ curl -s "https://api.telegram.org/bot$BOT_TOKEN/setWebhook?url=$TUNNEL_URL/index
 # ۹. آپدیت Cron Jobs
 echo "⏰ آپدیت Cron Jobs..."
 cat << EOF | crontab -u www-data -
-# MirzaPro2 Cron Jobs
+# MirzaBot Pro Cron Jobs
 */15 * * * * curl -s $TUNNEL_URL/cronbot/statusday.php > /dev/null 2>&1
 */1 * * * * curl -s $TUNNEL_URL/cronbot/croncard.php > /dev/null 2>&1
 */1 * * * * curl -s $TUNNEL_URL/cronbot/NoticationsService.php > /dev/null 2>&1
