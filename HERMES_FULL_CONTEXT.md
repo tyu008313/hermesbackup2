@@ -72,8 +72,8 @@ cat /var/www/mirza_pro/error_log
 nano /var/www/mirza_pro/config.php
 
 # آپدیت webhook
-curl -s "https://api.telegram.org/bot_token_REDACTED/deleteWebhook"
-curl -s "https://api.telegram.org/bot_token_REDACTED/setWebhook?url=https://TUNNEL_URL/index.php"
+curl -s "https://api.telegram.org/bot8691766146:AAHfGJUkGNeqWrfn7zpmoRye9-2i-EU0DnQ/deleteWebhook"
+curl -s "https://api.telegram.org/bot8691766146:AAHfGJUkGNeqWrfn7zpmoRye9-2i-EU0DnQ/setWebhook?url=https://TUNNEL_URL/index.php"
 ```
 
 ---
@@ -269,8 +269,8 @@ cloudflared tunnel --url http://localhost:8080 2>&1 &
 cloudflared tunnel --url http://localhost:2083 2>&1 &
 
 # 5. Webhook
-curl -s "https://api.telegram.org/bot_token_REDACTED/deleteWebhook"
-curl -s "https://api.telegram.org/bot_token_REDACTED/setWebhook?url=https://NEW_BOT_TUNNEL/index.php"
+curl -s "https://api.telegram.org/bot8691766146:AAHfGJUkGNeqWrfn7zpmoRye9-2i-EU0DnQ/deleteWebhook"
+curl -s "https://api.telegram.org/bot8691766146:AAHfGJUkGNeqWrfn7zpmoRye9-2i-EU0DnQ/setWebhook?url=https://NEW_BOT_TUNNEL/index.php"
 ```
 
 ---

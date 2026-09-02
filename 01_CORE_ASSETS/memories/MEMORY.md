@@ -1,15 +1,1 @@
-[REZA] Persian speaker, Telegram @RG7YT. Design: dark, futuristic, interactive, bilingual FA+EN. Course: 7-day web security + vibe coding (Lesson 1 done). Repo: github.com/tyu008313/hermesbackup2. 9router API active (X-muse). Interests: VPN/anti-censorship tools, MirzaPro2, MHRV-RS. VPS: Debian 13 (trixie) on cloud. Prefers: quick execution without lengthy confirmations, backup before destructive ops, Persian replies.
-§
-MirzaPro2 VPN Bot on Railway (ports 8080/443):
-- Bot: @OXINNET_BOT, token 8691766146:AAHf...NQ, admin 7025776524
-- DB: mirza_pro / Mirza@2026!Secure (MariaDB 11.8)
-- 3x-ui v3.7.0: user=8sfaIDPFiK pass=Ys8lzIA86c port=8080 basePath=/edVa7HUn6PhwR2MYGv
-- Xray: VLESS+WS port=2083 UUID=8af924af-92ac-46c0-a9c0-6b4042534995
-- Cloudflare Quick Tunnels for bot(80), panel(8080), xray(2083) — URLs change on restart!
-- Railway restart: re-launch MariaDB, Apache, x-ui, 3x cloudflared tunnels
-- systemd unavailable — use `service` or background processes
-- Fixes: checktelegramip() localhost, admin table, roll_Status=1
-- Full context: github.com/tyu008313/hermesbackup2/blob/main/HERMES_FULL_CONTEXT.md
-§
-Full context: github.com/tyu008313/hermesbackup2/blob/main/HERMES_FULL_CONTEXT.md + HERMES_QUICK_START.md
-Next session: load context file first.
+Reza's HERMES_FULL_CONTEXT.md (backed up in repo /data/workspace/backup_repo) documents a REMOTE Railway server (bot MirzaPro2 at /var/www/mirza_pro, 3x-ui VPN, cloudflared tunnels, cron for www-data) — but this Hermes host is SEPARATE and does NOT host those paths. This workspace machine only holds the backup repo, context file, and ~/.hermes/scripts/backup_daily.sh. GitHub PAT is stored in that repo's .git/config for automated pushes. Cron job 'git-backup-daily' (0be211d06240) pushes memory/context backups daily at 9am UTC (script-only). Remote git URL is in .git/config. Reza insists on keeping the repo fully synced/up-to-date without deleting anything.
