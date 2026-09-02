@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  vpn:
+    build:
+      context: .
+      dockerfile: Dockerfile.vpn
+    container_name: vpn-server
+    hostname: vpn-server
+    
+    # 🔓 دسترسی کامل
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - MKNOD
+      - SYS_MODULE
+      - NET_RAW
+    
+    # 📡 پورت‌ها
+    ports:
+      - "22:22"      # SSH
+      - "80:80"      # HTTP
+      - "443:443"    # HTTPS
+      - "1194:1194/udp"  # OpenVPN
+      - "51820:51820/udp"  # WireGuard
+    
+    # 🌐 شبکه
+    network_mode: bridge
+    
+    # 🔄 ریستارت خودکار
+    restart: unless-stopped
+    
+    # 📊 مانیتورینگ
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    
+    # 📝 لاگ‌ها
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

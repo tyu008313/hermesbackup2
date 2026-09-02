@@ -1,0 +1,201 @@
+FROM ubuntu:22.04
+
+# ============================================
+# ⚙️ تنظیمات پایه
+# ============================================
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Tehran
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
+# ============================================
+# 🔧 نصب ابزارهای ضروری (خام ولی کامل)
+# ============================================
+RUN apt update -y && apt install -y \
+    # --- ابزارهای سیستمی ---
+    curl wget git sudo nano vim \
+    net-tools iproute2 iptables \
+    lsof htop iotop \
+    build-essential cmake pkg-config \
+    # --- شبکه ---
+    openssh-server \
+    dnsutils whois traceroute \
+    netcat-openbsd socat \
+    # --- TUN/VPN ---
+    kmod \
+    # --- وب ---
+    apache2 \
+    php8.1 libapache2-mod-php8.1 php8.1-cli \
+    php8.1-common php8.1-mbstring php8.1-curl \
+    php8.1-xml php8.1-zip php8.1-gd php8.1-bcmath \
+    php8.1-mysql php8.1-sqlite3 \
+    mariadb-server \
+    # --- ابزارهای دیگر ---
+    software-properties-common \
+    apt-transport-https ca-certificates \
+    gnupg lsb-release \
+    unzip zip tar gzip bzip2 xz-utils \
+    cron \
+    && rm -rf /var/lib/apt/lists/*
+
+# ============================================
+# 📡 ساخت TUN Device
+# ============================================
+RUN mkdir -p /dev/net \
+    && mknod /dev/net/tun c 10 200 \
+    && chmod 600 /dev/net/tun
+
+# ============================================
+# 🔑 تنظیم SSH
+# ============================================
+RUN mkdir -p /var/run/sshd \
+    && mkdir -p /root/.ssh \
+    && chmod 700 /root/.ssh \
+    && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
+    && sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
+    && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config \
+    && sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+# ============================================
+# 🌐 تنظیم Apache
+# ============================================
+RUN a2enmod rewrite ssl \
+    && mkdir -p /var/www/html \
+    && chown -R www-data:www-data /var/www/html
+
+# ============================================
+# 🗄️ تنظیم MariaDB
+# ============================================
+RUN service mariadb start \
+    && mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';" \
+    && mysql -e "FLUSH PRIVILEGES;"
+
+# ============================================
+# ⏰ تنظیم Cron
+# ============================================
+RUN service cron start
+
+# ============================================
+# 📝 اسکریپت‌های مدیریت
+# ============================================
+
+# اسکریپت ریستارت
+RUN cat > /root/restart.sh << 'EOF'
+#!/bin/bash
+echo "🔄 ریستارت سرویس‌ها..."
+
+service ssh start 2>/dev/null
+service apache2 start 2>/dev/null
+service mariadb start 2>/dev/null
+service cron start 2>/dev/null
+
+echo "✅ تمام سرویس‌ها فعال شد!"
+EOF
+chmod +x /root/restart.sh
+
+# اسکریپت وضعیت
+RUN cat > /root/status.sh << 'EOF'
+#!/bin/bash
+echo "📊 وضعیت سرویس‌ها:"
+echo ""
+
+# SSH
+if pgrep -x "sshd" > /dev/null; then
+    echo "✅ SSH: فعال"
+else
+    echo "❌ SSH: غیرفعال"
+fi
+
+# Apache
+if pgrep -x "apache2" > /dev/null; then
+    echo "✅ Apache: فعال"
+else
+    echo "❌ Apache: غیرفعال"
+fi
+
+# MariaDB
+if pgrep -x "mariadbd" > /dev/null; then
+    echo "✅ MariaDB: فعال"
+else
+    echo "❌ MariaDB: غیرفعال"
+fi
+
+# Cron
+if pgrep -x "cron" > /dev/null; then
+    echo "✅ Cron: فعال"
+else
+    echo "❌ Cron: غیرفعال"
+fi
+
+# TUN
+if [ -e /dev/net/tun ]; then
+    echo "✅ TUN Device: فعال"
+else
+    echo "❌ TUN Device: غیرفعال"
+fi
+
+echo ""
+echo "📡 پورت‌های باز:"
+netstat -tlnp 2>/dev/null | grep LISTEN
+EOF
+chmod +x /root/status.sh
+
+# اسکریپت نصب OpenVPN
+RUN cat > /root/install-openvpn.sh << 'EOF'
+#!/bin/bash
+echo "🔧 نصب OpenVPN..."
+
+# نصب OpenVPN
+apt update -y
+apt install -y openvpn
+
+# دانلود اسکریپت نصب
+wget https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh -O /tmp/openvpn-install.sh
+chmod +x /tmp/openvpn-install.sh
+
+echo "✅ OpenVPN نصب شد!"
+echo "📌 برای اجرا: /tmp/openvpn-install.sh"
+EOF
+chmod +x /root/install-openvpn.sh
+
+# اسکریپت نصب WireGuard
+RUN cat > /root/install-wireguard.sh << 'EOF'
+#!/bin/bash
+echo "🔧 نصب WireGuard..."
+
+# نصب WireGuard
+apt update -y
+apt install -y wireguard
+
+# فعال‌سازی
+echo "✅ WireGuard نصب شد!"
+echo "📌 برای شروع: wg-quick up wg0"
+EOF
+chmod +x /root/install-wireguard.sh
+
+# اسکریپت نصب Cloudflared
+RUN cat > /root/install-cloudflare.sh << 'EOF'
+#!/bin/bash
+echo "🔧 نصب Cloudflared..."
+
+# دانلود
+curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o /usr/local/bin/cloudflared
+chmod +x /usr/local/bin/cloudflared
+
+echo "✅ Cloudflared نصب شد!"
+echo "📌 برای شروع: cloudflared tunnel --url http://localhost:80"
+EOF
+chmod +x /root/install-cloudflare.sh
+
+# ============================================
+# 📁 ساخت فولدرهای کاری
+# ============================================
+RUN mkdir -p /data \
+    && mkdir -p /apps \
+    && mkdir -p /logs \
+    && mkdir -p /backup
+
+# ============================================
+# 🚀 نقطه شروع
+# ============================================
+CMD ["/bin/bash", "-c", "service ssh start && service apache2 start && service mariadb start && service cron start && echo '🎉 سرور آماده!' && echo '' && echo '📌 دستورات مفید:' && echo '  /root/status.sh       - وضعیت سرویس‌ها' && echo '  /root/restart.sh      - ریستارت سرویس‌ها' && echo '  /root/install-openvpn.sh  - نصب OpenVPN' && echo '  /root/install-wireguard.sh - نصب WireGuard' && echo '  /root/install-cloudflare.sh - نصب Cloudflared' && echo '' && tail -f /dev/null"]
