@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  vpn-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.railway
+    container_name: vpn-server
+    hostname: vpn-server
+    
+    # ⚠️ دسترسی کامل برای VPN
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - MKNOD
+      - SYS_MODULE
+    
+    # 📡 پورت‌ها
+    ports:
+      - "22:22"      # SSH
+      - "80:80"      # HTTP
+      - "443:443"    # HTTPS
+      - "1194:1194/udp"  # OpenVPN
+      - "51820:51820/udp"  # WireGuard
+    
+    # 📁 Volume‌ها
+    volumes:
+      - vpn-data:/var/www/mirza_bot
+      - vpn-db:/var/lib/mysql
+      - vpn-logs:/var/log
+    
+    # 🌐 متغیرهای محیطی
+    environment:
+      - TZ=Asia/Tehran
+      - BOT_TOKEN=8691766146:AAHfGJUkGNeqWrfn7zpmoRye9-2i-EU0DnQ
+      - ADMIN_ID=7025776524
+      - BOT_NAME=OXINNET_BOT
+    
+    # 🔄 ریستارت خودکار
+    restart: unless-stopped
+    
+    # 📊 مانیتورینگ
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  vpn-data:
+  vpn-db:
+  vpn-logs:
