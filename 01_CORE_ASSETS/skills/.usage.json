@@ -590,14 +590,14 @@
     "created_by": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-08-23T21:20:28.225772+00:00",
-    "last_viewed_at": "2026-08-23T21:20:28.222161+00:00",
+    "last_used_at": "2026-09-02T18:44:51.470530+00:00",
+    "last_viewed_at": "2026-09-02T18:44:51.463559+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 2,
-    "view_count": 2
+    "use_count": 3,
+    "view_count": 3
   },
   "hermes-agent-skill-authoring": {
     "archived_at": null,
@@ -935,14 +935,14 @@
     "created_by": "agent",
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-09-01T19:40:29.283960+00:00",
-    "last_viewed_at": "2026-09-01T19:40:29.278994+00:00",
+    "last_used_at": "2026-09-02T19:35:14.019466+00:00",
+    "last_viewed_at": "2026-09-02T19:35:14.009845+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 8,
-    "view_count": 8
+    "use_count": 10,
+    "view_count": 10
   },
   "popular-web-designs": {
     "archived_at": null,
@@ -1248,16 +1248,16 @@
     "archived_at": null,
     "created_at": "2026-08-31T18:25:30.050239+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-09-01T19:40:14.661276+00:00",
-    "last_reused_patch_generation": 11,
-    "last_used_at": "2026-09-01T19:39:12.315446+00:00",
-    "last_viewed_at": "2026-09-01T19:39:12.308583+00:00",
-    "patch_count": 12,
-    "patch_generation": 12,
+    "last_patched_at": "2026-09-02T19:36:17.120434+00:00",
+    "last_reused_patch_generation": 15,
+    "last_used_at": "2026-09-02T19:37:05.408084+00:00",
+    "last_viewed_at": "2026-09-02T19:37:05.402406+00:00",
+    "patch_count": 15,
+    "patch_generation": 15,
     "pinned": false,
     "state": "active",
-    "use_count": 64,
-    "view_count": 64
+    "use_count": 88,
+    "view_count": 88
   },
   "web-reconnaissance": {
     "archived_at": null,
@@ -1265,14 +1265,14 @@
     "created_by": "agent",
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-08-31T18:55:57.618280+00:00",
-    "last_viewed_at": "2026-08-31T18:55:57.601916+00:00",
+    "last_used_at": "2026-09-02T15:02:34.229624+00:00",
+    "last_viewed_at": "2026-09-02T15:02:34.223294+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 2,
-    "view_count": 2
+    "use_count": 3,
+    "view_count": 3
   },
   "weekly-review-planning": {
     "archived_at": null,

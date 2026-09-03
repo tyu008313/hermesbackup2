@@ -63,12 +63,12 @@
 <body><div class="wrap">
 <header>
   <h1>🧠 HERMES BRAIN</h1>
-  <p>مرکز فرماندهی — مغز دیجیتال هرمس | آخرین به‌روزرسانی: <span style="direction:ltr;display:inline-block">2026-09-02 12:38 UTC</span></p>
+  <p>مرکز فرماندهی — مغز دیجیتال هرمس | آخرین به‌روزرسانی: <span style="direction:ltr;display:inline-block">2026-09-03 00:38 UTC</span></p>
 </header>
 
 <div class="stats">
   <div class="stat"><b>3</b><span>جلسات ثبت‌شده</span></div>
-  <div class="stat"><b>2,252</b><span>پیام‌ها</span></div>
+  <div class="stat"><b>3,075</b><span>پیام‌ها</span></div>
   <div class="stat"><b>0</b><span>توکن مصرفی</span></div>
   <div class="stat"><b>$0.00</b><span>هزینه تخمینی</span></div>
   <div class="stat"><b>91</b><span>مهارت‌ها</span></div>
@@ -81,8 +81,8 @@
   <span class="date">2026-08-30 18:28</span></div>
   <h3>خوشامدگویی صمیمانه</h3>
   <div class="meta">
-    <span>💬 1782 msgs</span>
-    <span>🔧 434 tools</span>
+    <span>💬 2605 msgs</span>
+    <span>🔧 266 tools</span>
     <span>📥 0 tok in</span>
     <span>📤 0 tok out</span>
     <span>$0.000</span>
@@ -219,15 +219,21 @@ MirzaPro2 VPN Bot on Railway (ports 8080/443):
 <li>DB: mirza_pro / Mirza@2026!Secure (MariaDB 11.8)</li>
 <li>3x-ui v3.7.0: user=8sfaIDPFiK pass=Ys8lzIA86c port=8080 basePath=/edVa7HUn6PhwR2MYGv</li>
 <li>Xray: VLESS+WS port=2083 UUID=8af924af-92ac-46c0-a9c0-6b4042534995</li>
-<li>Cloudflare Quick Tunnels for bot(80), panel(8080), xray(2083) — URLs change on restart!</li>
-<li>Railway restart: re-launch MariaDB, Apache, x-ui, 3x cloudflared tunnels</li>
+<li>Cloudflare Quick Tunnels: bot(80), panel(8080), xray(2083) — URLs change on restart!</li>
 <li>systemd unavailable — use <code>service</code> or background processes</li>
 <li>Fixes: checktelegramip() localhost, admin table, roll_Status=1</li>
-<li>Full context: github.com/tyu008313/hermesbackup2/blob/main/HERMES_FULL_CONTEXT.md</li>
+<li>restart.sh: auto-restarts all services + new tunnel + webhook + cron</li>
+<li>monitor.sh: every 5 min, checks all services, auto-restarts if needed</li>
+<li>GitHub: github.com/tyu008313/hermesbackup2 (HERMES_FULL_CONTEXT.md + BOT_INSTALL_GUIDE.md)</li>
 </ul>
 §
-Full context: github.com/tyu008313/hermesbackup2/blob/main/HERMES_FULL_CONTEXT.md + HERMES_QUICK_START.md
-Next session: load context file first.
+Bot auto-monitor: monitor.sh runs every 5 min via cron. Checks Apache, MariaDB, port 80, webhook, cloudflared. Auto-restarts via restart.sh if issues. Log: monitor.log
+§
+Reza uses Railway hosting, hits limits. Prefers emoji-filled warm casual tone (NOT robotic). Gets emotional about outages. Wants auto-monitoring. Bot install guide: BOT_INSTALL_GUIDE.md. Next Hermes session: load HERMES_FULL_CONTEXT.md first.
+§
+VPN Server Docker files created: Dockerfile.railway, docker-compose.yml, QUICK_START.md. Full access with --privileged, TUN device, OpenVPN, WireGuard, Cloudflare Tunnel. Files in GitHub repo: tyu008313/hermesbackup2
+§
+Minimal VPN Server Docker files: Dockerfile.vpn, docker-compose.vpn.yml, README.vpn.md. Clean Ubuntu 22.04 with full access (privileged), TUN device, all networking tools, Apache, MariaDB, SSH. User installs what they need. Files in GitHub repo: tyu008313/hermesbackup2
 <h2 class='sec'>🧠 USER</h2>
 User profile: REZA, Persian speaker - reply in Persian. Telegram handle @RG7YT. Design taste: high quality, professional, dark, neon-glow, futuristic, interactive (360-degree rotation), bilingual FA+EN outputs, leveraging skills/best practices for design tasks. Expects every repo section kept in sync and human-readable; recurring jobs run script-only (no LLM tokens); gives quick decisive commands.
 §
