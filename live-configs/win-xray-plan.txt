@@ -1,0 +1,20 @@
+WIN-XRAY PLAN (Windows Server 2025 runner, NvdAdmin, via Tailscale SOCKS5 localhost:1055)
+UUID: 4f6eea84-f970-4fa0-a349-4a57249ac357
+WS path: /w80d20929
+Inner port: 2080 (127.0.0.1)
+
+STEP 1 (downloads, ~2min):
+powershell -c "mkdir C:\xray -Force; Invoke-WebRequest https://github.com/XTLS/Xray-core/releases/download/v26.3.27/Xray-windows-64.zip -OutFile C:\xray\xray.zip; Invoke-WebRequest https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe -OutFile C:\xray\cloudflared.exe; Expand-Archive C:\xray\xray.zip -DestinationPath C:\xray -Force"
+
+STEP 2 (config + start):
+config C:\xray\config.json:
+{"inbounds":[{"port":2080,"listen":"127.0.0.1","protocol":"vless","settings":{"clients":[{"id":"4f6eea84-f970-4fa0-a349-4a57249ac357"}],"decryption":"none"},"streamSettings":{"network":"ws","wsSettings":{"path":"/w80d20929"}}}],"outbounds":[{"protocol":"freedom"}]}
+powershell -c "Start-Process C:\xray\xray.exe -ArgumentList 'run','-config','C:\xray\config.json' -RedirectStandardOutput C:\xray\xray.log -RedirectStandardError C:\xray\xray.err -WindowStyle Hidden; Start-Sleep 3; Get-Content C:\xray\xray.log -Tail 5"
+
+STEP 3 (CF tunnel, capture URL):
+powershell -c "Start-Process C:\xray\cloudflared.exe -ArgumentList 'tunnel','--url','http://127.0.0.1:2080','--no-autoupdate' -RedirectStandardOutput C:\xray\cf.log -RedirectStandardError C:\xray\cf.err -WindowStyle Hidden; Start-Sleep 12; Select-String 'trycloudflare.com' C:\xray\cf.err | Select-Object -Last 1"
+
+LINK template:
+vless://4f6eea84-f970-4fa0-a349-4a57249ac357@CFHOST:443?path=%2Fw80d20929&security=tls&encryption=none&host=CFHOST&type=ws&sni=CFHOST#Moshtari-Win
+
+NOTE: runner expires ~6h after boot (this boot 12:15 UTC -> ~18:15 UTC). Link dies with it.

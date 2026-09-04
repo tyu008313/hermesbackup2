@@ -1,0 +1,198 @@
+{
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 38003,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "reza",
+            "flow": "",
+            "id": "1e423f99-2136-4af4-870f-62428403d088"
+          }
+        ],
+        "decryption": "none"
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/reza-vless-77"
+        }
+      }
+    },
+    {
+      "listen": "0.0.0.0",
+      "port": 8080,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "reza-rail",
+            "flow": "",
+            "id": "1e423f99-2136-4af4-870f-62428403d088"
+          },
+          {
+            "email": "moshtari-1day",
+            "flow": "",
+            "id": "9fa05b40-94b1-461d-aaf1-36c93f04e669"
+          }
+        ],
+        "decryption": "none"
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/reza-rail-ws"
+        }
+      }
+    },
+    {
+      "listen": "0.0.0.0",
+      "port": 443,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "reza-tcp",
+            "flow": "",
+            "id": "1e423f99-2136-4af4-870f-62428403d088"
+          }
+        ],
+        "decryption": "none"
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/reza-tcp-59"
+        }
+      }
+    },
+    {
+      "listen": "0.0.0.0",
+      "port": 8443,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "reza-reality",
+            "flow": "xtls-rprx-vision",
+            "id": "1e423f99-2136-4af4-870f-62428403d088"
+          }
+        ],
+        "decryption": "none"
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ],
+        "enabled": true
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "dest": "www.microsoft.com:443",
+          "maxTimeDiff": 0,
+          "privateKey": "qEp-eMDXw1uUJTMnQ_TvCRkSPa-hAK0uzh0hcTjM5k4",
+          "serverNames": [
+            "www.microsoft.com"
+          ],
+          "shortIds": [
+            "ed739404"
+          ]
+        },
+        "security": "reality"
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 8102,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "061b931b-6937-4858-b092-c5c8577f0a7b"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/v9efc98"
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 8103,
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password": "700a2cae31a9340fb8a6e78b"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/t492cab"
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 8104,
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "aes-256-gcm",
+        "password": "700a2cae31a9340fb8a6e78b",
+        "network": "tcp"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/s0ac55a"
+        }
+      }
+    }
+  ],
+  "log": {
+    "loglevel": "warning"
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    }
+  ]
+}
