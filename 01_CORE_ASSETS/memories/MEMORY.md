@@ -1,21 +1,11 @@
-[REZA] Persian speaker, Telegram @RG7YT. Design: dark, futuristic, interactive, bilingual FA+EN. Course: 7-day web security + vibe coding (Lesson 1 done). Repo: github.com/tyu008313/hermesbackup2. 9router API active (X-muse). Interests: VPN/anti-censorship tools, MirzaPro2, MHRV-RS. VPS: Debian 13 (trixie) on cloud. Prefers: quick execution without lengthy confirmations, backup before destructive ops, Persian replies.
+Cron 'git-backup-daily' (0be211d06240) runs backup_daily.sh EVERY 12H (per user 2026-09-04, not daily-9am).
 §
-MirzaPro2 VPN Bot on Railway (ports 8080/443):
-- Bot: @OXINNET_BOT, token 8691766146:AAHf...NQ, admin 7025776524
-- DB: mirza_pro / Mirza@2026!Secure (MariaDB 11.8)
-- 3x-ui v3.7.0: user=8sfaIDPFiK pass=Ys8lzIA86c port=8080 basePath=/edVa7HUn6PhwR2MYGv
-- Xray: VLESS+WS port=2083 UUID=8af924af-92ac-46c0-a9c0-6b4042534995
-- Cloudflare Quick Tunnels: bot(80), panel(8080), xray(2083) — URLs change on restart!
-- systemd unavailable — use `service` or background processes
-- Fixes: checktelegramip() localhost, admin table, roll_Status=1
-- restart.sh: auto-restarts all services + new tunnel + webhook + cron
-- monitor.sh: every 5 min, checks all services, auto-restarts if needed
-- GitHub: github.com/tyu008313/hermesbackup2 (HERMES_FULL_CONTEXT.md + BOT_INSTALL_GUIDE.md)
+This Hermes host container has no /dev/net/tun and mknod is not permitted (Operation not permitted) — OpenVPN server cannot run here. Public IP seen 152.55.184.188 via curl. Prefer userspace VPN (Xray/VLESS + cloudflared) which needs no TUN.
 §
-Bot auto-monitor: monitor.sh runs every 5 min via cron. Checks Apache, MariaDB, port 80, webhook, cloudflared. Auto-restarts via restart.sh if issues. Log: monitor.log
+Cron job 'git-backup-daily' (0be211d06240) is PAUSED by user request — do not resume without asking. Manual backups run via BACKUP skill (git-backup-manual).
 §
-Reza uses Railway hosting, hits limits. Prefers emoji-filled warm casual tone (NOT robotic). Gets emotional about outages. Wants auto-monitoring. Bot install guide: BOT_INSTALL_GUIDE.md. Next Hermes session: load HERMES_FULL_CONTEXT.md first.
+VLESS /data/vless (pm2 xray-vless, Xray 26.3.27, UUID 1e423f99-2136-4af4-870f-62428403d088): WS 38003 /reza-vless-77 via CF flight-depending-castle-frame.trycloudflare.com (live), WS 8080 /reza-rail-ws via Railway domain (live), Reality :443 SNI www.microsoft.com pubkey 3M0GerrOvfS-rvZFFd7ndtkxItQR6txoxYFr2wBG9W8 sid ed739404 (local OK, inbound 443 filtered from internet). client.txt (3 links) + sub.txt + 3 QRs.
 §
-VPN Server Docker files created: Dockerfile.railway, docker-compose.yml, QUICK_START.md. Full access with --privileged, TUN device, OpenVPN, WireGuard, Cloudflare Tunnel. Files in GitHub repo: tyu008313/hermesbackup2
+PLAIN XRAY + multi_router.py (Marzban REMOVED 2026-09-04): single pm2 xray-vless serves WS /reza-rail-ws :8080 (Railway) + /reza-vless-77 :38003 (CF) + VMess/Trojan/SS inners :8102/8103/8104 with RANDOM ws paths (CF edge flaky on plain words). Router :8095 (pm2 multi-router, Connection:close fix for tunnel keep-alive) + ONE CF tunnel serves all 3 protos. 5 links in /data/vless/client.txt + sub.txt. Chat :3000 + CF tunnel. Kill strays by exact PID (no pkill/pgrep on box); beware duplicate xray/routers fighting over ports.
 §
-Minimal VPN Server Docker files: Dockerfile.vpn, docker-compose.vpn.yml, README.vpn.md. Clean Ubuntu 22.04 with full access (privileged), TUN device, all networking tools, Apache, MariaDB, SSH. User installs what they need. Files in GitHub repo: tyu008313/hermesbackup2
+Reza prefers plain Xray links over management panels — explicitly asked to remove Marzban and keep it simple like before.
