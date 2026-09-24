@@ -1,0 +1,8 @@
+*.lock
+*.db*
+*.sock
+*.pid
+auth.json
+logs/
+env.conf
+.env
